@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(version: 20161104172928) do
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.datetime "last_signed_in_at"
-    t.string   "name"
+    t.string   "username"
     t.string   "oauth_uid"
     t.integer  "sign_in_count",     default: 0
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["name"], name: "index_users_on_name", unique: true, using: :btree
     t.index ["oauth_uid"], name: "index_users_on_oauth_uid", unique: true, using: :btree
+    t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
 end
