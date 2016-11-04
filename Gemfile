@@ -1,5 +1,7 @@
 source 'https://rubygems.org/'
 
+ruby '2.3.1'
+
 gem 'rails', '5'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
@@ -9,6 +11,7 @@ gem 'listen'
 gem 'omniauth-facebook'
 gem 'materialize-sass'
 gem 'dotenv-rails'
+
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
