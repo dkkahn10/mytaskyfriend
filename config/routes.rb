@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :auth, only: :show
   resources :sessions, only: [:destroy, :new]
   resources :users
+  resources :tasks, only: [:index]
 
 end

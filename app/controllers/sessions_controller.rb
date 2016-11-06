@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       user.increment! :sign_in_count
       user.touch :last_signed_in_at
       session[:user_id] = user.id
-      # redirect_to shirts_path
+      redirect_to tasks_path
     end
   end
 
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def new
-    # redirect_to shirts_path if user_signed_in?
+    redirect_to tasks_path if user_signed_in?
   end
 
 end

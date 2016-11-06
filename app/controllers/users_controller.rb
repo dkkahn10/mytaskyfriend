@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       @user.touch :last_signed_in_at
       @user.increment! :sign_in_count
       flash[:success] = "Registered successfully."
-      # redirect_to shirts_path
+      redirect_to tasks_path
     else
       flash[:alert] = "There was a problem registering."
       render :new
