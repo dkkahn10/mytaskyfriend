@@ -28,21 +28,11 @@ class App extends Component {
 
   render() {
     var projectNames = "";
-    if (this.state.projectNames.length !== 0) {
-        names = this.state.projectNames.map(project => {
-          debugger;
-          return(
-            <
-            {project}
-            />
-          )
-      });
-    }
+
       return(
         <div className="projects-list">
           <input type="text" value={this.state.projectName} name="new_project" onChange={this.handleFieldChange} />
           <button className="NewProject" onClick={this.handleNewProject}>Add New Project</button>
-          {names}
         </div>
       );
     }
