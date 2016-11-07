@@ -6,9 +6,19 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
+    <ul>
+      <li><%= link_to "Tasks", tasks_path %></li>
+      <% if user_signed_in? %>
+        <li>Signed in as: <%= link_to current_user.username, current_user %></li>
+        <li><%= link_to "Sign Out", session_path(:current), method: :delete %></li>
+      <% else %>
+        <li>Not signed in.</li>
+      <% end %>
+    </ul>
     <%= yield %>
   </body>
 </html>
