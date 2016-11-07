@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def authorize_object_owner(object)
     unless object.user == current_user
       flash[:warning] = "You are not authorized to view this record."
-      # redirect_to shirts_path
+      redirect_to projects_path
     end
   end
 
