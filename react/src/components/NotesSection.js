@@ -1,42 +1,41 @@
 import React, {Component} from 'react';
-import Project from './Project';
+import Note from './Note';
 
 
 class NotesSection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clickedButtonId: null,
     }
 
-  this.handleButtonClick = this.handleButtonClick.bind(this);
+  this.handleNewNoteClick = this.handleNewNoteClick.bind(this);
+  this.handleEditNoteClick = this.handleEditNoteClick.bind(this);
+  this.handleDeleteNoteClick = this.handleDeleteNoteClick.bind(this);
   };
 
-
     render() {
-      let projects = this.props.data.map(project => {
-        let specialClass;
-
-        if (question.id === this.state.clickedButtonId) {
-          specialClass = "selected"
-        }
-
-        let onProjectClick = () => this.handleButtonClick(project.id)
+      let notes = this.props.data.map(note => {
+          let newNoteClick = () =>
+          this.handleNewNoteClick();
+          let editNoteClick = () =>
+          this.handleEditNoteClick();
+          let deleteNoteClick = () =>
+          this.handleDeleteNoteClick();
         return (
-          <Project
-            key={project.id}
-            handleButtonClick={onQuestionClick}
+          <Note
+            newNoteClick={newNoteClick}
+            editNoteClick={editNoteClick}
+            deleteNoteClick={deleteNoteClick}
           />
         )
       });
 
       return(
         <div className="projects">
-          {projects}
+          {notes}
         </div>
       );
     }
 }
-
 
 export default NotesSection;

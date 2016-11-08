@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import NotesSection from './NotesSection';
-import Project from './Project';
+import Note from './Note';
 
 
 class App extends Component {
@@ -33,7 +33,11 @@ class App extends Component {
         projects = this.state.projectNames.map(project => {
           let key = i++
         return(
-        <p key={key}>{project}</p>
+        <NotesSection
+        key={key}
+        id={key}
+        name={project}
+        />
         )
       });
     }
