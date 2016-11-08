@@ -10,8 +10,9 @@ class UsersController < ApplicationController
       @user.touch :last_signed_in_at
       @user.increment! :sign_in_count
       flash[:success] = "Registered successfully."
-      redirect_to tasks_path
+      redirect_to projects_path
     else
+      binding.pry
       flash[:alert] = "There was a problem registering."
       render :new
     end
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless @user == current_user
       flash[:warning] = "You are not authorized to view this record."
-      redirect_to shirts_path
+      redirect_to projects_path
     end
   end
 

@@ -1,4 +1,4 @@
 <%= form_for @user do |f| %>
-  <%= f.text_field :username, label: false, placeholder: "UserName" %>
+  <%= f.text_field :username, label: false, placeholder: "UserName", id: "user_name" %>
   <%= f.submit "Submit", class: "btn" %>
 <% end %>
