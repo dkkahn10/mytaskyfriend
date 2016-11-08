@@ -3,6 +3,9 @@ class Api::V1::ProjectsController < ApiController
 
   def index
     @projects = Project.all
+    render json: {
+      projects: @projects
+    }, status: :ok
   end
 
   def create

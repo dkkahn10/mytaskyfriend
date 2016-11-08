@@ -2,9 +2,8 @@ class Api::V1::TasksController < ApiController
   def index
     @tasks = Task.all
     render json: {
-      tasks: tasks
+      tasks: @tasks
     }, status: :ok
-  end
   end
 
   def create
