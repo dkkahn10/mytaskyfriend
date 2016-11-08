@@ -22,6 +22,11 @@ class SessionsController < ApplicationController
 
   def new
     redirect_to projects_path if user_signed_in?
+    if session[:flash]
+      if session[:flash]["flashes"]["warning"] # == "You need to sign in before continuing."
+        flash[:notice] = "Authentication failed."
+      end
+    end
   end
 
 end

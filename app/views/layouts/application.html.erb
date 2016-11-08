@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <div id="flash">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+
     <ul>
       <li><%= link_to "Tasks", tasks_path %></li>
       <% if user_signed_in? %>

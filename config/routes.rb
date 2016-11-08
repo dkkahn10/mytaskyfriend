@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  
-  get "auth/:provider/callback", to: "sessions#create"
-  get "signin", to: "sessions#new", as: "signin"
 
   root "sessions#new"
+
+  get "auth/:provider/callback", to: "sessions#create"
+  # get "auth/failure", to: "sessions#new"
+  get "signin", to: "sessions#new", as: "signin"
 
   resources :auth, only: :show
   resources :sessions, only: [:destroy, :new]
