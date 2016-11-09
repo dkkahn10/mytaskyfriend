@@ -5,9 +5,6 @@ import Note from './Note';
 class NotesSection extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      notes: []
-    };
   this.handleNewNoteClick = this.handleNewNoteClick.bind(this);
   this.handleEditNoteClick = this.handleEditNoteClick.bind(this);
   this.handleDeleteNoteClick = this.handleDeleteNoteClick.bind(this);

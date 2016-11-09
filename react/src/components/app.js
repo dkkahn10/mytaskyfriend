@@ -55,7 +55,6 @@ class App extends Component {
 
   render() {
     let projects = ""
-    let i = 0;
     if (this.state.projectNames.length !== 0) {
         projects = this.state.projectNames.map(project => {
           let projectClick = () => this.handleProjectClick(project.id);
