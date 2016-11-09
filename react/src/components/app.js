@@ -55,20 +55,27 @@ class App extends Component {
 
   render() {
     let projects = ""
-    if (this.state.projectNames.length !== 0) {
-        projects = this.state.projectNames.map(project => {
-          let projectClick = () => this.handleProjectClick(project.id);
-        return(
-          <NotesSection
-            key={project.id}
-            id={project.id}
-            title={project.title}
-            projectClick={projectClick}
-            projectId={this.state.projectId}
-          />
-        )
-      });
-    }
+      if (this.state.projectNames.length !== 0) {
+          projects = this.state.projectNames.map(project => {
+            let projectTasks = ""
+            let projectClick = () => this.handleProjectClick(project.id);
+            if (this.state.projectId === project.id) {
+              projectTasks = <NotesSection
+                key={project.id}
+                id={project.id}
+                title={project.title}
+                projectId={this.state.projectId}
+              />
+            }
+          return(
+            <div onClick={projectClick}>
+              <p>{project.title}</p>
+              {projectTasks}
+            </div>
+          )
+        });
+      }
+
 
       return(
         <div className="projects-list">
@@ -79,6 +86,7 @@ class App extends Component {
       );
     }
 }
+
 
 
 export default App;

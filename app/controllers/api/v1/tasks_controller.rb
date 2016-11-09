@@ -1,6 +1,15 @@
 class Api::V1::TasksController < ApiController
-  def index
-    @tasks = Task.all
+  # def index
+  #   @project = Project.find(params[:projectId])
+  #   @tasks = @project.tasks
+  #   render json: {
+  #     tasks: @tasks
+  #   }, status: :ok
+  # end
+
+  def show
+    @project = Project.find(params[:id])
+    @tasks = @project.tasks
     render json: {
       tasks: @tasks
     }, status: :ok
@@ -17,10 +26,12 @@ class Api::V1::TasksController < ApiController
   end
 
   def destroy
+    @task = Task.find_by(task_params)
+    @task.destroy
   end
 
   private
   def task_params
-    params.require(:task).permit(:body)
+    params.require(:task).permit(:body, :project_id)
   end
 end
