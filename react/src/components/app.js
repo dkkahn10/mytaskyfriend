@@ -11,7 +11,7 @@ class App extends Component {
       projectNames: [],
       projectId: "",
     };
-    // this.handleProjectClick = this.handleProjectClick.bind(this);
+    this.handleProjectClick = this.handleProjectClick.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this)
     this.handleNewProject = this.handleNewProject.bind(this);
   };
@@ -39,12 +39,9 @@ class App extends Component {
     });
   }
 
-  // handleProjectClick(id) {
-  //   event.preventDefault();
-  //   .done(data => {
-  //     this.setState({ projectId: id});
-  //   });
-  // };
+  handleProjectClick(id) {
+    this.setState({ projectId: id});
+  };
 
   componentDidMount() {
     let request = $.ajax({
@@ -56,24 +53,19 @@ class App extends Component {
       });
     }
 
-  // <NotesSection
-  // key={key}
-  // id={key}
-  // name={project}
-  // projectClick={projectClick}
-  // projectId={this.state.projectId}
-  // />
-
   render() {
     let projects = ""
-    let i = 0;
     if (this.state.projectNames.length !== 0) {
         projects = this.state.projectNames.map(project => {
           let projectClick = () => this.handleProjectClick(project.id);
         return(
-          <div key={project.id}>
-            {project.title}
-          </div>
+          <NotesSection
+            key={project.id}
+            id={project.id}
+            title={project.title}
+            projectClick={projectClick}
+            projectId={this.state.projectId}
+          />
         )
       });
     }
