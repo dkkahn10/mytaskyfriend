@@ -85,12 +85,12 @@ class App extends Component {
 
       return(
         <div className="row">
-          <div className="projects-list col s6">
+          <div className="projects-list col s4">
             <input type="text" value={this.state.projectName} name="new_project" onChange={this.handleFieldChange} />
             <button className="NewProject btn" onClick={this.handleNewProject}>Add New Project</button>
             {projects}
           </div>
-          <div className="tasks-list col s6">
+          <div className="tasks-list col s4">
             {projectTasks}
           </div>
         </div>
