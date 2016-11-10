@@ -41,18 +41,23 @@ class NotesSection extends Component {
   handleEditNoteClick() {
   };
 
-  handleDeleteNoteClick() {
-    // debugger;
+  handleDeleteNoteClick(id) {
     let request = $.ajax({
-      url: "api/v1/tasks",
+      url: `api/v1/tasks/${id}`,
       method: "DELETE",
       data: {
         task: {
-          body: this.state.Note,
-          project_id: this.props.projectId
+          task_id: id,
       }
     }
     })
+    .done(data => {
+      var newArray = this.state.Notes;
+      let Notes = newArray.filter(note => {
+        return note.id !== id })
+      this.setState({Notes: Notes});
+      this.setState({Note: ""});
+    });
   };
 
   componentDidMount() {
@@ -61,7 +66,6 @@ class NotesSection extends Component {
       method: "GET",
     })
       .done(data => {
-        debugger;
         this.setState({ Notes: data.tasks});
       });
     }
@@ -71,8 +75,8 @@ class NotesSection extends Component {
         if (this.state.Notes.length !== 0) {
             notes = this.state.Notes.map(note => {
               let newNoteClick = () => this.handleNewNoteClick();
-              let editNoteClick = () => this.handleEditNoteClick();
-              let deleteNoteClick = () => this.handleDeleteNoteClick();
+              let editNoteClick = () => this.handleEditNoteClick(note.id);
+              let deleteNoteClick = () => this.handleDeleteNoteClick(note.id);
             return(
               <Note
               key={note.id}

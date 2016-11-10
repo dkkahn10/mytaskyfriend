@@ -26,7 +26,8 @@ class Api::V1::TasksController < ApiController
   end
 
   def destroy
-    @task = Task.find_by(task_params)
+    binding.pry
+    @task = Task.find(params[:task][:task_id])
     @task.destroy
   end
 
