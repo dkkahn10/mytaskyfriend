@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NotesSection from './NotesSection';
+import TasksSection from './TasksSection';
 import Note from './Note';
 
 
@@ -60,7 +60,7 @@ class App extends Component {
             let projectTasks = ""
             let projectClick = () => this.handleProjectClick(project.id);
             if (this.state.projectId === project.id) {
-              projectTasks = <NotesSection
+              projectTasks = <TasksSection
                 key={project.id}
                 id={project.id}
                 title={project.title}
