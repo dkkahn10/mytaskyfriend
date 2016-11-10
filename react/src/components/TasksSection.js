@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Note from './Note';
+import Task from './Task';
 
 
 class TasksSection extends Component {
@@ -71,20 +71,20 @@ class TasksSection extends Component {
     }
 
     render() {
-      let notes = "";
+      let tasks = "";
         if (this.state.Tasks.length !== 0) {
-            notes = this.state.Tasks.map(note => {
+            tasks = this.state.Tasks.map(task => {
               let newTaskClick = () => this.handleNewTaskClick();
-              let editTaskClick = () => this.handleEditTaskClick(note.id);
-              let deleteTaskClick = () => this.handleDeleteTaskClick(note.id);
+              let editTaskClick = () => this.handleEditTaskClick(task.id);
+              let deleteTaskClick = () => this.handleDeleteTaskClick(task.id);
             return(
-              <Note
-              key={note.id}
+              <Task
+              key={task.id}
               projectId={this.props.projectId}
               newTaskClick={newTaskClick}
               editTaskClick={editTaskClick}
               deleteTaskClick={deleteTaskClick}
-              body={note.body}
+              body={task.body}
               />
             )
           });
@@ -95,7 +95,7 @@ class TasksSection extends Component {
               <input type="text" value={this.state.Task} name="new_note" onChange={this.handleFieldChange} />
               <button className="AddNote" onClick={this.handleNewTaskClick}>Add Note</button>
             </p>
-            {notes}
+            {tasks}
         </div>
       );
     }

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import TasksSection from './TasksSection';
-import Note from './Note';
 
 
 class App extends Component {
