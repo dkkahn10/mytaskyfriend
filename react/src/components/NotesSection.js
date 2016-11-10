@@ -91,10 +91,8 @@ class NotesSection extends Component {
         }
       return(
         <div className="projects">
-            <p>
               <input type="text" value={this.state.Note} name="new_note" onChange={this.handleFieldChange} />
-              <button className="AddNote" onClick={this.handleNewNoteClick}>Add Note</button>
-            </p>
+              <button className="AddNote btn" onClick={this.handleNewNoteClick}>Add Note</button>
             {notes}
         </div>
       );

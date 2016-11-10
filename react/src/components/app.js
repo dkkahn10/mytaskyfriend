@@ -54,10 +54,10 @@ class App extends Component {
     }
 
   render() {
-    let projects = ""
+    let projects = "";
+    let projectTasks = "";
       if (this.state.projectNames.length !== 0) {
           projects = this.state.projectNames.map(project => {
-            let projectTasks = ""
             let projectClick = () => this.handleProjectClick(project.id);
             if (this.state.projectId === project.id) {
               projectTasks = <NotesSection
@@ -68,9 +68,16 @@ class App extends Component {
               />
             }
           return(
-            <div onClick={projectClick}>
-              <p>{project.title}</p>
-              {projectTasks}
+            <div key={project.id}>
+              <div className="card blue-grey darken-1">
+                <div className="card-content white-text">
+                  <span className="card-title">{project.title}</span>
+                  <p></p>
+                </div>
+                <div className="card-action">
+                  <button className="btn" onClick={projectClick}>View Tasks</button>
+                </div>
+              </div>
             </div>
           )
         });
@@ -78,11 +85,17 @@ class App extends Component {
 
 
       return(
-        <div className="projects-list">
-          <input type="text" value={this.state.projectName} name="new_project" onChange={this.handleFieldChange} />
-          <button className="NewProject" onClick={this.handleNewProject}>Add New Project</button>
-          {projects}
+        <div className="row">
+          <div className="projects-list col s6">
+            <input type="text" value={this.state.projectName} name="new_project" onChange={this.handleFieldChange} />
+            <button className="NewProject btn" onClick={this.handleNewProject}>Add New Project</button>
+            {projects}
+          </div>
+          <div className="tasks-list col s6">
+            {projectTasks}
+          </div>
         </div>
+
       );
     }
 }
