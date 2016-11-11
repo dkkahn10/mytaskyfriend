@@ -82,7 +82,6 @@ class App extends Component {
         });
       }
 
-
       return(
         <div className="row">
           <div className="projects-list col s4">
@@ -94,11 +93,8 @@ class App extends Component {
             {projectTasks}
           </div>
         </div>
-
       );
     }
 }
-
-
 
 export default App;

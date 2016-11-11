@@ -9,8 +9,8 @@ let Task = props => {
           <p>{props.body}</p>
         </div>
         <div className="card-action">
-          <button className="btn EditTask">Edit Task</button>
-          <button className="btn DeleteTask">Delete Task</button>
+          <button className="btn EditTask" onClick={props.editTaskClick}>Edit Task</button>
+          <button className="btn DeleteTask"onClick={props.deleteTaskClick}>Delete Task</button>
         </div>
       </div>
     </div>

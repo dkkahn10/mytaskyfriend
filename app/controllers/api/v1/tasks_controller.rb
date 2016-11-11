@@ -30,6 +30,14 @@ class Api::V1::TasksController < ApiController
     @task.destroy
   end
 
+  def edit
+    @task = Task.find(params[:task][:task_id])
+    @task.update_attributes(body: params[:task][:body])
+  end
+
+  def update
+  end
+
   private
   def task_params
     params.require(:task).permit(:body, :project_id)
