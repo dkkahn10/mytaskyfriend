@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root "sessions#new"
 
   get "auth/:provider/callback", to: "sessions#create"
-  # get "auth/failure", to: "sessions#new"
   get "signin", to: "sessions#new", as: "signin"
 
   resources :auth, only: :show
