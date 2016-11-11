@@ -13,6 +13,7 @@ class App extends Component {
     this.handleProjectClick = this.handleProjectClick.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this)
     this.handleNewProject = this.handleNewProject.bind(this);
+    this.handleDeleteProject = this.handleDeleteProject.bind(this);
   };
 
 
@@ -42,6 +43,27 @@ class App extends Component {
     this.setState({ projectId: id});
   };
 
+  handleDeleteProject(id) {
+    let _this = this;
+    let request = $.ajax({
+      url: `api/v1/projects/${id}`,
+      method: "DELETE",
+      data: {
+        project: {
+          project_id: id,
+        }
+      },
+      success: (data) => {
+        var newArray = _this.state.projectNames;
+        let projects = newArray.filter(project => {
+          return project.id !== id })
+        _this.setState({ projectNames: projects });
+        _this.setState({ projectName: "" });
+      }
+    })
+  };
+
+
   componentDidMount() {
     let request = $.ajax({
       url: "api/v1/projects",
@@ -58,6 +80,7 @@ class App extends Component {
       if (this.state.projectNames.length !== 0) {
           projects = this.state.projectNames.map(project => {
             let projectClick = () => this.handleProjectClick(project.id);
+            let projectDelete = () => this.handleDeleteProject(project.id);
             if (this.state.projectId === project.id) {
               projectTasks = <TasksSection
                 key={project.id}
@@ -75,6 +98,7 @@ class App extends Component {
                 </div>
                 <div className="card-action">
                   <button className="btn" onClick={projectClick}>View Tasks</button>
+                  <button className="btn" onClick={projectDelete}>Delete</button>
                 </div>
               </div>
             </div>

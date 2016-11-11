@@ -21,6 +21,7 @@ class Api::V1::TasksController < ApiController
     if @task.save
       render json: { task: @task }, status: :created
     else
+      flash[:notice] = @task.errors.full_messages.join(',')
       render json: { errors: @task.errors }, status: :unprocessable_entity
     end
   end
@@ -32,8 +33,11 @@ class Api::V1::TasksController < ApiController
 
   def update
     @task = Task.find(params[:task][:task_id])
-    @task.update_attributes(body: params[:task][:body])
-    render json: { task: @task }, status: :ok 
+    if @task.update_attributes(body: params[:task][:body])
+      render json: { task: @task }, status: :ok
+    else
+      flash[:notice] = @task.errors.full_messages.join(',')
+    end
   end
 
   private

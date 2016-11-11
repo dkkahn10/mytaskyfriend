@@ -14,11 +14,14 @@ class Api::V1::ProjectsController < ApiController
     if @project.save
       render json: { project: @project }, status: :created
     else
+      flash[:notice] = @project.errors.full_messages.join(',')
       render json: { errors: @project.errors }, status: :unprocessable_entity
     end
   end
 
   def destroy
+    @project = Project.find(params[:project][:project_id])
+    @project.destroy
   end
 
   private
