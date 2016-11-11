@@ -15,15 +15,20 @@
       <p class="alert"><%= alert %></p>
     </div>
 
-    <ul>
-      <li><%= link_to "Tasks", tasks_path %></li>
-      <% if user_signed_in? %>
-        <li>Signed in as: <%= link_to current_user.username, current_user %></li>
-        <li><%= link_to "Sign Out", session_path(:current), method: :delete %></li>
-      <% else %>
-        <li>Not signed in.</li>
-      <% end %>
-    </ul>
+    <nav>
+      <div class="nav-wrapper">
+        <ul>
+          <li><%= link_to "Projects", projects_path %></li>
+          <% if user_signed_in? %>
+            <li>Signed in as: <%= link_to current_user.username, current_user, style: 'inline' %></li>
+            <li><%= link_to "Sign Out", session_path(:current), method: :delete %></li>
+          <% else %>
+            <li>Not signed in.</li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

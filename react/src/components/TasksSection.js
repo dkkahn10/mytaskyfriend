@@ -144,11 +144,9 @@ class TasksSection extends Component {
         }
       return(
         <div className="projects">
-            <p>
-              <input type="text" value={this.state.Task} name="new_note" onChange={this.handleFieldChange} />
-              <button className="AddNote" onClick={this.handleNewTaskClick}>Add Note</button>
-            </p>
-            {tasks}
+          <input type="text" value={this.state.Task} name="new_note" onChange={this.handleFieldChange} />
+          <button className="AddTask btn" onClick={this.handleNewTaskClick}>Add Task</button>
+          {tasks}
         </div>
       );
     }
