@@ -11,8 +11,13 @@ var config = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel',
+        query:
+        {
+          presets:['react']
+        }
       }
+
     ]
   },
   devtool: 'eval-source-map'
