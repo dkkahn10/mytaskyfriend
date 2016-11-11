@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   resources :projects, only: [:index]
   resources :tasks, only: [:index]
 
+  resources :chatrooms, param: :slug
+  resources :messages
+
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
+
   namespace :api do
     namespace :v1 do
       resources :projects, only: [:index, :create, :destroy]
