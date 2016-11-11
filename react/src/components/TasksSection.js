@@ -36,8 +36,8 @@ class TasksSection extends Component {
         task: {
           body: this.state.Task,
           project_id: this.props.projectId
+        }
       }
-    }
     })
     .done(data => {
       var newArray = this.state.Tasks;
@@ -52,27 +52,25 @@ class TasksSection extends Component {
   };
 
   handleEditTask() {
-    let request = $.ajax({
-      url: `api/v1/tasks/${this.state.taskId}/edit`,
-      method: "GET",
+    let _this = this;
+    $.ajax({
+      url: `api/v1/tasks/${this.state.taskId}`,
+      method: "PATCH",
       data: {
         task: {
           task_id: this.state.taskId,
-          body: this.state.editTask,
+          body: this.state.editTask
+        }
+      },
+      success: (data) => {
+        var newArray = _this.state.Tasks;
+        let tasks = newArray.filter(task => {
+          return task.id !== this.state.taskId })
+        tasks.push(data.task);
+        _this.setState({ Tasks: tasks });
+        _this.setState({ taskId: "" });
       }
-    }
-  })
-
-  .done(data => {
-    //check this.state
-    var newArray = this.state.Tasks;
-    let tasks = newArray.filter(task => {
-      return task.id !== this.state.taskId })
-    tasks.push(this.state.editTask);
-    this.setState({Tasks: tasks});
-    this.setState({taskId: ""});
-  })
-
+    })
   }
 
   handleDeleteTaskClick(id) {
@@ -82,8 +80,8 @@ class TasksSection extends Component {
       data: {
         task: {
           task_id: id,
+        }
       }
-    }
     })
     .done(data => {
       var newArray = this.state.Tasks;
@@ -113,13 +111,16 @@ class TasksSection extends Component {
       let editTask = "";
         if (this.state.Tasks.length !== 0) {
             tasks = this.state.Tasks.map(task => {
+              let nonEditKey = `nonEdit_${task.id}`;
+              let taskBlock = `taskBlock_${task.id}`;
               let newTaskClick = () => this.handleNewTaskClick();
               let editTaskClick = () => this.handleEditTaskClick(task);
+              let editTask = () => this.handleEditTask();
               let deleteTaskClick = () => this.handleDeleteTaskClick(task.id);
               let taskClick = () => this.handleTaskClick(task.id);
               if (this.state.taskId !== task.id) {
                 nonEditTask = <Task
-                key={task.id}
+                key={nonEditKey}
                 projectId={this.props.projectId}
                 newTaskClick={newTaskClick}
                 editTaskClick={editTaskClick}
@@ -131,11 +132,11 @@ class TasksSection extends Component {
                 editTask =
                 <div>
                   <input type="text" value={this.state.editTask} name="new_note" onChange={this.handleEditChange} />
-                  <button className="EditNote" onClick={this.handleEditTask}>Edit Note</button>
+                  <button className="EditNote btn" onClick={editTask}>Edit Task</button>
                 </div>
               }
             return(
-              <div>
+              <div key={taskBlock}>
                 {editTask}
                 {nonEditTask}
               </div>

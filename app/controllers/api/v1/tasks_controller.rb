@@ -30,12 +30,10 @@ class Api::V1::TasksController < ApiController
     @task.destroy
   end
 
-  def edit
+  def update
     @task = Task.find(params[:task][:task_id])
     @task.update_attributes(body: params[:task][:body])
-  end
-
-  def update
+    render json: { task: @task }, status: :ok 
   end
 
   private
