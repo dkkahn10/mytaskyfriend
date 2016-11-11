@@ -21,11 +21,11 @@ class TasksSection extends Component {
   };
 
   handleFieldChange(e) {
-    this.setState({Task: e.target.value});
+    this.setState({ Task: e.target.value });
   };
 
   handleEditChange(e) {
-    this.setState({editTask: e.target.value});
+    this.setState({ editTask: e.target.value });
   }
 
   handleNewTaskClick() {
@@ -42,13 +42,13 @@ class TasksSection extends Component {
     .done(data => {
       var newArray = this.state.Tasks;
       newArray.push(data.task);
-      this.setState({Tasks: newArray});
-      this.setState({Task: ""});
+      this.setState({ Tasks: newArray });
+      this.setState({ Task: "" });
     });
   };
 
   handleEditTaskClick(task) {
-    this.setState({ taskId: task.id, editTask: task.body});
+    this.setState({ taskId: task.id, editTask: task.body });
   };
 
   handleEditTask() {
@@ -87,8 +87,8 @@ class TasksSection extends Component {
       var newArray = this.state.Tasks;
       let tasks = newArray.filter(task => {
         return task.id !== id })
-      this.setState({Tasks: tasks});
-      this.setState({Task: ""});
+      this.setState({ Tasks: tasks });
+      this.setState({ Task: "" });
     });
   };
 
@@ -101,7 +101,7 @@ class TasksSection extends Component {
       method: "GET",
     })
       .done(data => {
-        this.setState({ Tasks: data.tasks});
+        this.setState({ Tasks: data.tasks });
       });
     }
 
