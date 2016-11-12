@@ -32,20 +32,22 @@ class App extends Component {
   }
 
   handleNewProject() {
+    let _this = this;
+    debugger;
     let request = $.ajax({
       url: "api/v1/projects",
       method: "POST",
       data: {
         project: {
-          title: this.state.projectName,
+          title: _this.state.projectName,
       }
     }
     })
     .done(data => {
-      var newArray = this.state.projectNames;
+      var newArray = _this.state.projectNames;
       newArray.push(data.project);
-      this.setState({projectNames: newArray});
-      this.setState({projectName: ""});
+      _this.setState({projectNames: newArray});
+      _this.setState({projectName: ""});
     });
   }
 
