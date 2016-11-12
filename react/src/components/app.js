@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import TasksSection from './TasksSection';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
