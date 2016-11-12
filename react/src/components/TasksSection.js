@@ -110,53 +110,53 @@ class TasksSection extends Component {
       });
     }
 
-    render() {
-      let tasks = "";
-      let nonEditTask = "";
-      let editTask = "";
-        if (this.state.Tasks.length !== 0) {
-            tasks = this.state.Tasks.map(task => {
-              let nonEditKey = `nonEdit_${task.id}`;
-              let taskBlock = `taskBlock_${task.id}`;
-              let newTaskClick = () => this.handleNewTaskClick();
-              let editTaskClick = () => this.handleEditTaskClick(task);
-              let editTask = () => this.handleEditTask();
-              let deleteTaskClick = () => this.handleDeleteTaskClick(task.id);
-              let taskClick = () => this.handleTaskClick(task.id);
-              if (this.state.taskId !== task.id) {
-                nonEditTask = <Task
-                key={nonEditKey}
-                projectId={this.props.projectId}
-                newTaskClick={newTaskClick}
-                editTaskClick={editTaskClick}
-                deleteTaskClick={deleteTaskClick}
-                taskClick={taskClick}
-                body={task.body}
-                />
-              } else {
-                editTask =
-                <div>
-                  <input type="text" value={this.state.editTask} name="new_note" onChange={this.handleEditChange} />
-                  <button className="EditNote btn" onClick={editTask}>Edit Task</button>
-                  <button className="Cancel btn" onClick={this.handleCancelTask}>Cancel</button>
-                </div>
-              }
-            return(
-              <div key={taskBlock}>
-                {editTask}
-                {nonEditTask}
+  render() {
+    let tasks = "";
+    let nonEditTask = "";
+    let editTask = "";
+      if (this.state.Tasks.length !== 0) {
+          tasks = this.state.Tasks.map(task => {
+            let nonEditKey = `nonEdit_${task.id}`;
+            let taskBlock = `taskBlock_${task.id}`;
+            let newTaskClick = () => this.handleNewTaskClick();
+            let editTaskClick = () => this.handleEditTaskClick(task);
+            let editTask = () => this.handleEditTask();
+            let deleteTaskClick = () => this.handleDeleteTaskClick(task.id);
+            let taskClick = () => this.handleTaskClick(task.id);
+            if (this.state.taskId !== task.id) {
+              nonEditTask = <Task
+              key={nonEditKey}
+              projectId={this.props.projectId}
+              newTaskClick={newTaskClick}
+              editTaskClick={editTaskClick}
+              deleteTaskClick={deleteTaskClick}
+              taskClick={taskClick}
+              body={task.body}
+              />
+            } else {
+              editTask =
+              <div>
+                <input type="text" value={this.state.editTask} name="new_note" onChange={this.handleEditChange} />
+                <button className="EditNote btn" onClick={editTask}>Edit Task</button>
+                <button className="Cancel btn" onClick={this.handleCancelTask}>Cancel</button>
               </div>
-            )
-          });
-        }
-      return(
-        <div className="projects">
-          <input type="text" value={this.state.Task} name="new_note" onChange={this.handleFieldChange} />
-          <button className="AddTask btn" onClick={this.handleNewTaskClick}>Add Task</button>
-          {tasks}
-        </div>
-      );
-    }
+            }
+          return(
+            <div key={taskBlock}>
+              {editTask}
+              {nonEditTask}
+            </div>
+          )
+        });
+      }
+    return(
+      <div className="projects">
+        <input type="text" value={this.state.Task} name="new_note" onChange={this.handleFieldChange} />
+        <button className="AddTask btn" onClick={this.handleNewTaskClick}>Add Task</button>
+        {tasks}
+      </div>
+    );
+  }
 }
 
 export default TasksSection;
