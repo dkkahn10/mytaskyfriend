@@ -33,7 +33,6 @@ class App extends Component {
 
   handleNewProject() {
     let _this = this;
-    debugger;
     let request = $.ajax({
       url: "api/v1/projects",
       method: "POST",
