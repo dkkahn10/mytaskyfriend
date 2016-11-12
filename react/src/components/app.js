@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import TasksSection from './TasksSection';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +12,7 @@ class App extends Component {
       editId: "",
     };
     this.handleProjectClick = this.handleProjectClick.bind(this);
-    this.handleFieldChange = this.handleFieldChange.bind(this)
+    this.handleFieldChange = this.handleFieldChange.bind(this);
     this.handleNewProject = this.handleNewProject.bind(this);
     this.handleDeleteProject = this.handleDeleteProject.bind(this);
     this.handleEditProject = this.handleEditProject.bind(this);
