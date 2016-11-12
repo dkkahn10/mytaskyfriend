@@ -9,3 +9,9 @@ $(function() {
     document.getElementById('app')
   );
 });
+
+$('document').ready(function() {
+  setTimeout(function() {
+    $('#flash').slideUp();
+  }, 10000);
+});

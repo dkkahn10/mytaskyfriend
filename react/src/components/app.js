@@ -9,16 +9,24 @@ class App extends Component {
       projectName: "",
       projectNames: [],
       projectId: "",
+      editProject: "",
+      editId: "",
     };
     this.handleProjectClick = this.handleProjectClick.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this)
     this.handleNewProject = this.handleNewProject.bind(this);
     this.handleDeleteProject = this.handleDeleteProject.bind(this);
+    this.handleEditProjectChange = this.handleEditProjectChange.bind(this);
+    this.handleEditProjectClick = this.handleEditProjectClick.bind(this);
   };
 
 
   handleFieldChange(e) {
     this.setState({projectName: e.target.value});
+  }
+
+  handleEditProjectChange(e) {
+    this.setState({editProject: e.target.value})
   }
 
   handleNewProject() {
@@ -43,6 +51,11 @@ class App extends Component {
     this.setState({ projectId: id});
   };
 
+  handleEditProjectClick(id) {
+    this.setState({ editId: id})
+    debugger;
+  };
+
   handleDeleteProject(id) {
     let _this = this;
     let request = $.ajax({
@@ -63,7 +76,6 @@ class App extends Component {
     })
   };
 
-
   componentDidMount() {
     let request = $.ajax({
       url: "api/v1/projects",
@@ -81,6 +93,7 @@ class App extends Component {
           projects = this.state.projectNames.map(project => {
             let projectClick = () => this.handleProjectClick(project.id);
             let projectDelete = () => this.handleDeleteProject(project.id);
+            let projectEdit = () => this.handleEditProjectClick(project.id);
             if (this.state.projectId === project.id) {
               projectTasks = <TasksSection
                 key={project.id}
@@ -99,6 +112,7 @@ class App extends Component {
                 <div className="card-action">
                   <button className="btn" onClick={projectClick}>View Tasks</button>
                   <button className="btn" onClick={projectDelete}>Delete</button>
+                  <button className="btn" onClick={projectEdit}>Edit</button>
                 </div>
               </div>
             </div>
@@ -122,3 +136,37 @@ class App extends Component {
 }
 
 export default App;
+
+//
+// if (this.state.projectId === project.id) {
+//   projectTasks = <TasksSection
+//     key={project.id}
+//     id={project.id}
+//     title={project.title}
+//     projectId={this.state.projectId}
+//   />
+//   if (this.state.editId !== project.id) {
+//     nonEdit =
+//     <div className="card blue-grey darken-1">
+//       <div className="card-content white-text">
+//         <span className="card-title">{project.title}</span>
+//         <p></p>
+//       </div>
+//       <div className="card-action">
+//         <button className="btn" onClick={projectClick}>View Tasks</button>
+//         <button className="btn" onClick={projectDelete}>Delete</button>
+//         <button className="btn" onClick={projectEdit}>Edit</button>
+//       </div>
+//     </div>
+//   } else {
+//     edit =
+//     <div>
+//       <input type="text" value={project.id} name="new_note" onChange={this.handleEditProjectChange} />
+//     </div>
+//   }
+// }
+// return(
+// <div key={project.id}>
+//   {edit}
+//   {nonEdit}
+// </div>
