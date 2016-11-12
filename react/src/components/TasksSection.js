@@ -18,6 +18,7 @@ class TasksSection extends Component {
   this.handleFieldChange = this.handleFieldChange.bind(this);
   this.handleEditTask = this.handleEditTask.bind(this);
   this.handleEditChange = this.handleEditChange.bind(this);
+  this.handleCancelTask = this.handleCancelTask.bind(this);
   };
 
   handleFieldChange(e) {
@@ -50,6 +51,10 @@ class TasksSection extends Component {
   handleEditTaskClick(task) {
     this.setState({ taskId: task.id, editTask: task.body });
   };
+
+  handleCancelTask() {
+    this.setState({ taskId: ""});
+  }
 
   handleEditTask() {
     let _this = this;
@@ -133,6 +138,7 @@ class TasksSection extends Component {
                 <div>
                   <input type="text" value={this.state.editTask} name="new_note" onChange={this.handleEditChange} />
                   <button className="EditNote btn" onClick={editTask}>Edit Task</button>
+                  <button className="Cancel btn" onClick={this.handleCancelTask}>Cancel</button>
                 </div>
               }
             return(

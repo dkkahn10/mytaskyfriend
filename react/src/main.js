@@ -3,10 +3,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
-
 $(function() {
   ReactDOM.render(
     <App/>,
     document.getElementById('app')
   );
+});
+
+$('document').ready(function() {
+  setTimeout(function() {
+    $('#flash').slideUp();
+  }, 10000);
 });
