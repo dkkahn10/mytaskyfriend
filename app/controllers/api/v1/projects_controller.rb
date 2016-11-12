@@ -16,12 +16,21 @@ class Api::V1::ProjectsController < ApiController
     else
       flash[:notice] = @project.errors.full_messages.join(',')
       render json: { errors: @project.errors }, status: :unprocessable_entity
-    end 
+    end
   end
 
   def destroy
     @project = Project.find(params[:project][:project_id])
     @project.destroy
+  end
+
+  def update
+    @project = Project.find(params[:project][:project_id])
+    if @project.update_attributes(title: params[:project][:title])
+      render json: { project: @project }, status: :ok
+    else
+      flash[:notice] = @project.errors.full_messages.join(',')
+    end
   end
 
   private
