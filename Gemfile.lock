@@ -85,8 +85,6 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    materialize-sass (0.97.8)
-      sass (~> 3.3)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -221,7 +219,6 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen
-  materialize-sass
   omniauth-facebook
   pg (~> 0.15)
   pry-rails
