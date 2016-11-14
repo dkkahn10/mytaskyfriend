@@ -39,7 +39,7 @@ class App extends Component {
     }
     })
     .done(data => {
-      var newArray = _this.state.newProjectNames;
+      var newArray = _this.state.projectNames;
       newArray.push(data.project);
       _this.setState({ projectNames: newArray });
       _this.setState({ newProjectName: "" });
