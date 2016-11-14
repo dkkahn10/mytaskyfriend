@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Task from './Task';
 
 
-class TasksSection extends Component {
+class TasksLogic extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -162,4 +162,4 @@ class TasksSection extends Component {
   }
 }
 
-export default TasksSection;
+export default TasksLogic;

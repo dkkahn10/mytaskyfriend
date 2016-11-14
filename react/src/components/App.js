@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import TasksSection from './TasksLogic';
+import TasksLogic from './TasksLogic';
 import Project from './Project';
 import ProjectEdit from './ProjectEdit';
 import ProjectsSection from './ProjectsSection';
