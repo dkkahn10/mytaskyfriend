@@ -28,21 +28,22 @@ class App extends Component {
   }
 
   handleNewProject() {
-    let _this = this;
-    let request = $.ajax({
+    $.ajax({
       url: "api/v1/projects",
       method: "POST",
       data: {
         project: {
-          title: _this.state.newProjectName,
+          title: this.state.newProjectName,
+        }
       }
-    }
     })
     .done(data => {
-      var newArray = _this.state.projectNames;
+      var newArray = this.state.projectNames;
       newArray.push(data.project);
-      _this.setState({ projectNames: newArray });
-      _this.setState({ newProjectName: "" });
+      this.setState ({
+        projectNames: newArray,
+        newProjectName: ""
+      })
     });
   }
 
@@ -55,9 +56,8 @@ class App extends Component {
   };
 
   handleEdit() {
-    let _this = this;
     $.ajax({
-      url: `api/v1/projects/${_this.state.editId}`,
+      url: `api/v1/projects/${this.state.editId}`,
       method: "PATCH",
       data: {
         project: {
@@ -66,12 +66,14 @@ class App extends Component {
         }
       },
       success: (data) => {
-        var newArray = _this.state.projectNames;
+        var newArray = this.state.projectNames;
         let projects = newArray.filter(project => {
-          return project.id !== _this.state.editId })
+          return project.id !== this.state.editId })
         projects.push(data.project);
-        _this.setState({ projectNames: projects });
-        _this.setState({ editId: "" });
+        this.setState({
+          projectNames: projects,
+          editId: ""
+        })
       }
     })
   }
@@ -81,8 +83,7 @@ class App extends Component {
   }
 
   handleDeleteProject(project) {
-    let _this = this;
-    let request = $.ajax({
+    $.ajax({
       url: `api/v1/projects/${project.id}`,
       method: "DELETE",
       data: {
@@ -91,24 +92,26 @@ class App extends Component {
         }
       },
       success: (data) => {
-        var newArray = _this.state.projectNames;
+        var newArray = this.state.projectNames;
         let projects = newArray.filter(survivingProject => {
           return survivingProject.id !== project.id })
-        _this.setState({ projectNames: projects });
-        _this.setState({ newProjectName: "" });
+        this.setState ({
+          projectNames: projects,
+          newProjectName: ""
+        })
       }
     })
   };
 
   componentDidMount() {
-    let request = $.ajax({
+    $.ajax({
       url: "api/v1/projects",
       method: "GET"
     })
-      .done(data => {
-        this.setState({ projectNames: data.projects });
-      });
-    }
+    .done(data => {
+      this.setState({ projectNames: data.projects });
+    });
+  }
 
   render() {
     let projects = "";

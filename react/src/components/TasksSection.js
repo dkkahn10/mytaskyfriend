@@ -30,7 +30,7 @@ class TasksSection extends Component {
   }
 
   handleNewTaskClick() {
-    let request = $.ajax({
+    $.ajax({
       url: "api/v1/tasks",
       method: "POST",
       data: {
@@ -43,8 +43,10 @@ class TasksSection extends Component {
     .done(data => {
       var newArray = this.state.Tasks;
       newArray.push(data.task);
-      this.setState({ Tasks: newArray });
-      this.setState({ Task: "" });
+      this.setState({
+        Tasks: newArray,
+        Task: ""
+      })
     });
   };
 
@@ -57,8 +59,6 @@ class TasksSection extends Component {
   }
 
   handleEditTask() {
-    debugger;
-    let _this = this;
     $.ajax({
       url: `api/v1/tasks/${this.state.taskId}`,
       method: "PATCH",
@@ -69,18 +69,20 @@ class TasksSection extends Component {
         }
       },
       success: (data) => {
-        var newArray = _this.state.Tasks;
+        var newArray = this.state.Tasks;
         let tasks = newArray.filter(task => {
           return task.id !== this.state.taskId })
         tasks.push(data.task);
-        _this.setState({ Tasks: tasks });
-        _this.setState({ taskId: "" });
+        this.setState({
+          Tasks: tasks,
+          taskId: ""
+        })
       }
     })
   }
 
   handleDeleteTaskClick(id) {
-    let request = $.ajax({
+    $.ajax({
       url: `api/v1/tasks/${id}`,
       method: "DELETE",
       data: {
@@ -93,8 +95,10 @@ class TasksSection extends Component {
       var newArray = this.state.Tasks;
       let tasks = newArray.filter(task => {
         return task.id !== id })
-      this.setState({ Tasks: tasks });
-      this.setState({ Task: "" });
+      this.setState({
+        Tasks: tasks,
+        Task: ""
+      })
     });
   };
 
@@ -106,10 +110,10 @@ class TasksSection extends Component {
       url: `api/v1/tasks/${this.props.projectId}`,
       method: "GET",
     })
-      .done(data => {
-        this.setState({ Tasks: data.tasks });
-      });
-    }
+    .done(data => {
+      this.setState({ Tasks: data.tasks });
+    });
+  }
 
   render() {
     let tasks = "";
