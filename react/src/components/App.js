@@ -42,7 +42,6 @@ class App extends Component {
     })
     .done(data => {
       var newArray = this.state.projectNames;
-      debugger;
       newArray.push(data.project);
       this.setState ({
         projectNames: newArray,
