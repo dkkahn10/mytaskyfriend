@@ -42,6 +42,7 @@ class App extends Component {
     })
     .done(data => {
       var newArray = this.state.projectNames;
+      debugger;
       newArray.push(data.project);
       this.setState ({
         projectNames: newArray,
@@ -128,36 +129,37 @@ class App extends Component {
     let newProjectName = this.state.newProjectName;
     let handleNewProject = this.handleNewProject;
 
-      if (this.state.projectNames.length !== 0) {
-        allProjects = this.state.projectNames.map(project => {
-          let projectClick = () => this.handleProjectClick(project);
-          let projectDelete = () => this.handleDeleteProject(project);
-          let projectEdit = () => this.handleEditProjectClick(project);
-          if (this.state.projectId === project.id) {
-            projectTasks =
-              <TasksSection
-                key={project.id}
-                id={project.id}
-                title={project.title}
-                projectId={projectId}
-              />
-          }
-          if (this.state.editId === project.id) {
-            projectList =
-              <ProjectEdit
-                editProject={editProject}
-                handleFieldChange={handleFieldChange}
-                handleEdit={handleEdit}
-                handleCancel={handleCancel}
-              />
-          } else {
-            projectList =
-              <Project
-                title={project.title}
-                projectClick={projectClick}
-                projectEdit={projectEdit}
-              />
-          }
+    if (this.state.projectNames.length !== 0) {
+      allProjects = this.state.projectNames.map(project => {
+        let handleProjectClick = () => this.handleProjectClick(project);
+        let handleDeleteClick = () => this.handleDeleteProject(project);
+        let handleEditClick = () => this.handleEditProjectClick(project);
+        if (this.state.projectId === project.id) {
+          projectTasks =
+            <TasksSection
+              key={project.id}
+              id={project.id}
+              title={project.title}
+              projectId={projectId}
+            />
+        }
+        if (this.state.editId === project.id) {
+          projectList =
+            <ProjectEdit
+              editProject={editProject}
+              handleFieldChange={handleFieldChange}
+              handleEdit={handleEdit}
+              handleCancel={handleCancel}
+            />
+        } else {
+          projectList =
+            <Project
+              title={project.title}
+              handleProjectClick={handleProjectClick}
+              handleEditClick={handleEditClick}
+              handleDeleteClick={handleDeleteClick}
+            />
+        }
         return(
           <div key={project.id}>
             {projectList}

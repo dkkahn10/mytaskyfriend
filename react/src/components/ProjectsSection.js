@@ -15,3 +15,5 @@ const ProjectsSection = props => {
     </div>
   )
 }
+
+export default ProjectsSection;
