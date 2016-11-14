@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import TasksSection from './TasksSection';
+import TasksLogic from './TasksLogic';
+import Project from './Project';
+import ProjectEdit from './ProjectEdit';
+import ProjectsSection from './ProjectsSection';
 
 class App extends Component {
   constructor(props) {
@@ -28,21 +31,22 @@ class App extends Component {
   }
 
   handleNewProject() {
-    let _this = this;
-    let request = $.ajax({
+    $.ajax({
       url: "api/v1/projects",
       method: "POST",
       data: {
         project: {
-          title: _this.state.newProjectName,
+          title: this.state.newProjectName,
+        }
       }
-    }
     })
     .done(data => {
-      var newArray = _this.state.projectNames;
+      var newArray = this.state.projectNames;
       newArray.push(data.project);
-      _this.setState({ projectNames: newArray });
-      _this.setState({ newProjectName: "" });
+      this.setState ({
+        projectNames: newArray,
+        newProjectName: ""
+      })
     });
   }
 
@@ -55,9 +59,8 @@ class App extends Component {
   };
 
   handleEdit() {
-    let _this = this;
     $.ajax({
-      url: `api/v1/projects/${_this.state.editId}`,
+      url: `api/v1/projects/${this.state.editId}`,
       method: "PATCH",
       data: {
         project: {
@@ -66,12 +69,14 @@ class App extends Component {
         }
       },
       success: (data) => {
-        var newArray = _this.state.projectNames;
+        var newArray = this.state.projectNames;
         let projects = newArray.filter(project => {
-          return project.id !== _this.state.editId })
+          return project.id !== this.state.editId })
         projects.push(data.project);
-        _this.setState({ projectNames: projects });
-        _this.setState({ editId: "" });
+        this.setState({
+          projectNames: projects,
+          editId: ""
+        })
       }
     })
   }
@@ -81,8 +86,7 @@ class App extends Component {
   }
 
   handleDeleteProject(project) {
-    let _this = this;
-    let request = $.ajax({
+    $.ajax({
       url: `api/v1/projects/${project.id}`,
       method: "DELETE",
       data: {
@@ -91,84 +95,90 @@ class App extends Component {
         }
       },
       success: (data) => {
-        var newArray = _this.state.projectNames;
+        var newArray = this.state.projectNames;
         let projects = newArray.filter(survivingProject => {
           return survivingProject.id !== project.id })
-        _this.setState({ projectNames: projects });
-        _this.setState({ newProjectName: "" });
+        this.setState ({
+          projectNames: projects,
+          newProjectName: ""
+        })
       }
     })
   };
 
   componentDidMount() {
-    let request = $.ajax({
+    $.ajax({
       url: "api/v1/projects",
       method: "GET"
     })
-      .done(data => {
-        this.setState({ projectNames: data.projects });
+    .done(data => {
+      this.setState({ projectNames: data.projects });
+    });
+  }
+
+  render() {
+    let allProjects = "";
+    let projectTasks = "";
+    let projectList = "";
+    let projectNames = this.state.projectNames;
+    let editProject = this.state.editProject;
+    let handleFieldChange = this.handleFieldChange;
+    let handleEdit = this.handleEdit;
+    let handleCancel = this.handleCancel;
+    let projectId = this.state.projectId;
+    let editId = this.state.editId;
+    let newProjectName = this.state.newProjectName;
+    let handleNewProject = this.handleNewProject;
+
+    if (projectNames.length !== 0) {
+      allProjects = projectNames.map(project => {
+        let handleProjectClick = () => this.handleProjectClick(project);
+        let handleDeleteClick = () => this.handleDeleteProject(project);
+        let handleEditClick = () => this.handleEditProjectClick(project);
+        if (projectId === project.id) {
+          projectTasks =
+            <TasksLogic
+              key={project.id}
+              id={project.id}
+              title={project.title}
+              projectId={projectId}
+            />
+        }
+        if (editId === project.id) {
+          projectList =
+            <ProjectEdit
+              editProject={editProject}
+              handleFieldChange={handleFieldChange}
+              handleEdit={handleEdit}
+              handleCancel={handleCancel}
+            />
+        } else {
+          projectList =
+            <Project
+              title={project.title}
+              handleProjectClick={handleProjectClick}
+              handleEditClick={handleEditClick}
+              handleDeleteClick={handleDeleteClick}
+            />
+        }
+        return(
+          <div key={project.id}>
+            {projectList}
+          </div>
+        )
       });
     }
 
-  render() {
-    let projects = "";
-    let projectTasks = "";
-    let projectList = "";
-      if (this.state.projectNames.length !== 0) {
-          projects = this.state.projectNames.map(project => {
-            let projectClick = () => this.handleProjectClick(project);
-            let projectDelete = () => this.handleDeleteProject(project);
-            let projectEdit = () => this.handleEditProjectClick(project);
-            if (this.state.projectId === project.id) {
-              projectTasks = <TasksSection
-                key={project.id}
-                id={project.id}
-                title={project.title}
-                projectId={this.state.projectId}
-              />
-            }
-            if (this.state.editId === project.id) {
-              projectList =
-                <div>
-                  <input type="text" value={this.state.editProject} name="editProject" onChange={this.handleFieldChange} />
-                  <button className="EditProject btn" onClick={this.handleEdit}>Save Edit</button>
-                  <button className="Cancel btn" onClick={this.handleCancel}>Cancel</button>
-                </div>
-            } else {
-              projectList =
-                <div className="card blue-grey darken-1">
-                  <div className="card-content white-text">
-                    <span className="card-title">{project.title}</span>
-                    <p></p>
-                  </div>
-                  <div className="card-action">
-                    <button className="btn" onClick={projectClick}>View Tasks</button>
-                    <button className="btn" onClick={projectDelete}>Delete</button>
-                    <button className="btn" onClick={projectEdit}>Edit</button>
-                  </div>
-                </div>
-            }
-          return(
-            <div key={project.id}>
-              {projectList}
-            </div>
-          )
-        });
-      }
-
-      return(
-        <div className="row">
-          <div className="projects-list col s4">
-            <input type="text" value={this.state.newProjectName} name="newProjectName" onChange={this.handleFieldChange} />
-            <button className="NewProject btn" onClick={this.handleNewProject}>Add New Project</button>
-            {projects}
-          </div>
-          <div className="tasks-list col s4">
-            {projectTasks}
-          </div>
-        </div>
-      );
-    }
+    return(
+      <ProjectsSection
+        newProjectName={newProjectName}
+        handleFieldChange={handleFieldChange}
+        handleNewProject={handleNewProject}
+        allProjects={allProjects}
+        projectTasks={projectTasks}
+      />
+    );
+  }
 }
 
 export default App;
