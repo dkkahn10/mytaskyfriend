@@ -57,6 +57,7 @@ class TasksSection extends Component {
   }
 
   handleEditTask() {
+    debugger;
     let _this = this;
     $.ajax({
       url: `api/v1/tasks/${this.state.taskId}`,
@@ -112,7 +113,6 @@ class TasksSection extends Component {
 
   render() {
     let tasks = "";
-    let nonEditTask = "";
     let editTask = "";
       if (this.state.Tasks.length !== 0) {
           tasks = this.state.Tasks.map(task => {
@@ -124,7 +124,7 @@ class TasksSection extends Component {
             let deleteTaskClick = () => this.handleDeleteTaskClick(task.id);
             let taskClick = () => this.handleTaskClick(task.id);
             if (this.state.taskId !== task.id) {
-              nonEditTask = <Task
+              editTask = <Task
               key={nonEditKey}
               projectId={this.props.projectId}
               newTaskClick={newTaskClick}
@@ -144,7 +144,6 @@ class TasksSection extends Component {
           return(
             <div key={taskBlock}>
               {editTask}
-              {nonEditTask}
             </div>
           )
         });
