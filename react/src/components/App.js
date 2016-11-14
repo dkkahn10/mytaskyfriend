@@ -120,29 +120,31 @@ class App extends Component {
     let allProjects = "";
     let projectTasks = "";
     let projectList = "";
+    let projectNames = this.state.projectNames;
     let editProject = this.state.editProject;
     let handleFieldChange = this.handleFieldChange;
     let handleEdit = this.handleEdit;
     let handleCancel = this.handleCancel;
     let projectId = this.state.projectId;
+    let editId = this.state.editId;
     let newProjectName = this.state.newProjectName;
     let handleNewProject = this.handleNewProject;
 
-    if (this.state.projectNames.length !== 0) {
-      allProjects = this.state.projectNames.map(project => {
+    if (projectNames.length !== 0) {
+      allProjects = projectNames.map(project => {
         let handleProjectClick = () => this.handleProjectClick(project);
         let handleDeleteClick = () => this.handleDeleteProject(project);
         let handleEditClick = () => this.handleEditProjectClick(project);
-        if (this.state.projectId === project.id) {
+        if (projectId === project.id) {
           projectTasks =
-            <TasksSection
+            <TasksLogic
               key={project.id}
               id={project.id}
               title={project.title}
               projectId={projectId}
             />
         }
-        if (this.state.editId === project.id) {
+        if (editId === project.id) {
           projectList =
             <ProjectEdit
               editProject={editProject}
