@@ -1,5 +1,5 @@
 import React from 'react';
-import TaskMethods from './TasksMethods';
+import TaskMethods from './TaskMethods';
 import Project from './Project';
 import ProjectEdit from './ProjectEdit';
 import ProjectsSection from './ProjectsSection';
