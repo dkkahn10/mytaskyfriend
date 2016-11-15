@@ -124,7 +124,7 @@ class App extends Component {
     let newProjectName = this.state.newProjectName;
     let handleNewProject = this.handleNewProject;
     let handleProjectClick = this.handleProjectClick;
-    let handleDeleteClick = this.handleDeleteClick;
+    let handleDeleteClick = this.handleDeleteProject;
     let handleEditClick = this.handleEditProjectClick;
 
     return(

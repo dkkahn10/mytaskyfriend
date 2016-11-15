@@ -20,9 +20,9 @@ const ProjectsLogic = props => {
 
   if (projectNames.length !== 0) {
     allProjects = projectNames.map(project => {
-      let handleProjectClick = props.handleProjectClick(project);
-      let handleDeleteClick = props.handleDeleteClick(project);
-      let handleEditClick = props.handleEditClick(project);
+      let handleProjectClick = () => props.handleProjectClick(project);
+      let handleDeleteClick = () => props.handleDeleteClick(project);
+      let handleEditClick = () => props.handleEditClick(project);
       if (projectId === project.id) {
         projectTasks =
           <TasksLogic
