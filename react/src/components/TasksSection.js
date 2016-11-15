@@ -5,7 +5,7 @@ const TasksSection = props => {
     <div className="projects">
       <input type="text" value={props.Task} name="new_note" onChange={props.handleFieldChange} />
       <button className="AddTask btn" onClick={props.handleNewTaskClick}>Add Task</button>
-      {props.Tasks}
+      {props.allTasks}
     </div>
   )
 }

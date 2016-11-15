@@ -45,7 +45,7 @@ class TaskMethods extends Component {
       this.setState({
         Tasks: newArray,
         Task: ""
-      })
+      });
     });
   };
 

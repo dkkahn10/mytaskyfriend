@@ -33,11 +33,8 @@ const TasksLogic = props => {
         taskList =
           <Task
             key={nonEditKey}
-            projectId={projectId}
-            newTaskClick={handleNewTaskClick}
-            editTaskClick={handleEditTaskClick}
-            deleteTaskClick={handleDeleteTaskClick}
-            taskClick={handleTaskClick}
+            handleEditTaskClick={handleEditTaskClick}
+            handleDeleteTaskClick={handleDeleteTaskClick}
             body={task.body}
           />
       } else {
@@ -58,7 +55,7 @@ const TasksLogic = props => {
   }
   return(
     <TasksSection
-      Tasks={Tasks}
+      allTasks={allTasks}
       Task={Task}
       handleFieldChange={handleFieldChange}
       handleNewTaskClick={handleNewTaskClick}

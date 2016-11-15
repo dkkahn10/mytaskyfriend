@@ -9,8 +9,8 @@ const Task = props => {
           <p>{props.body}</p>
         </div>
         <div className="card-action">
-          <button className="btn EditTask" onClick={props.editTaskClick}>Edit Task</button>
-          <button className="btn DeleteTask"onClick={props.deleteTaskClick}>Delete Task</button>
+          <button className="btn EditTask" onClick={props.handleEditTaskClick}>Edit Task</button>
+          <button className="btn DeleteTask"onClick={props.handleDeleteTaskClick}>Delete Task</button>
         </div>
       </div>
     </div>
