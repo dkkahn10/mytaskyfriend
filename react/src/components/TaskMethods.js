@@ -149,4 +149,4 @@ class TasksLogic extends Component {
   }
 }
 
-export default TasksMethods;
+export default TaskMethods;
