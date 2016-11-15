@@ -10,4 +10,4 @@ const TasksSection = props => {
   )
 }
 
-export default TasksSection; 
+export default TasksSection;

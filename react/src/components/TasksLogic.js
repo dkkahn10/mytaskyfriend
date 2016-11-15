@@ -58,10 +58,10 @@ const TasksLogic = props => {
   }
   return(
     <TasksSection
+      Tasks={Tasks}
       Task={Task}
       handleFieldChange={handleFieldChange}
       handleNewTaskClick={handleNewTaskClick}
-      Tasks={Tasks}
     />
   );
 }

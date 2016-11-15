@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TasksLogic from './TasksLogic';
 
-class TasksLogic extends Component {
+class TaskMethods extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -116,6 +116,7 @@ class TasksLogic extends Component {
 
   render() {
     let Tasks = this.state.Tasks;
+    let Task = this.state.Task;
     let handleNewTaskClick = this.handleNewTaskClick;
     let handleEditTaskClick = this.handleEditTaskClick;
     let handleEditTask = this.handleEditTask;
@@ -126,7 +127,6 @@ class TasksLogic extends Component {
     let editTask = this.state.editTask;
     let handleEditChange = this.handleEditChange;
     let handleCancelTask = this.handleCancelTask;
-    let Task = this.state.Task;
     let handleFieldChange = this.handleFieldChange;
 
     return(
