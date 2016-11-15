@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ProjectEdit = props => {
-
   return(
     <div>
       <input type="text" value={props.editProject} name="editProject" onChange={props.handleFieldChange} />

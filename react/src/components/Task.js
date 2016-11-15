@@ -1,6 +1,6 @@
 import React from 'react';
 
-let Task = props => {
+const Task = props => {
   return(
     <div>
       <div className="card blue-grey darken-1">

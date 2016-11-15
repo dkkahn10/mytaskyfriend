@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Project = props => {
-
   return(
     <div className="card blue-grey darken-1">
       <div className="card-content white-text">

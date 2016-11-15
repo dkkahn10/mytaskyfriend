@@ -1,5 +1,5 @@
 import React from 'react';
-import TasksLogic from './TasksLogic';
+import TaskMethods from './TasksMethods';
 import Project from './Project';
 import ProjectEdit from './ProjectEdit';
 import ProjectsSection from './ProjectsSection';
@@ -25,7 +25,7 @@ const ProjectsLogic = props => {
       let handleEditClick = () => props.handleEditClick(project);
       if (projectId === project.id) {
         projectTasks =
-          <TasksLogic
+          <TaskMethods
             key={project.id}
             id={project.id}
             title={project.title}
