@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import TasksLogic from './TasksLogic';
-import Project from './Project';
-import ProjectEdit from './ProjectEdit';
-import ProjectsSection from './ProjectsSection';
+import ProjectsLogic from './ProjectsLogic';
 
 class App extends Component {
   constructor(props) {
