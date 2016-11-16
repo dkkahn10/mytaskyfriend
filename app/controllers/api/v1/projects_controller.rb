@@ -11,6 +11,7 @@ class Api::V1::ProjectsController < ApiController
   def create
     @project = Project.new(project_params)
     @project.user = current_user
+
     if @project.save
       render json: { project: @project }, status: :created
     else

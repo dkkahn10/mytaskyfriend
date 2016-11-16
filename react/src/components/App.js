@@ -41,6 +41,7 @@ class App extends Component {
       }
     })
     .done(data => {
+        debugger;
       var newArray = this.state.projectNames;
       newArray.push(data.project);
       this.setState ({
@@ -117,6 +118,7 @@ class App extends Component {
   }
 
   render() {
+
     let allProjects = "";
     let projectTasks = "";
     let projectList = "";
@@ -130,7 +132,7 @@ class App extends Component {
     let newProjectName = this.state.newProjectName;
     let handleNewProject = this.handleNewProject;
 
-    if (projectNames.length !== 0) {
+    if (projectNames !== undefined && projectNames.length !== 0) {
       allProjects = projectNames.map(project => {
         let handleProjectClick = () => this.handleProjectClick(project);
         let handleDeleteClick = () => this.handleDeleteProject(project);
