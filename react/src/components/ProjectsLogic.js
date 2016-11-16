@@ -7,7 +7,7 @@ import ProjectsSection from './ProjectsSection';
 const ProjectsLogic = props => {
   let allProjects = "";
   let projectTasks = "";
-  let projectList = "";
+  let projectView = "";
   let projectNames = props.projectNames;
   let editProject = props.editProject;
   let handleFieldChange = props.handleFieldChange;
@@ -33,7 +33,7 @@ const ProjectsLogic = props => {
           />
       }
       if (editId === project.id) {
-        projectList =
+        projectView =
           <ProjectEdit
             editProject={editProject}
             handleFieldChange={handleFieldChange}
@@ -41,7 +41,7 @@ const ProjectsLogic = props => {
             handleCancel={handleCancel}
           />
       } else {
-        projectList =
+        projectView =
           <Project
             title={project.title}
             handleProjectClick={handleProjectClick}
@@ -51,7 +51,7 @@ const ProjectsLogic = props => {
       }
       return(
         <div key={project.id}>
-          {projectList}
+          {projectView}
         </div>
       )
     });
