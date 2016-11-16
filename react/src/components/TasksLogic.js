@@ -25,7 +25,7 @@ const TasksLogic = props => {
       let nonEditKey = `nonEdit_${task.id}`;
       let taskBlock = `taskBlock_${task.id}`;
       let newTaskClick = () => props.handleNewTaskClick();
-      let handleEditTaskClick = () => props.handleEditTaskClick(task.id);
+      let handleEditTaskClick = () => props.handleEditTaskClick(task);
       let handleEditTask = () => props.handleEditTask();
       let handleDeleteTaskClick = () => props.handleDeleteTaskClick(task.id);
       let handleTaskClick = () => props.handleTaskClick(task.id);
