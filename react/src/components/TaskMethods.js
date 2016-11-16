@@ -5,8 +5,8 @@ class TaskMethods extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Task: "",
-      Tasks: [],
+      individualTask: "",
+      allTasks: [],
       taskId: "",
       editTask: "",
     };
@@ -21,7 +21,7 @@ class TaskMethods extends Component {
   };
 
   handleFieldChange(e) {
-    this.setState({ Task: e.target.value });
+    this.setState({ individualTask: e.target.value });
   };
 
   handleEditChange(e) {
@@ -34,17 +34,17 @@ class TaskMethods extends Component {
       method: "POST",
       data: {
         task: {
-          body: this.state.Task,
+          body: this.state.individualTask,
           project_id: this.props.projectId
         }
       }
     })
     .done(data => {
-      var newArray = this.state.Tasks;
+      var newArray = this.state.allTasks;
       newArray.push(data.task);
       this.setState({
-        Tasks: newArray,
-        Task: ""
+        allTasks: newArray,
+        individualTask: ""
       });
     });
   };
@@ -68,12 +68,12 @@ class TaskMethods extends Component {
         }
       },
       success: (data) => {
-        var newArray = this.state.Tasks;
+        var newArray = this.state.allTasks;
         let tasks = newArray.filter(task => {
           return task.id !== this.state.taskId })
         tasks.push(data.task);
         this.setState({
-          Tasks: tasks,
+          allTasks: tasks,
           taskId: ""
         })
       }
@@ -91,12 +91,12 @@ class TaskMethods extends Component {
       }
     })
     .done(data => {
-      var newArray = this.state.Tasks;
+      var newArray = this.state.allTasks;
       let tasks = newArray.filter(task => {
         return task.id !== id })
       this.setState({
-        Tasks: tasks,
-        Task: ""
+        allTasks: tasks,
+        individualTask: ""
       })
     });
   };
@@ -110,13 +110,13 @@ class TaskMethods extends Component {
       method: "GET",
     })
     .done(data => {
-      this.setState({ Tasks: data.tasks });
+      this.setState({ allTasks: data.tasks });
     });
   }
 
   render() {
-    let Tasks = this.state.Tasks;
-    let Task = this.state.Task;
+    let allTasks = this.state.allTasks;
+    let individualTask = this.state.individualTask;
     let handleNewTaskClick = this.handleNewTaskClick;
     let handleEditTaskClick = this.handleEditTaskClick;
     let handleEditTask = this.handleEditTask;
@@ -131,8 +131,8 @@ class TaskMethods extends Component {
 
     return(
       <TasksLogic
-        Tasks={Tasks}
-        Task={Task}
+        allTasks={allTasks}
+        individualTask={individualTask}
         handleNewTaskClick={handleNewTaskClick}
         handleEditTaskClick={handleEditTaskClick}
         handleEditTask={handleEditTask}

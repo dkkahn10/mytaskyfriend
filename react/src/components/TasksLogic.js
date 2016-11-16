@@ -4,9 +4,9 @@ import TaskEdit from './TaskEdit';
 import TasksSection from './TasksSection';
 
 const TasksLogic = props => {
-  let allTasks = "";
   let taskList = "";
-  let Tasks = props.Tasks;
+  let taskView = "";
+  let allTasks = props.allTasks;
   let handleNewTaskClick = props.handleNewTaskClick;
   let handleEditTaskClick = props.handleEditTaskClick;
   let handleEditTask = props.handleEditTask;
@@ -17,11 +17,11 @@ const TasksLogic = props => {
   let editTask = props.editTask;
   let handleEditChange = props.handleEditChange;
   let handleCancelTask = props.handleCancelTask;
-  let Task = props.Task;
+  let individualTask = props.individualTask;
   let handleFieldChange = props.handleFieldChange;
 
-  if (Tasks.length !== 0) {
-    allTasks = Tasks.map(task => {
+  if (allTasks.length !== 0) {
+    taskList = allTasks.map(task => {
       let nonEditKey = `nonEdit_${task.id}`;
       let taskBlock = `taskBlock_${task.id}`;
       let newTaskClick = () => props.handleNewTaskClick();
@@ -30,7 +30,7 @@ const TasksLogic = props => {
       let handleDeleteTaskClick = () => props.handleDeleteTaskClick(task.id);
       let handleTaskClick = () => props.handleTaskClick(task.id);
       if (taskId !== task.id) {
-        taskList =
+        taskView =
           <Task
             key={nonEditKey}
             handleEditTaskClick={handleEditTaskClick}
@@ -38,7 +38,7 @@ const TasksLogic = props => {
             body={task.body}
           />
       } else {
-        taskList =
+        taskView =
           <TaskEdit
             editTask={editTask}
             handleEditChange={handleEditChange}
@@ -48,15 +48,15 @@ const TasksLogic = props => {
       }
       return(
         <div key={taskBlock}>
-          {taskList}
+          {taskView}
         </div>
       )
     });
   }
   return(
     <TasksSection
-      allTasks={allTasks}
-      Task={Task}
+      taskList={taskList}
+      individualTask={individualTask}
       handleFieldChange={handleFieldChange}
       handleNewTaskClick={handleNewTaskClick}
     />

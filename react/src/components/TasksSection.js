@@ -3,9 +3,9 @@ import React from 'react';
 const TasksSection = props => {
   return(
     <div className="projects">
-      <input type="text" value={props.Task} name="new_note" onChange={props.handleFieldChange} />
+      <input type="text" value={props.individualTask} name="new_note" onChange={props.handleFieldChange} />
       <button className="AddTask btn" onClick={props.handleNewTaskClick}>Add Task</button>
-      {props.allTasks}
+      {props.taskList}
     </div>
   )
 }
