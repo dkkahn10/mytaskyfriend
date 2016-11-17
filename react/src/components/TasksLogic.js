@@ -153,11 +153,25 @@ class TasksLogic extends Component {
         });
       }
     return(
-      <div className="projects">
-        <input type="text" value={this.state.Task} name="new_note" onChange={this.handleFieldChange} />
-        <button className="AddTask btn" onClick={this.handleNewTaskClick}>Add Task</button>
-        {tasks}
+
+      <div>
+      <div className="row">
+        <form className="new-task col s12">
+          <div className="row valign-wrapper">
+            <div className="input-field col s6">
+              <i className="material-icons prefix">whatshot</i>
+              <input id="icon_prefix" type="text" className="validate" value={this.state.Task} name="new_note" onChange={this.handleFieldChange} />
+              <label name="icon_prefix">New Task</label>
+            </div>
+            <button className="AddTask btn col s3" onClick={this.handleNewTaskClick}>Add Task</button>
+          </div>
+        </form>
       </div>
+      <div className="row">
+      {tasks}
+      </div>
+      </div>
+
     );
   }
 }
