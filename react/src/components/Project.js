@@ -3,7 +3,7 @@ import React from 'react';
 const Project = props => {
   return(
     <div className="card">
-      <div className="card-content white-text">
+      <div className="card-content black-text">
         <span className="card-title">{props.title}</span>
       </div>
       <div className="card-action">
