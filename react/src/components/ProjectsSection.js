@@ -14,7 +14,7 @@ const ProjectsSection = props => {
             <label name="icon_prefix">New Project Title</label>
           </div>
 
-          <button className="NewProject btn col s3" onClick={props.handleNewProject}>Add Project</button>
+          <button className="NewProject btn waves-effect waves-teal col s3" onClick={props.handleNewProject}>Add Project</button>
         </div>
       </form>
     </div>

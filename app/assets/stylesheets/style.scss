@@ -3,6 +3,7 @@
   background: none;
   border: none;
 }
+
 @mixin underline-animation($color) {
   a:before {
     content: "";
@@ -22,6 +23,36 @@
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
+  }
+}
+
+.nav-wrapper {
+  background-color: #f5f5f5;
+  color: black;
+  a {
+    text-transform: lowercase;
+    font-variant: small-caps;
+    font-size: 1.15em;
+    letter-spacing: 1.12px;
+    transition: all 1s ease-out;
+    &:hover {
+      color: white;
+    }
+  }
+  li:nth-child(1):hover {
+    background-color: #4db6ac;
+  }
+  li:nth-child(2):hover {
+    background-color: #26a69a;
+  }
+  li:nth-child(3),
+  li:nth-child(4) {
+    &:hover {
+      background-color: #009688;
+    }
+  }
+  li:nth-child(5):hover {
+    background-color: #00897b;
   }
 
 }
