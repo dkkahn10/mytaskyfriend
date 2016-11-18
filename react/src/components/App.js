@@ -118,7 +118,6 @@ class App extends Component {
   }
 
   render() {
-
     let allProjects = "";
     let projectTasks = "";
     let projectList = "";
