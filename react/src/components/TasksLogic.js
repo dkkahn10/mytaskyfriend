@@ -116,6 +116,7 @@ class TasksLogic extends Component {
   }
 
   render() {
+    $('.collapsible').collapsible();
     let tasks = "";
     let editTask = "";
       if (this.state.Tasks.length !== 0) {
@@ -141,14 +142,16 @@ class TasksLogic extends Component {
               editTask =
               <div>
                 <input type="text" value={this.state.editTask} name="new_note" onChange={this.handleEditChange} />
+                <div className="buttons">
                 <button className="EditNote btn" onClick={editTask}>Edit Task</button>
                 <button className="Cancel btn" onClick={this.handleCancelTask}>Cancel</button>
+                </div>
               </div>
             }
           return(
-            <div key={taskBlock}>
+            <li key={taskBlock} className="collection-item">
               {editTask}
-            </div>
+            </li>
           )
         });
       }
@@ -159,7 +162,7 @@ class TasksLogic extends Component {
         <form className="new-task col s12">
           <div className="row valign-wrapper">
             <div className="input-field col s12">
-              <i className="material-icons prefix">new_releases</i>
+              <i className="material-icons prefix">lightbulb_outline</i>
               <input id="icon_prefix" type="text" className="validate" value={this.state.Task} name="new_note" onChange={this.handleFieldChange} />
               <label name="icon_prefix">New Task</label>
             </div>
@@ -169,8 +172,11 @@ class TasksLogic extends Component {
         </form>
       </div>
       <div className="row">
-      {tasks}
+        <ul className="collection col s10 offset-s1">
+        {tasks}
+        </ul>
       </div>
+
       </div>
 
     );

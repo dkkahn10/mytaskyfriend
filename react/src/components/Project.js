@@ -4,7 +4,7 @@ const Project = props => {
   return(
     <div className="card">
       <div className="card-content black-text">
-        <span className="card-title">{props.title}</span>
+        <div className="card-title">{props.title}</div>
       </div>
       <div className="card-action">
         <ul>

@@ -31,17 +31,17 @@ class App extends Component {
   }
 
   handleNewProject() {
+    let selectedColor = $('input.select-dropdown').val();
     $.ajax({
       url: "api/v1/projects",
       method: "POST",
       data: {
         project: {
-          title: this.state.newProjectName,
+          title: this.state.newProjectName
         }
       }
     })
     .done(data => {
-        debugger;
       var newArray = this.state.projectNames;
       newArray.push(data.project);
       this.setState ({
@@ -158,6 +158,7 @@ class App extends Component {
           projectList =
             <Project
               title={project.title}
+              id={project.id}
               handleProjectClick={handleProjectClick}
               handleEditClick={handleEditClick}
               handleDeleteClick={handleDeleteClick}
@@ -178,6 +179,7 @@ class App extends Component {
         handleNewProject={handleNewProject}
         allProjects={allProjects}
         projectTasks={projectTasks}
+
       />
     );
   }
