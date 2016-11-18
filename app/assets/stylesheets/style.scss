@@ -29,7 +29,8 @@
 .card {
   box-shadow: none;
   .card-content {
-    @extend .deep-orange, .lighten-3;
+    // @extend .deep-orange, .lighten-3;
+    background-color: #b2dfdb;
     padding: 5px;
     text-align: center;
     font-size: 1em;
@@ -43,6 +44,8 @@
     border: 1px solid #ccc;
     border-top: none;
     ul {
+      width: 70%;
+      margin: 0 auto;
       li {
         display: flex;
         align-items: center;
@@ -76,5 +79,30 @@ form.new-project {
     color: black;
     background: none;
     border: 1px solid black;
+  }
+  .select-dropdown {
+    li span {
+      color: black;
+      font-size: 1em;
+    }
+  }
+}
+
+form.new-task {
+
+  width: 90%;
+  margin: 0;
+  padding: 0;
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+  .input-field {
+    margin: 0;
+  }
+  button.AddTask {
+    @include button-default;
+    margin: 0 auto;
+    border: 1px solid #000;
   }
 }

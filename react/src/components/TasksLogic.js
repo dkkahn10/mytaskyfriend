@@ -158,12 +158,13 @@ class TasksLogic extends Component {
       <div className="row">
         <form className="new-task col s12">
           <div className="row valign-wrapper">
-            <div className="input-field col s6">
-              <i className="material-icons prefix">whatshot</i>
+            <div className="input-field col s12">
+              <i className="material-icons prefix">new_releases</i>
               <input id="icon_prefix" type="text" className="validate" value={this.state.Task} name="new_note" onChange={this.handleFieldChange} />
               <label name="icon_prefix">New Task</label>
             </div>
-            <button className="AddTask btn col s3" onClick={this.handleNewTaskClick}>Add Task</button>
+
+            <button className="AddTask btn col s4" onClick={this.handleNewTaskClick}>Add Task</button>
           </div>
         </form>
       </div>
