@@ -171,8 +171,8 @@ class TasksLogic extends Component {
           </div>
         </form>
       </div>
-      <div className="row">
-        <ul className="collection col s10 offset-s1">
+      <div className="row tasks">
+        <ul className="collection col s11">
         {tasks}
         </ul>
       </div>

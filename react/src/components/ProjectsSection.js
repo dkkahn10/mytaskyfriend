@@ -23,7 +23,7 @@ const ProjectsSection = props => {
       <div className="projects-list col s5">
         {props.allProjects}
       </div>
-      <div className="tasks-list col s6">
+      <div className="tasks-list col s7">
         {props.projectTasks}
       </div>
     </div>

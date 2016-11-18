@@ -28,15 +28,18 @@
 
 .card {
   box-shadow: none;
+  width: 90%;
+  margin: 20px auto;
   .card-content {
-    // @extend .deep-orange, .lighten-3;
     background-color: #00bfa5;
-    padding: 5px;
+    padding: 4px;
     text-align: center;
     font-size: 1em;
     border-radius: 7px;
-    span.card-title {
-      font-weight: 200;
+    line-height: 45px;
+    .card-title {
+      font-size: 1.6em;
+      font-weight: 300;
     }
   }
   .card-action {
@@ -52,6 +55,7 @@
       li {
         display: flex;
         align-items: center;
+        font-size: .95em;
         padding: 7px 0;
         position: relative;
         transition: all 1s linear;
@@ -90,15 +94,21 @@ form.new-project {
     }
   }
 }
-
+.tasks {
+  margin: 0 auto;
+}
 form.new-task {
   padding-top: 20px !important;
+  padding-left: 0 !important;
   .row {
     display: flex;
     flex-direction: column;
   }
   .input-field {
-    margin: 0;
+    margin-right: 20px;
+    input {
+      width: 80%;
+    }
   }
   button.AddTask {
     @include button-default;

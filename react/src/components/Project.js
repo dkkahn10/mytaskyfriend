@@ -8,8 +8,6 @@ const Project = props => {
   $('.card-content:eq(3)').css('background-color', colors[5]);
   $('.card-content:eq(4)').css('background-color', colors[4]);
 
-  $('.card').css('transform', 'scale(.9)');
-
   return(
     <div className="card">
       <div className="card-content white-text">
