@@ -31,7 +31,8 @@ class App extends Component {
     this.setState(shift);
   }
 
-  handleNewProject() {
+  handleNewProject(e) {
+    e.preventDefault();
     $.ajax({
       url: "api/v1/projects",
       method: "POST",
