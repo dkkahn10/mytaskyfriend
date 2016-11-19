@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ProjectsSection = props => {
-  let color = `${props.color}`;
 
   return(
     <div>
@@ -27,7 +26,6 @@ const ProjectsSection = props => {
         {props.projectTasks}
       </div>
     </div>
-
     </div>
   )
 }

@@ -3,6 +3,7 @@ import TasksLogic from './TasksLogic';
 import Project from './Project';
 import ProjectEdit from './ProjectEdit';
 import ProjectsSection from './ProjectsSection';
+import Color from './Color';
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class App extends Component {
       projectNames: [],
       projectId: "",
       editProject: "",
-      editId: ""
+      editId: "",
+      color: ''
     };
     this.handleProjectClick = this.handleProjectClick.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this);
@@ -23,7 +25,6 @@ class App extends Component {
     this.handleCancel = this.handleCancel.bind(this);
   };
 
-
   handleFieldChange(e) {
     let shift = {};
     shift[e.target.name] = e.target.value;
@@ -31,7 +32,6 @@ class App extends Component {
   }
 
   handleNewProject() {
-    let selectedColor = $('input.select-dropdown').val();
     $.ajax({
       url: "api/v1/projects",
       method: "POST",
@@ -80,6 +80,7 @@ class App extends Component {
         })
       }
     })
+
   }
 
   handleCancel() {
@@ -118,6 +119,7 @@ class App extends Component {
   }
 
   render() {
+    let colorSelect = <Color/>;
     let allProjects = "";
     let projectTasks = "";
     let projectList = "";
@@ -152,6 +154,9 @@ class App extends Component {
               handleFieldChange={handleFieldChange}
               handleEdit={handleEdit}
               handleCancel={handleCancel}
+              id={editId}
+
+              color={colorSelect}
             />
         } else {
           projectList =
@@ -178,7 +183,6 @@ class App extends Component {
         handleNewProject={handleNewProject}
         allProjects={allProjects}
         projectTasks={projectTasks}
-
       />
     );
   }

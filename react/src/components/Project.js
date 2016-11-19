@@ -7,10 +7,11 @@ const Project = props => {
   $('.card-content:eq(2)').css('background-color', colors[1]);
   $('.card-content:eq(3)').css('background-color', colors[5]);
   $('.card-content:eq(4)').css('background-color', colors[4]);
+  let projectId = `project_${props.id}`;
 
   return(
     <div className="card">
-      <div className="card-content white-text">
+      <div className="card-content white-text" id={projectId}>
         <div className="card-title">{props.title}</div>
       </div>
       <div className="card-action">
