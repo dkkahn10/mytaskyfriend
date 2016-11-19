@@ -1,9 +1,17 @@
-<div class="chatroom-form">
+<form class="col s8" id="new-chatroom">
   <%= form_for chatroom, remote: true do |f| %>
-    <div class="input-group">
-      <span class="input-group-addon">topic:</span>
-      <%= f.text_field :topic, class: "form-control"%>
+
+    <div class="new-topic">
+      <div class="input-field topic">
+        <i class="material-icons prefix">group_add</i>
+        <%= f.text_field :topic, class: "form-control validate", id: "icon_prefix" %>
+        <label for="icon_prefix">Start a topic</label>
+      </div>
+      <div class="chatroom-button">
+        <%= f.submit class: "btn waves-effect waves-light", id: "create-chatroom", class: 'create-chatroom' %>
+      </div>
     </div>
-    <%= f.submit class: "btn btn-primary", id: "create-chatroom" %>
+
+
   <% end %>
-</div>
+</form>
