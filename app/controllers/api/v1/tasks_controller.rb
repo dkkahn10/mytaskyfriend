@@ -20,6 +20,7 @@ class Api::V1::TasksController < ApiController
     @task.user = current_user
     if @task.save
       render json: { task: @task }, status: :created
+      system "git branch #{task_params["body"]}"
     else
       flash[:notice] = @task.errors.full_messages.join(',')
       render json: { errors: @task.errors }, status: :unprocessable_entity
@@ -29,6 +30,7 @@ class Api::V1::TasksController < ApiController
   def destroy
     @task = Task.find(params[:task][:task_id])
     @task.destroy
+    system "git branch -d #{@task.body}"
   end
 
   def update
