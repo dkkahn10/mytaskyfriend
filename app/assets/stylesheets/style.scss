@@ -213,17 +213,24 @@ ul.collection {
       }
     }
   }
-  .buttons {
-    margin: 0 auto;
-  }
-  button.EditNote,
-  button.Cancel {
-    @include button-default;
-    box-shadow: none;
-    font-size: .9em;
-    border: 1px solid aquamarine;
+}
 
-  }
+.buttons {
+  width: 80%;
+  margin: 0 auto;
+}
+.project-edit {
+  width: 90%;
+}
+
+button.EditProject,
+button.EditNote,
+button.Cancel {
+  @include button-default;
+  box-shadow: none;
+  font-size: .9em;
+  border: 1px solid aquamarine;
+
 }
 
 .color-select {
