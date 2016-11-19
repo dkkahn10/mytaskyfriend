@@ -66,7 +66,8 @@ class App extends Component {
       data: {
         project: {
           project_id: this.state.editId,
-          title: this.state.editProject
+          title: this.state.editProject,
+          color: this.state.color
         }
       },
       success: (data) => {
@@ -76,7 +77,8 @@ class App extends Component {
         projects.push(data.project);
         this.setState({
           projectNames: projects,
-          editId: ""
+          editId: "",
+          color: ""
         })
       }
     })
@@ -119,7 +121,11 @@ class App extends Component {
   }
 
   render() {
-    let colorSelect = <Color/>;
+    let colorSelect =
+      <Color
+        color={this.state.color}
+        handleChange={this.handleFieldChange}
+      />;
     let allProjects = "";
     let projectTasks = "";
     let projectList = "";
@@ -166,6 +172,7 @@ class App extends Component {
               handleProjectClick={handleProjectClick}
               handleEditClick={handleEditClick}
               handleDeleteClick={handleDeleteClick}
+              color={project.color}
             />
         }
         return(

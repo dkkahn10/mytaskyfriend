@@ -27,7 +27,7 @@ class Api::V1::ProjectsController < ApiController
 
   def update
     @project = Project.find(params[:project][:project_id])
-    if @project.update_attributes(title: params[:project][:title])
+    if @project.update_attributes(title: params[:project][:title], color: params[:project][:color])
       render json: { project: @project }, status: :ok
     else
       flash[:notice] = @project.errors.full_messages.join(',')
@@ -36,6 +36,6 @@ class Api::V1::ProjectsController < ApiController
 
   private
   def project_params
-    params.require(:project).permit(:title)
+    params.require(:project).permit(:title, :color)
   end
 end
