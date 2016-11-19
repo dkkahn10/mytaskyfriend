@@ -3,6 +3,7 @@ import TaskMethods from './TaskMethods';
 import Project from './Project';
 import ProjectEdit from './ProjectEdit';
 import ProjectsSection from './ProjectsSection';
+// import Color from './Color';
 
 const ProjectsLogic = props => {
   let allProjects = "";
@@ -17,6 +18,7 @@ const ProjectsLogic = props => {
   let editId = props.editId;
   let newProjectName = props.newProjectName;
   let handleNewProject = props.handleNewProject;
+  let color = props.colorSelect;
 
   if (projectNames.length !== 0) {
     allProjects = projectNames.map(project => {
@@ -39,14 +41,18 @@ const ProjectsLogic = props => {
             handleFieldChange={handleFieldChange}
             handleEdit={handleEdit}
             handleCancel={handleCancel}
+            id={editId}
+            color={color}
           />
       } else {
         projectView =
           <Project
             title={project.title}
+            id={project.id}
             handleProjectClick={handleProjectClick}
             handleEditClick={handleEditClick}
             handleDeleteClick={handleDeleteClick}
+            color={project.color}
           />
       }
       return(

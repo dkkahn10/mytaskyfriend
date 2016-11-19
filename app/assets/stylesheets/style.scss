@@ -1,0 +1,246 @@
+@mixin button-default {
+  color: black;
+  background: none;
+  border: none;
+}
+
+@mixin underline-animation($color) {
+  a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $color;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+  }
+  a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+
+#flash {
+  text-align: center;
+}
+
+.nav-wrapper {
+  background-color: #f5f5f5;
+  i {
+    font-size: 1.4rem;
+  }
+  .brand-logo {
+    font-size: 2rem;
+    margin: 0 20px;
+    font-weight: 200;
+    font-variant: normal;
+    color: white;
+    span.tasky {
+      color: #ff5722;
+    }
+    span.small-caps {
+      font-variant: small-caps;
+      font-size: 1.8rem;
+      color: #1de9b6;
+    }
+  }
+  a {
+    text-transform: lowercase;
+    font-variant: small-caps;
+    font-weight: 300;
+    color: #f5f5f5;
+    font-size: 1.12em;
+    letter-spacing: 1.12px;
+    transition: all 1s ease-out;
+  }
+  ul.side-nav {
+    opacity: .9;
+    a {
+      color: #000;
+      font-weight: 500;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+  li:nth-child(1):hover {
+    background-color: #ff1744; /* red */
+  }
+  li:nth-child(2):hover {
+    background-color: #1a237e; /* indigo */
+  }
+  li:nth-child(3):hover {
+    background-color: #00bfa5; /* teal */
+  }
+  li:nth-child(4):hover {
+    background-color: #ff8f00; /* amber */
+  }
+}
+
+.new-session {
+  margin-top: 15%;
+  text-align: center;
+  .sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+      margin-right: 15px;
+    }
+  }
+}
+
+.card {
+  box-shadow: none;
+  width: 90%;
+  margin: 20px auto;
+  .card-content {
+    background-color: #00bfa5;
+    padding: 4px;
+    text-align: center;
+    font-size: 1em;
+    border-radius: 7px;
+    line-height: 45px;
+    .card-title {
+      font-size: 1.6em;
+      font-weight: 300;
+    }
+  }
+  .card-action {
+    background-color: #f5f5f5;
+    border-radius: 0 5px 7px 5px;
+    padding: 15px;
+    padding-left: 20px;
+    border: 1px solid #eee;
+    border-top: none;
+    ul {
+      width: 70%;
+      margin: 0 auto;
+      li {
+        display: flex;
+        align-items: center;
+        font-size: .95em;
+        padding: 7px 0;
+        position: relative;
+        transition: all 1s linear;
+        a {
+          margin-left: 10px;
+          text-transform: lowercase;
+          font-variant: small-caps;
+          font-size: 1.15em;
+          position: relative;
+        }
+        @include underline-animation(#b0bec5);
+      }
+    }
+    button.project {
+      @include button-default;
+    }
+  }
+}
+
+.collapsible {
+  margin: 0 auto;
+}
+
+form.new-project {
+  margin: 25px auto;
+  button.NewProject {
+    margin: 0 auto;
+    color: black;
+    background: none;
+    border: 1px solid black;
+  }
+  .select-dropdown {
+    li span {
+      color: black;
+      font-size: 1em;
+    }
+  }
+}
+.tasks {
+  margin: 0 auto;
+}
+form.new-task {
+  padding-top: 20px !important;
+  padding-left: 0 !important;
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+  .input-field {
+    margin-right: 20px;
+    input {
+      width: 80%;
+    }
+  }
+  button.AddTask {
+    @include button-default;
+    margin: 0 auto;
+    border: 1px solid #000;
+  }
+}
+
+ul.collection {
+  padding: 0;
+  li.collection-item {
+    width: 100%;
+    padding: 5px;
+    p {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span.task {
+        font-size: 1.09em;
+      }
+      span.icons {
+        i {
+          margin: 0 5px;
+          opacity: .7;
+        }
+        i:first-child:hover {
+          color: #26a69a;
+        }
+        i:last-child:hover {
+          color: #ef5350;
+        }
+      }
+    }
+  }
+}
+
+.buttons {
+  width: 80%;
+  margin: 0 auto;
+}
+.project-edit {
+  width: 90%;
+}
+
+button.EditProject,
+button.EditNote,
+button.Cancel {
+  @include button-default;
+  box-shadow: none;
+  font-size: .9em;
+  border: 1px solid aquamarine;
+
+}
+
+.color-select {
+  label {
+    margin: 0 15px;
+    font-size: .9rem;
+  }
+}
+label {
+  i {
+    font-size: 1.6rem;
+  }
+}

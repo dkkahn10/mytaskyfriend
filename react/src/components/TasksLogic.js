@@ -47,12 +47,13 @@ const TasksLogic = props => {
           />
       }
       return(
-        <div key={taskBlock}>
+        <li key={taskBlock} className="collection-item">
           {taskView}
-        </div>
+        </li>
       )
     });
-  }
+  };
+
   return(
     <TasksSection
       taskList={taskList}
