@@ -20,7 +20,9 @@ class Api::V1::TasksController < ApiController
     @task.user = current_user
     if @task.save
       render json: { task: @task }, status: :created
+      branch_name = task_params["body"].gsub(" ", "_")
       system "git branch #{task_params["body"]}"
+      system "git checkout #{task_params["body"]}"
     else
       flash[:notice] = @task.errors.full_messages.join(',')
       render json: { errors: @task.errors }, status: :unprocessable_entity
