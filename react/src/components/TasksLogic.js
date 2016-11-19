@@ -1,187 +1,67 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Task from './Task';
+import TaskEdit from './TaskEdit';
+import TasksSection from './TasksSection';
 
+const TasksLogic = props => {
+  let taskList = "";
+  let taskView = "";
+  let allTasks = props.allTasks;
+  let handleNewTaskClick = props.handleNewTaskClick;
+  let handleEditTaskClick = props.handleEditTaskClick;
+  let handleEditTask = props.handleEditTask;
+  let handleDeleteTaskClick = props.handleDeleteTaskClick;
+  let handleTaskClick = props.handleTaskClick;
+  let taskId = props.taskId;
+  let projectId = props.projectId;
+  let editTask = props.editTask;
+  let handleEditChange = props.handleEditChange;
+  let handleCancelTask = props.handleCancelTask;
+  let individualTask = props.individualTask;
+  let handleFieldChange = props.handleFieldChange;
 
-class TasksLogic extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      Task: "",
-      Tasks: [],
-      taskId: "",
-      editTask: "",
-    };
-  this.handleTaskClick = this.handleTaskClick.bind(this);
-  this.handleNewTaskClick = this.handleNewTaskClick.bind(this);
-  this.handleEditTaskClick = this.handleEditTaskClick.bind(this);
-  this.handleDeleteTaskClick = this.handleDeleteTaskClick.bind(this);
-  this.handleFieldChange = this.handleFieldChange.bind(this);
-  this.handleEditTask = this.handleEditTask.bind(this);
-  this.handleEditChange = this.handleEditChange.bind(this);
-  this.handleCancelTask = this.handleCancelTask.bind(this);
-  };
-
-  handleFieldChange(e) {
-    this.setState({ Task: e.target.value });
-  };
-
-  handleEditChange(e) {
-    this.setState({ editTask: e.target.value });
-  }
-
-  handleNewTaskClick(e) {
-    e.preventDefault();
-    $.ajax({
-      url: "api/v1/tasks",
-      method: "POST",
-      data: {
-        task: {
-          body: this.state.Task,
-          project_id: this.props.projectId
-        }
+  if (allTasks.length !== 0) {
+    taskList = allTasks.map(task => {
+      let nonEditKey = `nonEdit_${task.id}`;
+      let taskBlock = `taskBlock_${task.id}`;
+      let newTaskClick = () => props.handleNewTaskClick();
+      let handleEditTaskClick = () => props.handleEditTaskClick(task);
+      let handleEditTask = () => props.handleEditTask();
+      let handleDeleteTaskClick = () => props.handleDeleteTaskClick(task.id);
+      let handleTaskClick = () => props.handleTaskClick(task.id);
+      if (taskId !== task.id) {
+        taskView =
+          <Task
+            key={nonEditKey}
+            handleEditTaskClick={handleEditTaskClick}
+            handleDeleteTaskClick={handleDeleteTaskClick}
+            body={task.body}
+          />
+      } else {
+        taskView =
+          <TaskEdit
+            editTask={editTask}
+            handleEditChange={handleEditChange}
+            handleEditTask={handleEditTask}
+            handleCancelTask={handleCancelTask}
+          />
       }
-    })
-    .done(data => {
-      var newArray = this.state.Tasks;
-      newArray.push(data.task);
-      this.setState({
-        Tasks: newArray,
-        Task: ""
-      })
+      return(
+        <li key={taskBlock} className="collection-item">
+          {taskView}
+        </li>
+      )
     });
   };
 
-  handleEditTaskClick(task) {
-    this.setState({ taskId: task.id, editTask: task.body });
-  };
-
-  handleCancelTask() {
-    this.setState({ taskId: ""});
-  }
-
-  handleEditTask() {
-    $.ajax({
-      url: `api/v1/tasks/${this.state.taskId}`,
-      method: "PATCH",
-      data: {
-        task: {
-          task_id: this.state.taskId,
-          body: this.state.editTask
-        }
-      },
-      success: (data) => {
-        var newArray = this.state.Tasks;
-        let tasks = newArray.filter(task => {
-          return task.id !== this.state.taskId })
-        tasks.push(data.task);
-        this.setState({
-          Tasks: tasks,
-          taskId: ""
-        })
-      }
-    })
-  }
-
-  handleDeleteTaskClick(id) {
-    $.ajax({
-      url: `api/v1/tasks/${id}`,
-      method: "DELETE",
-      data: {
-        task: {
-          task_id: id,
-        }
-      }
-    })
-    .done(data => {
-      var newArray = this.state.Tasks;
-      let tasks = newArray.filter(task => {
-        return task.id !== id })
-      this.setState({
-        Tasks: tasks,
-        Task: ""
-      })
-    });
-  };
-
-  handleTaskClick(id) {
-  };
-
-  componentDidMount() {
-    let request = $.ajax({
-      url: `api/v1/tasks/${this.props.projectId}`,
-      method: "GET",
-    })
-    .done(data => {
-      this.setState({ Tasks: data.tasks });
-    });
-  }
-
-  render() {
-    $('.collapsible').collapsible();
-    let tasks = "";
-    let editTask = "";
-      if (this.state.Tasks.length !== 0) {
-          tasks = this.state.Tasks.map(task => {
-            let nonEditKey = `nonEdit_${task.id}`;
-            let taskBlock = `taskBlock_${task.id}`;
-            let newTaskClick = () => this.handleNewTaskClick();
-            let editTaskClick = () => this.handleEditTaskClick(task);
-            let editTask = () => this.handleEditTask();
-            let deleteTaskClick = () => this.handleDeleteTaskClick(task.id);
-            let taskClick = () => this.handleTaskClick(task.id);
-            if (this.state.taskId !== task.id) {
-              editTask = <Task
-              key={nonEditKey}
-              projectId={this.props.projectId}
-              newTaskClick={newTaskClick}
-              editTaskClick={editTaskClick}
-              deleteTaskClick={deleteTaskClick}
-              taskClick={taskClick}
-              body={task.body}
-              />
-            } else {
-              editTask =
-              <div>
-                <input type="text" value={this.state.editTask} name="new_note" onChange={this.handleEditChange} />
-                <div className="buttons">
-                <button className="EditNote btn" onClick={editTask}>Edit Task</button>
-                <button className="Cancel btn" onClick={this.handleCancelTask}>Cancel</button>
-                </div>
-              </div>
-            }
-          return(
-            <li key={taskBlock} className="collection-item">
-              {editTask}
-            </li>
-          )
-        });
-      }
-    return(
-
-      <div>
-      <div className="row">
-        <form className="new-task col s12">
-          <div className="row valign-wrapper">
-            <div className="input-field col s12">
-              <i className="material-icons prefix">lightbulb_outline</i>
-              <input id="icon_prefix" type="text" className="validate" value={this.state.Task} name="new_note" onChange={this.handleFieldChange} />
-              <label name="icon_prefix">New Task</label>
-            </div>
-
-            <button className="AddTask btn col s4" onClick={this.handleNewTaskClick}>Add Task</button>
-          </div>
-        </form>
-      </div>
-      <div className="row tasks">
-        <ul className="collection col s11">
-        {tasks}
-        </ul>
-      </div>
-
-      </div>
-
-    );
-  }
+  return(
+    <TasksSection
+      taskList={taskList}
+      individualTask={individualTask}
+      handleFieldChange={handleFieldChange}
+      handleNewTaskClick={handleNewTaskClick}
+    />
+  );
 }
 
 export default TasksLogic;

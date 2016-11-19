@@ -4,6 +4,7 @@ import Project from './Project';
 import ProjectEdit from './ProjectEdit';
 import ProjectsSection from './ProjectsSection';
 import Color from './Color';
+import ProjectsLogic from './ProjectsLogic';
 
 class App extends Component {
   constructor(props) {
@@ -127,9 +128,6 @@ class App extends Component {
         color={this.state.color}
         handleChange={this.handleFieldChange}
       />;
-    let allProjects = "";
-    let projectTasks = "";
-    let projectList = "";
     let projectNames = this.state.projectNames;
     let editProject = this.state.editProject;
     let handleFieldChange = this.handleFieldChange;
@@ -139,58 +137,24 @@ class App extends Component {
     let editId = this.state.editId;
     let newProjectName = this.state.newProjectName;
     let handleNewProject = this.handleNewProject;
-
-    if (projectNames !== undefined && projectNames.length !== 0) {
-      allProjects = projectNames.map(project => {
-        let handleProjectClick = () => this.handleProjectClick(project);
-        let handleDeleteClick = () => this.handleDeleteProject(project);
-        let handleEditClick = () => this.handleEditProjectClick(project);
-        if (projectId === project.id) {
-          projectTasks =
-            <TasksLogic
-              key={project.id}
-              id={project.id}
-              title={project.title}
-              projectId={projectId}
-            />
-        }
-        if (editId === project.id) {
-          projectList =
-            <ProjectEdit
-              editProject={editProject}
-              handleFieldChange={handleFieldChange}
-              handleEdit={handleEdit}
-              handleCancel={handleCancel}
-              id={editId}
-
-              color={colorSelect}
-            />
-        } else {
-          projectList =
-            <Project
-              title={project.title}
-              id={project.id}
-              handleProjectClick={handleProjectClick}
-              handleEditClick={handleEditClick}
-              handleDeleteClick={handleDeleteClick}
-              color={project.color}
-            />
-        }
-        return(
-          <div key={project.id}>
-            {projectList}
-          </div>
-        )
-      });
-    }
-
+    let handleProjectClick = this.handleProjectClick;
+    let handleDeleteClick = this.handleDeleteProject;
+    let handleEditClick = this.handleEditProjectClick;
     return(
-      <ProjectsSection
-        newProjectName={newProjectName}
+      <ProjectsLogic
+        projectNames={projectNames}
+        editProject={editProject}
         handleFieldChange={handleFieldChange}
+        handleEdit={handleEdit}
+        handleCancel={handleCancel}
+        projectId={projectId}
+        editId={editId}
+        newProjectName={newProjectName}
         handleNewProject={handleNewProject}
-        allProjects={allProjects}
-        projectTasks={projectTasks}
+        handleProjectClick={handleProjectClick}
+        handleDeleteClick={handleDeleteClick}
+        handleEditClick={handleEditClick}
+        colorSelect={colorSelect}
       />
     );
   }

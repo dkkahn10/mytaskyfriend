@@ -2,7 +2,6 @@ import React from 'react';
 
 
 const ProjectEdit = props => {
-
   return(
     <div>
       {props.color}
