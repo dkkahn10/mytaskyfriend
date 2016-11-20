@@ -1,0 +1,31 @@
+<nav>
+  <div class="nav-wrapper blue-grey white-text">
+    <a href="#" class="brand-logo">My<span class="tasky">Tasky</span><span class="small-caps">friend</span></a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse">
+      <i class="fa fa-bars"></i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><%= link_to "Projects", projects_path %></li>
+      <li><%= link_to "Chatrooms", chatrooms_path %>
+      <% if user_signed_in? %>
+        <li>
+        <%= link_to current_user.username, current_user, { style: 'inline'} %></li>
+        <li><%= link_to "Sign Out", session_path(:current), method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'Sign In with Facebook', auth_path(:facebook) %></li>
+      <% end %>
+    </ul>
+
+    <ul class="side-nav" id="mobile-demo">
+      <li><%= link_to "Projects", projects_path %></li>
+      <li><%= link_to "Chatrooms", chatrooms_path %>
+      <% if user_signed_in? %>
+        <li>
+        <%= link_to current_user.username, current_user, { style: 'inline'} %></li>
+        <li><%= link_to "Sign Out", session_path(:current), method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'Sign In with Facebook', auth_path(:facebook) %></li>
+      <% end %>
+    </ul>
+
+  </div>
+</nav>
