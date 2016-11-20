@@ -45,7 +45,7 @@ class Api::V1::TasksController < ApiController
     @task = Task.find(params[:task_id])
     task_name = "#{@task.body}"
     system "git add -A"
-    system "git commit -m ""#{task_name}"
+    # system "git commit -m ""#{task_name}"
   end
 
   def pullrequest
