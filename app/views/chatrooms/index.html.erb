@@ -1,10 +1,11 @@
 <div id="chatrooms">
   <div class="row section">
-      <h3 class="col s3">Create a Chatroom</h3>
-    <%= render partial: 'chatroom_form', locals: {chatroom: @chatroom} %>
-  </div>
 
-  <div id="chatroom-errors">
+      <h3 class="col s3">Create a Chatroom</h3>
+
+    <%= render partial: 'chatroom_form', locals: {chatroom: @chatroom} %>
+    <div id="chatroom-errors">
+    </div>
   </div>
 
   <div class="row section">
