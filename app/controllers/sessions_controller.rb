@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
 
   def create
-    user = User.find_by(oauth_uid: request.env["omniauth.auth"]["uid"])
+    user = User.find_by(oauth_uid: request.env["omniauth.auth"]["uid"]) ||
+      User.find_by(email: request.env["omniauth.auth"]["info"]["email"])
     if user.nil?
       session[:auth] = request.env["omniauth.auth"].slice("uid","info")
       redirect_to new_user_path

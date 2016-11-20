@@ -26,7 +26,7 @@
             <%= link_to current_user.username, current_user, { style: 'inline'} %></li>
             <li><%= link_to "Sign Out", session_path(:current), method: :delete %></li>
           <% else %>
-            <li><%= link_to 'Sign In with Facebook', auth_path(:facebook) %></li>
+            <li><%= link_to 'Sign In', new_session_path %></li>
           <% end %>
         </ul>
 
