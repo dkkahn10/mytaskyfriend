@@ -1,0 +1,57 @@
+form.new-project {
+  margin: 25px auto;
+  button.NewProject {
+    margin: 0 auto;
+    color: black;
+    background: none;
+    border: 1px solid black;
+  }
+  .select-dropdown {
+    li span {
+      color: black;
+      font-size: 1em;
+    }
+  }
+}
+
+.tasks {
+  margin: 0 auto;
+}
+
+form.new-task {
+  padding-top: 20px !important;
+  padding-left: 0 !important;
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+  .input-field {
+    margin-right: 20px;
+    input {
+      width: 80%;
+    }
+  }
+  button.AddTask {
+    @include button-default;
+    margin: 0 auto;
+    border: 1px solid #000;
+  }
+}
+
+.buttons {
+  width: 80%;
+  margin: 0 auto;
+}
+.project-edit {
+  width: 90%;
+}
+
+button.EditProject,
+button.EditNote,
+button.Cancel {
+  @include button-default;
+  box-shadow: none;
+  font-size: .9em;
+  border: 1px solid aquamarine;
+
+}

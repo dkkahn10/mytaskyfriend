@@ -30,129 +30,6 @@
   text-align: center;
 }
 
-#chatrooms {
-  // margin-top: 10%;
-  margin: 0 20px;
-  .section {
-    margin: 30px 0;
-    padding: 30px 0;
-
-  }
-  h3 {
-    font-size: 2.2rem;
-    font-weight: 200;
-    color: #1a237e;
-    text-align: center;
-  }
-
-  #new-chatroom {
-    // width: 80%;
-    // margin: 30px auto;
-    .new-topic {
-      label {
-        text-align: left;
-      }
-      i {
-        padding-right: 10px;
-        top: 5px;
-      }
-    }
-    .chatroom-button {
-      width: 20%;
-      margin: 0 auto;
-    }
-    .create-chatroom {
-      @include button-default;
-      padding: 10px 20px;
-      border: 1px solid #00bfa5;
-      box-shadow: 0 2px 2px 0 rgba(0,191,165, 0.14), 0 1px 5px 0 rgba(0,191,165, 0.12), 0 3px 1px -2px rgba(0,191,165, 0.2);
-      border-radius: 15px;
-      transition: all 1s ease-out;
-      &:hover {
-        background-color: #00bfa5;
-        color: white;
-      }
-    }
-  }
-  .header {
-    display: flex;
-    justify-content: center;
-  }
-  .chatroom-list {
-
-  }
-}
-
-
-
-
-
-.nav-wrapper {
-  background-color: #f5f5f5;
-  i {
-    font-size: 1.4rem;
-  }
-  .brand-logo {
-    font-size: 2rem;
-    padding: 0 20px;
-    font-weight: 200;
-    font-variant: normal;
-    color: white;
-    span.tasky {
-      color: #ff5722;
-    }
-    span.small-caps {
-      font-variant: small-caps;
-      font-size: 1.8rem;
-      color: #1de9b6;
-    }
-  }
-  a {
-    text-transform: lowercase;
-    font-variant: small-caps;
-    font-weight: 300;
-    color: #f5f5f5;
-    font-size: 1.12em;
-    letter-spacing: 1.12px;
-    transition: all 1s ease-out;
-  }
-  ul.side-nav {
-    opacity: .9;
-    a {
-      color: #000;
-      font-weight: 500;
-      &:hover {
-        color: white;
-      }
-    }
-  }
-  li:nth-child(1):hover {
-    background-color: #ff1744; /* red */
-  }
-  li:nth-child(2):hover {
-    background-color: #1a237e; /* indigo */
-  }
-  li:nth-child(3):hover {
-    background-color: #00bfa5; /* teal */
-  }
-  li:nth-child(4):hover {
-    background-color: #ff8f00; /* amber */
-  }
-}
-
-.new-session {
-  margin-top: 15%;
-  text-align: center;
-  .sign-in {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    i {
-      margin-right: 15px;
-    }
-  }
-}
-
 .card {
   box-shadow: none;
   width: 90%;
@@ -202,48 +79,6 @@
   }
 }
 
-.collapsible {
-  margin: 0 auto;
-}
-
-form.new-project {
-  margin: 25px auto;
-  button.NewProject {
-    margin: 0 auto;
-    color: black;
-    background: none;
-    border: 1px solid black;
-  }
-  .select-dropdown {
-    li span {
-      color: black;
-      font-size: 1em;
-    }
-  }
-}
-.tasks {
-  margin: 0 auto;
-}
-form.new-task {
-  padding-top: 20px !important;
-  padding-left: 0 !important;
-  .row {
-    display: flex;
-    flex-direction: column;
-  }
-  .input-field {
-    margin-right: 20px;
-    input {
-      width: 80%;
-    }
-  }
-  button.AddTask {
-    @include button-default;
-    margin: 0 auto;
-    border: 1px solid #000;
-  }
-}
-
 ul.collection {
   padding: 0;
   li.collection-item {
@@ -272,24 +107,6 @@ ul.collection {
   }
 }
 
-.buttons {
-  width: 80%;
-  margin: 0 auto;
-}
-.project-edit {
-  width: 90%;
-}
-
-button.EditProject,
-button.EditNote,
-button.Cancel {
-  @include button-default;
-  box-shadow: none;
-  font-size: .9em;
-  border: 1px solid aquamarine;
-
-}
-
 .color-select {
   label {
     margin: 0 15px;
@@ -302,16 +119,6 @@ label {
   }
 }
 
-@media screen and (max-width: 460px) {
-  #chatrooms {
-    h3 {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-    #new-chatroom,
-    .chatroom-list {
-      width: 100%;
-      margin: 0 auto;
-    }
-  }
+.collapsible {
+  margin: 0 auto;
 }

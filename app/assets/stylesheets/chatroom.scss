@@ -1,0 +1,78 @@
+#chatrooms {
+  // margin-top: 10%;
+  margin: 0 20px;
+  .section {
+    margin: 30px 0;
+    padding: 30px 0;
+
+  }
+  h3 {
+    font-size: 2.2rem;
+    font-weight: 200;
+    // color: #1a237e;
+    text-align: center;
+  }
+
+.new-session {
+  margin-top: 15%;
+  text-align: center;
+  .sign-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+      margin-right: 15px;
+    }
+  }
+}
+#new-chatroom {
+  // width: 80%;
+  // margin: 30px auto;
+  .new-topic {
+    label {
+      text-align: left;
+    }
+    i {
+      padding-right: 10px;
+      top: 5px;
+    }
+  }
+  .chatroom-button {
+    width: 20%;
+    margin: 0 auto;
+  }
+  .create-chatroom {
+    @include button-default;
+    padding: 10px 20px;
+    border: 1px solid #00bfa5;
+    box-shadow: 0 2px 2px 0 rgba(0,191,165, 0.14), 0 1px 5px 0 rgba(0,191,165, 0.12), 0 3px 1px -2px rgba(0,191,165, 0.2);
+    border-radius: 15px;
+    transition: all 1s ease-out;
+    &:hover {
+      background-color: #00bfa5;
+      color: white;
+    }
+  }
+}
+  .header {
+    display: flex;
+    justify-content: center;
+  }
+  .chatroom-list {
+
+  }
+}
+
+@media screen and (max-width: 460px) {
+  #chatrooms {
+    h3 {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    #new-chatroom,
+    .chatroom-list {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+}

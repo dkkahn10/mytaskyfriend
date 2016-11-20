@@ -1,7 +1,7 @@
 <div id="chatrooms">
   <div class="row section">
 
-      <h3 class="col s4">Create a Chatroom</h3>
+      <h3 class="col s4"><span class="deep-orange-text">Create</span> a Chatroom</h3>
 
     <%= render partial: 'chatroom_form', locals: {chatroom: @chatroom} %>
     <div id="chatroom-errors">
@@ -9,7 +9,7 @@
   </div>
 
   <div class="row section">
-    <h3 class="col s4">Join a Chatroom</h3>
+    <h3 class="col s4"><span class="deep-orange-text">Join</span> a Chatroom</h3>
 
     <div class="collection chatroom-list col s6 offset-s1">
       <% if @chatrooms.any? %>
