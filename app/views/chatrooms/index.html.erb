@@ -1,22 +1,22 @@
 <div id="chatrooms">
-    <div class="row top">
+  <div class="row section">
+      <h3 class="col s3">Create a Chatroom</h3>
+    <%= render partial: 'chatroom_form', locals: {chatroom: @chatroom} %>
+  </div>
 
-        <h3 class="col s4">Create a Chatroom</h3>
-    
+  <div id="chatroom-errors">
+  </div>
 
-      <%= render partial: 'chatroom_form', locals: {chatroom: @chatroom} %>
-    </div>
+  <div class="row section">
+    <h3 class="col s3">Join a Chatroom</h3>
 
-    <div id="chatroom-errors">
-    </div>
-
-    <h3>Join a Chatroom</h3>
-      <ul id="chatroom-index">
-        <% if @chatrooms.any? %>
-            <%= render @chatrooms%>
-        <%else %>
-      </ul>
-        <p>Be the first one to make a chatroom!</p>
+    <div class="collection chatroom-list col s6 offset-s2">
+      <% if @chatrooms.any? %>
+        <% @chatrooms.each do |chatroom| %>
+          <%= link_to chatroom.topic, chatroom_path(chatroom), class: "collection-item" %>
         <% end %>
-
+      <% else %>
+        <p>Be the first one to make a chatroom!</p>
+      <% end %>
+    </div>
 </div>
