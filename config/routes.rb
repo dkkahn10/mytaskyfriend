@@ -20,8 +20,14 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :projects, only: [:index, :create, :destroy, :update]
-      resources :tasks, only: [:index, :create, :destroy, :show, :update]
+      resources :tasks, only: [:index, :create, :destroy, :show, :update] do
+        get "/commit", to: "tasks#commit", as: "commit"
+        get "/pullrequest", to: "tasks#pullrequest", as: "pullrequest"
+      end
     end
   end
+
+
+
 
 end

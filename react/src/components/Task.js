@@ -7,6 +7,8 @@ const Task = props => {
       <span className="icons">
       <i className="material-icons" onClick={props.handleEditTaskClick}>edit</i>
       <i className="material-icons" onClick={props.handleDeleteTaskClick}>clear</i>
+      <button className="NewProject Commit Changes" onClick={props.handleCommitClick}>Commit</button>
+      <button className="NewProject Pull Request" onClick={props.handlePullRequestClick}>Pull Request</button>
       </span>
     </p>
   );

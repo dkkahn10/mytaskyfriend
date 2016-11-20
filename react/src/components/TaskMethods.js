@@ -18,6 +18,8 @@ class TaskMethods extends Component {
     this.handleEditTask = this.handleEditTask.bind(this);
     this.handleEditChange = this.handleEditChange.bind(this);
     this.handleCancelTask = this.handleCancelTask.bind(this);
+    this.handleCommit = this.handleCommit.bind(this);
+    this.handlePullRequest = this.handlePullRequest.bind(this);
   };
 
   handleFieldChange(e) {
@@ -105,6 +107,20 @@ class TaskMethods extends Component {
   handleTaskClick(id) {
   };
 
+  handleCommit(id) {
+    $.ajax({
+      url: `api/v1/tasks/${id}/commit`,
+      method: "GET",
+    })
+  }
+
+  handlePullRequest(id) {
+    $.ajax({
+      url: `api/v1/tasks/${id}/pullrequest`,
+      method: "GET",
+    })
+  }
+
   componentDidMount() {
     let request = $.ajax({
       url: `api/v1/tasks/${this.props.projectId}`,
@@ -129,6 +145,8 @@ class TaskMethods extends Component {
     let handleEditChange = this.handleEditChange;
     let handleCancelTask = this.handleCancelTask;
     let handleFieldChange = this.handleFieldChange;
+    let handleCommit = this.handleCommit;
+    let handlePullRequest = this.handlePullRequest;
 
     return(
       <TasksLogic
@@ -145,6 +163,8 @@ class TaskMethods extends Component {
         handleEditChange={handleEditChange}
         handleCancelTask={handleCancelTask}
         handleFieldChange={handleFieldChange}
+        handleCommit={handleCommit}
+        handlePullRequest={handlePullRequest}
       />
     )
   }

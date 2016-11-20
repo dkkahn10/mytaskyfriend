@@ -20,9 +20,6 @@ class Api::V1::TasksController < ApiController
     @task.user = current_user
     if @task.save
       render json: { task: @task }, status: :created
-      branch_name = task_params["body"].gsub(" ", "_")
-      system "git branch #{task_params["body"]}"
-      system "git checkout #{task_params["body"]}"
     else
       flash[:notice] = @task.errors.full_messages.join(',')
       render json: { errors: @task.errors }, status: :unprocessable_entity
@@ -32,7 +29,7 @@ class Api::V1::TasksController < ApiController
   def destroy
     @task = Task.find(params[:task][:task_id])
     @task.destroy
-    system "git branch -d #{@task.body}"
+    # system "git branch -d #{@task.body}"
   end
 
   def update
@@ -42,6 +39,17 @@ class Api::V1::TasksController < ApiController
     else
       flash[:notice] = @task.errors.full_messages.join(',')
     end
+  end
+
+  def commit
+    @task = Task.find(params[:task_id])
+    task_name = "#{@task.body}"
+    system "git add -A"
+    system "git commit -m ""#{task_name}"
+  end
+
+  def pullrequest
+    system "git push origin head"
   end
 
   private

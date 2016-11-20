@@ -19,6 +19,8 @@ const TasksLogic = props => {
   let handleCancelTask = props.handleCancelTask;
   let individualTask = props.individualTask;
   let handleFieldChange = props.handleFieldChange;
+  let handleCommit = props.handleCommit;
+  let handlePullRequest = props.handlePullRequest;
 
   if (allTasks.length !== 0) {
     taskList = allTasks.map(task => {
@@ -29,12 +31,17 @@ const TasksLogic = props => {
       let handleEditTask = () => props.handleEditTask();
       let handleDeleteTaskClick = () => props.handleDeleteTaskClick(task.id);
       let handleTaskClick = () => props.handleTaskClick(task.id);
+      let handleCommitClick = () => props.handleCommit(task.id);
+      let handlePullRequestClick = () => props.handlePullRequest(task.id);
+
       if (taskId !== task.id) {
         taskView =
           <Task
             key={nonEditKey}
             handleEditTaskClick={handleEditTaskClick}
             handleDeleteTaskClick={handleDeleteTaskClick}
+            handleCommitClick={handleCommitClick}
+            handlePullRequestClick={handlePullRequestClick}
             body={task.body}
           />
       } else {
