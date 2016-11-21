@@ -39,6 +39,7 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    @chatrooms = Chatroom.all
     @chatroom = Chatroom.find_by(slug: params[:slug])
     @message = Message.new
   end

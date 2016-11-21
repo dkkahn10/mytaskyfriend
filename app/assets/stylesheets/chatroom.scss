@@ -1,3 +1,12 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 #chatrooms {
   .section {
     margin: 0;
@@ -68,6 +77,43 @@
     font-weight: 200;
     padding-left: 25px;
   }
+  .header {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .dropdown-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-right: 45px;
+      color: #777;
+      font-weight: 200;
+      i {
+        font-variant: normal;
+        padding: 7px;
+        background-color: #1a237e;
+        border-radius: 50%;
+        margin-bottom: 3px;
+        color: white;
+      }
+    }
+    .dropdown-content {
+      border-radius: 5px;
+      li {
+        padding: 0 10px;
+        min-height: 35px;
+        &:hover {
+          background-color: $whitesmoke;
+        }
+        a {
+          color: #283593;
+          font-weight: 300;
+          font-size: 13px;
+        }
+      }
+    }
+  }
   #messages {
     padding: 25px 0;
     background-color: #f5f5f5;
@@ -92,18 +138,13 @@
       }
     }
     .content {
+      margin-top: 3px;
       width: 80%;
       font-size: 1.1rem;
       margin: 0;
       padding: 0 15px 0 10px;
     }
-    .timestamp {
-      color: #9e9e9e;
-    }
-
-
   }
-
   #new_message {
     background-color: $whitesmoke;
     padding: 15px 45px 15px 25px;

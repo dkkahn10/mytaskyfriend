@@ -1,20 +1,29 @@
 <div id="chatroom_show">
-  <div class="row">
-    <h2 class=""><%= @chatroom.topic %></h2>
-  <div>
-
-  <div class="row">
-
-  <div class="panel panel-default">
-    <% if @chatroom.messages.any? %>
-      <div class="panel-body" id="messages">
-        <%= render partial: 'messages/message', collection: @chatroom.messages%>
-      </div>
-    <%else%>
-      <div class="panel-body hidden" id="messages">
-      </div>
-    <%end%>
+  <div class="header">
+    <h2><%= @chatroom.topic %></h2>
+    <div class="chatroom-dropdown">
+      <a class='dropdown-button' href='#' data-activates='list-chatrooms'><i class="material-icons">list</i>Chatrooms</a>
+      <ul id='list-chatrooms' class='dropdown-content'>
+        <% @chatrooms.each do |chatroom| %>
+          <% if chatroom != @chatroom %>
+            <li><%= link_to chatroom.topic, chatroom_path(chatroom) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
   </div>
+
+  <div class="row">
+    <div class="panel panel-default">
+      <% if @chatroom.messages.any? %>
+        <div class="panel-body" id="messages">
+          <%= render partial: 'messages/message', collection: @chatroom.messages%>
+        </div>
+      <%else%>
+        <div class="panel-body hidden" id="messages">
+        </div>
+      <%end%>
+    </div>
 
     <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
   </div>
