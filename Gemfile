@@ -9,6 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'listen'
 gem 'omniauth-facebook'
+gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'redis'
 
