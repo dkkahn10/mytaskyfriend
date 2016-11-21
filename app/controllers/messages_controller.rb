@@ -3,11 +3,12 @@ class MessagesController < ApplicationController
   def create
     message = Message.new(message_params)
     message.user = current_user
-    Time.zone = 'Eastern Time (US & Canada)' 
+    Time.zone = 'Eastern Time (US & Canada)'
     if message.save
       ActionCable.server.broadcast 'messages',
         message: message.content,
-        user: message.user.username
+        user: message.user.username,
+        timestamp: message.created_at.strftime("%b %e, %Y @ %l:%M %p")
       head :ok
     else
       redirect_to chatrooms_path
