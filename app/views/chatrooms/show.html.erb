@@ -1,6 +1,9 @@
-<div class="container">
-  <div class="row col-md-8 col-md-offset-2">
-    <h1><%= @chatroom.topic %></h1>
+<div class="container" id="chatroom_show">
+  <div class="row">
+    <h2 class="right-align"><%= @chatroom.topic %></h2>
+  <div>
+
+  <div class="row">
 
   <div class="panel panel-default">
     <% if @chatroom.messages.any? %>

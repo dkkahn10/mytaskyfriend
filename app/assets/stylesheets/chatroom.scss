@@ -44,18 +44,7 @@
     width: 20%;
     margin: 0 auto;
   }
-  .create-chatroom {
-    @include button-default;
-    padding: 10px 20px;
-    border: 1px solid $teal;
-    box-shadow: 0 2px 2px 0 rgba(0,191,165, 0.14), 0 1px 5px 0 rgba(0,191,165, 0.12), 0 3px 1px -2px rgba(0,191,165, 0.2);
-    border-radius: 15px;
-    transition: all 1s ease-out;
-    &:hover {
-      background-color: $teal;
-      color: white;
-    }
-  }
+
 }
   .header {
     display: flex;
@@ -71,6 +60,60 @@
         background-color: #eceff1;
       }
     }
+  }
+}
+
+#chatroom_show {
+  #messages {
+    border-top: 2px solid #eee;
+    border-bottom: 2px solid #eee;
+    padding: 20px 0;
+  }
+  .message {
+    margin-bottom: 7px;
+    display: flex;
+    .username {
+      display: flex;
+      font-size: 1rem;
+      font-weight: 400;
+      // letter-spacing: 1.05px;
+      margin-right: 7px;
+      color: #90a4ae;
+    }
+
+  }
+
+  #new_message {
+    width: 90%;
+    margin: 40px 0 20px;
+    .row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .submit-button {
+      background-color: #26a69a;
+      color: white;
+      text-transform: uppercase;
+    }
+    .new_message {
+      width: 95%;
+    }
+  }
+}
+
+
+
+.submit-button {
+  @include button-default;
+  padding: 10px 20px;
+  border: 1px solid $teal;
+  box-shadow: 0 2px 2px 0 rgba(0,191,165, 0.14), 0 1px 5px 0 rgba(0,191,165, 0.12), 0 3px 1px -2px rgba(0,191,165, 0.2);
+  border-radius: 15px;
+  transition: all 1s ease-out;
+  &:hover {
+    background-color: $teal;
+    color: white;
   }
 }
 

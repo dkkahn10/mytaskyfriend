@@ -1,7 +1,15 @@
-<%=form_for message, remote: true, authenticity_token: true do |f|%>
-  <%= f.label :your_message%>:
-  <%= f.text_area :content, class: "form-control", data: {textarea: "message"}%>
-
-  <%= f.hidden_field :chatroom_id, value: chatroom.id %>
-  <%= f.submit "send", class: "btn btn-primary", data: {send: "message"}%>
-<%end%>
+<div class="row">
+    <%=form_for message, remote: true, authenticity_token: true, id: 'new_message' do |f|%>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">chat</i>
+          <%= f.text_area :content, data: { textarea: "message" }, id: "icon_prefix2", class:"form-control new_message materialize-textarea"%>
+          <label for="icon_prefix2">Your message</label>
+          <%= f.hidden_field :chatroom_id, value: chatroom.id %>
+      </div>
+      <div class="button">
+        <%= f.submit "send", class: "submit-button waves-effect waves-light", data: {send: "message"}%>
+      </div>
+    </div>
+  <%end%>
+</div>
