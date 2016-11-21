@@ -1,4 +1,9 @@
-<p>
-  <strong><%= message.user.username %>:</strong> <%= message.content %>
-  <br /><sub><%= message.created_at.strftime("%b %e, %Y @  %l:%M %p") %></sub>
-</p>
+<div class="message">
+  <div class="head">
+    <div class="username"><%= message.user.username %> <span class="arrow">&#187;</span></div>
+    <sub><%= message.created_at.strftime("%b %e, %Y @  %l:%M %p") %></sub>
+  </div>
+  <p class="content flow-text">
+    <%= message.content %>
+  </p>
+</div>

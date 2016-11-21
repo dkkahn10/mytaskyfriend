@@ -1,99 +1,13 @@
-@mixin button-default {
-  color: black;
-  background: none;
-  border: none;
-}
-
-@mixin underline-animation($color) {
-  a:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: $color;
-    visibility: hidden;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
-  }
-  a:hover:before {
-    visibility: visible;
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-  }
-}
-
 #flash {
   text-align: center;
 }
 
-.nav-wrapper {
-  background-color: #f5f5f5;
-  i {
-    font-size: 1.4rem;
-  }
-  .brand-logo {
-    font-size: 2rem;
-    margin: 0 20px;
-    font-weight: 200;
-    font-variant: normal;
-    color: white;
-    span.tasky {
-      color: #ff5722;
-    }
-    span.small-caps {
-      font-variant: small-caps;
-      font-size: 1.8rem;
-      color: #1de9b6;
-    }
-  }
-  a {
-    text-transform: lowercase;
-    font-variant: small-caps;
-    font-weight: 300;
-    color: #f5f5f5;
-    font-size: 1.12em;
-    letter-spacing: 1.12px;
-    transition: all 1s ease-out;
-  }
-  ul.side-nav {
-    opacity: .9;
-    a {
-      color: #000;
-      font-weight: 500;
-      &:hover {
-        color: white;
-      }
-    }
-  }
-  li:nth-child(1):hover {
-    background-color: #ff1744; /* red */
-  }
-  li:nth-child(2):hover {
-    background-color: #1a237e; /* indigo */
-  }
-  li:nth-child(3):hover {
-    background-color: #00bfa5; /* teal */
-  }
-  li:nth-child(4):hover {
-    background-color: #ff8f00; /* amber */
-  }
+.container {
+  margin-top: 30px;
 }
 
-.new-session {
-  margin-top: 15%;
-  text-align: center;
-  .sign-in {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    i {
-      margin-right: 15px;
-    }
-  }
+.bottom-link {
+  padding-left: 25px;
 }
 
 .card {
@@ -101,7 +15,7 @@
   width: 90%;
   margin: 20px auto;
   .card-content {
-    background-color: #00bfa5;
+    background-color: $teal;
     padding: 4px;
     text-align: center;
     font-size: 1em;
@@ -145,48 +59,6 @@
   }
 }
 
-.collapsible {
-  margin: 0 auto;
-}
-
-form.new-project {
-  margin: 25px auto;
-  button.NewProject {
-    margin: 0 auto;
-    color: black;
-    background: none;
-    border: 1px solid black;
-  }
-  .select-dropdown {
-    li span {
-      color: black;
-      font-size: 1em;
-    }
-  }
-}
-.tasks {
-  margin: 0 auto;
-}
-form.new-task {
-  padding-top: 20px !important;
-  padding-left: 0 !important;
-  .row {
-    display: flex;
-    flex-direction: column;
-  }
-  .input-field {
-    margin-right: 20px;
-    input {
-      width: 80%;
-    }
-  }
-  button.AddTask {
-    @include button-default;
-    margin: 0 auto;
-    border: 1px solid #000;
-  }
-}
-
 ul.collection {
   padding: 0;
   li.collection-item {
@@ -215,24 +87,6 @@ ul.collection {
   }
 }
 
-.buttons {
-  width: 80%;
-  margin: 0 auto;
-}
-.project-edit {
-  width: 90%;
-}
-
-button.EditProject,
-button.EditNote,
-button.Cancel {
-  @include button-default;
-  box-shadow: none;
-  font-size: .9em;
-  border: 1px solid aquamarine;
-
-}
-
 .color-select {
   label {
     margin: 0 15px;
@@ -243,4 +97,8 @@ label {
   i {
     font-size: 1.6rem;
   }
+}
+
+.collapsible {
+  margin: 0 auto;
 }
