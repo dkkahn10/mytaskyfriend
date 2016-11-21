@@ -5,8 +5,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   },
 
   renderMessage: function(data) {
-    $(".form-control").val("");
-    return "<p> <b>" + data.user + ": </b>" + data.message +
-      "<br /><sub>" + data.timestamp + "</sub></p>";
+    $('.form-control').val('');
+    return "<div class='message'><div class='head'><div class='username'>" + data.user + " &#187;</div><sub>" + data.timestamp + "</sub></div><p class='content flow-text'>" + data.message + "</p></div>"
   }
 });
