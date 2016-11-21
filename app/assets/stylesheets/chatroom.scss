@@ -64,10 +64,15 @@
 }
 
 #chatroom_show {
+  h2 {
+    font-weight: 200;
+    padding-right: 25px;
+  }
   #messages {
     border-top: 2px solid #eee;
     border-bottom: 2px solid #eee;
-    padding: 20px 0;
+    padding: 20px;
+    background-color: $whitesmoke;
   }
   .message {
     margin-bottom: 7px;
@@ -80,12 +85,12 @@
       margin-right: 7px;
       color: #90a4ae;
     }
-
   }
 
   #new_message {
-    width: 90%;
-    margin: 40px 0 20px;
+    padding: 0 10px;
+    width: 95%;
+    margin: 20px 0;
     .row {
       display: flex;
       flex-direction: column;
