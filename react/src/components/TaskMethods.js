@@ -28,7 +28,8 @@ class TaskMethods extends Component {
     this.setState({ editTask: e.target.value });
   }
 
-  handleNewTaskClick() {
+  handleNewTaskClick(e) {
+    e.preventDefault();
     $.ajax({
       url: "api/v1/tasks",
       method: "POST",

@@ -14,4 +14,7 @@ $('document').ready(function() {
   setTimeout(function() {
     $('#flash').slideUp();
   }, 10000);
+
+  $('select').material_select();
+  $('.collapsible').collapsible();
 });

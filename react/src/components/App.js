@@ -1,4 +1,9 @@
 import React, {Component} from 'react';
+import TasksLogic from './TasksLogic';
+import Project from './Project';
+import ProjectEdit from './ProjectEdit';
+import ProjectsSection from './ProjectsSection';
+import Color from './Color';
 import ProjectsLogic from './ProjectsLogic';
 
 class App extends Component {
@@ -9,7 +14,8 @@ class App extends Component {
       projectNames: [],
       projectId: "",
       editProject: "",
-      editId: ""
+      editId: "",
+      color: ''
     };
     this.handleProjectClick = this.handleProjectClick.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this);
@@ -20,20 +26,20 @@ class App extends Component {
     this.handleCancel = this.handleCancel.bind(this);
   };
 
-
   handleFieldChange(e) {
     let shift = {};
     shift[e.target.name] = e.target.value;
     this.setState(shift);
   }
 
-  handleNewProject() {
+  handleNewProject(e) {
+    e.preventDefault();
     $.ajax({
       url: "api/v1/projects",
       method: "POST",
       data: {
         project: {
-          title: this.state.newProjectName,
+          title: this.state.newProjectName
         }
       }
     })
@@ -62,7 +68,8 @@ class App extends Component {
       data: {
         project: {
           project_id: this.state.editId,
-          title: this.state.editProject
+          title: this.state.editProject,
+          color: this.state.color
         }
       },
       success: (data) => {
@@ -72,10 +79,12 @@ class App extends Component {
         projects.push(data.project);
         this.setState({
           projectNames: projects,
-          editId: ""
+          editId: "",
+          color: ""
         })
       }
     })
+
   }
 
   handleCancel() {
@@ -114,6 +123,11 @@ class App extends Component {
   }
 
   render() {
+    let colorSelect =
+      <Color
+        color={this.state.color}
+        handleChange={this.handleFieldChange}
+      />;
     let projectNames = this.state.projectNames;
     let editProject = this.state.editProject;
     let handleFieldChange = this.handleFieldChange;
@@ -126,7 +140,6 @@ class App extends Component {
     let handleProjectClick = this.handleProjectClick;
     let handleDeleteClick = this.handleDeleteProject;
     let handleEditClick = this.handleEditProjectClick;
-
     return(
       <ProjectsLogic
         projectNames={projectNames}
@@ -141,6 +154,7 @@ class App extends Component {
         handleProjectClick={handleProjectClick}
         handleDeleteClick={handleDeleteClick}
         handleEditClick={handleEditClick}
+        colorSelect={colorSelect}
       />
     );
   }
