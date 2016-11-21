@@ -1,6 +1,5 @@
-<form class="col s6 offset-s1" id="new-chatroom">
+<div class="col s6 offset-s1" id="new-chatroom">
   <%= form_for chatroom, remote: true do |f| %>
-
     <div class="new-topic">
       <div class="input-field topic">
         <i class="material-icons prefix">group_add</i>
@@ -11,7 +10,5 @@
         <%= f.submit 'Create', class: "btn waves-effect waves-light", id: "create-chatroom", class: 'submit-button' %>
       </div>
     </div>
-
-
   <% end %>
-</form>
+</div>
