@@ -1,6 +1,6 @@
 <div id="chatroom_show">
   <div class="row">
-    <h2 class="right-align"><%= @chatroom.topic %></h2>
+    <h2 class=""><%= @chatroom.topic %></h2>
   <div>
 
   <div class="row">
@@ -20,6 +20,6 @@
   </div>
 
   <div class="row">
-    <%= link_to "Back", chatrooms_path %>
+    <%= link_to "Back", chatrooms_path, class: "bottom-link" %>
   </div>
 </div>

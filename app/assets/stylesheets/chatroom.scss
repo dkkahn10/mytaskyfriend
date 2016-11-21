@@ -66,13 +66,13 @@
 #chatroom_show {
   h2 {
     font-weight: 200;
-    padding-right: 25px;
+    padding-left: 25px;
   }
   #messages {
-    border-top: 2px solid #eee;
-    border-bottom: 2px solid #eee;
-    padding: 20px;
-    background-color: $whitesmoke;
+    // border-top: 2px solid #eee;
+    // border-bottom: 2px solid #eee;
+    padding: 30px;
+    background-color: #f5f5f5;
   }
   .message {
     margin-bottom: 7px;
@@ -88,9 +88,10 @@
   }
 
   #new_message {
-    padding: 0 10px;
-    width: 95%;
-    margin: 20px 0;
+    background-color: $whitesmoke;
+    padding: 15px 45px 15px 25px;
+    width: 100%;
+    // margin: 20px 0;
     .row {
       display: flex;
       flex-direction: column;
