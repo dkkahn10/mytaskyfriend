@@ -1,5 +1,5 @@
 <div id="user_show">
-  <div class="row section">
+  <div class="row section header">
     <div class="image col s3 offset-s1">
       <%= image_tag(@user_photo, class: "user-image") %>
     </div>
@@ -16,7 +16,7 @@
   </div>
 
   <div class="row section">
-    <h4 class="header col s3 offset-s1">Your Projects</h4>
+    <h4 class="heading col s3 offset-s1">Your Projects</h4>
     <ul class="collapsible col s6 offset-s1" data-collapsible="expandable">
     <% @user.projects.each do |project| %>
       <li>

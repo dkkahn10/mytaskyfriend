@@ -1,7 +1,7 @@
 <div id="edit_user_modal" class="modal">
   <div class="modal-content">
     <div class="row header teal lighten-2">
-      <h4 class="col s6 offset-s2"><i class="material-icons">account_circle</i> Edit Account</h4>
+      <h4 class="col s6 offset-s3"><i class="material-icons">account_circle</i> Edit Account</h4>
     </div>
     <%= form_for @user, remote: true, authenticity_token: true, html: { method: :put }, id: 'edit_user', class: 'col s8 offset-s2' do |f| %>
       <div class="row">
@@ -13,6 +13,7 @@
       <div class="row">
         <span class="label col s2">Profile Photo</span>
         <div class="col s9">
+          <em>Choose a square photo for better results</em><br />
           <%= f.file_field :profile_photo %>
         </div>
       </div>

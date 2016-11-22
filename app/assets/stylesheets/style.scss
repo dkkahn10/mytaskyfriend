@@ -113,14 +113,20 @@ label {
       background-color: $whitesmoke;
     }
   }
-  .user-image {
-    width: 90%;
-    border-radius: 50%;
-  }
-  h3 {
-    font-weight: 300;
-  }
   .header {
+    .user-image {
+      width: 100%;
+      border-radius: 50%;
+    }
+    h3 {
+      font-weight: 300;
+    }
+    p {
+      color: #777;
+    }
+  }
+
+  h4.heading {
     text-align: center;
     font-weight: 200;
   }
@@ -136,10 +142,7 @@ label {
       }
     }
     @include underline-animation(#00acc1);
-
   }
-
-
   .modal-content {
     padding: 0;
     background: $whitesmoke;
@@ -161,11 +164,16 @@ label {
         font-size: .85rem;
         text-align: right;
         color: #00897b;
+        margin-top: 5px;
       }
       span.username {
         margin-top: 25px;
       }
       input[type="file"] {
+        font-size: .85rem;
+        color: #b0bec5;
+      }
+      em {
         font-size: .85rem;
         color: #b0bec5;
       }
