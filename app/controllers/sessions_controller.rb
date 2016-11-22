@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
       User.find_by(email: request.env["omniauth.auth"]["info"]["email"])
     if user.nil?
       session[:auth] = request.env["omniauth.auth"].slice("uid","info")
+      session[:provider] = params["provider"]
       redirect_to new_user_path
     else
       user.increment! :sign_in_count

@@ -14,7 +14,8 @@ class App extends Component {
       projectId: "",
       editProject: "",
       editId: "",
-      color: ''
+      color: '',
+      userProvider: ""
     };
     this.handleProjectClick = this.handleProjectClick.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this);
@@ -117,9 +118,18 @@ class App extends Component {
     .done(data => {
       this.setState({ projectNames: data.projects });
     });
+
+    $.ajax({
+      url: "api/v1/users",
+      method: "GET"
+    })
+    .done(data => {
+      this.setState({ userProvider: data.user });
+    })
   }
 
   render() {
+    debugger;
     let projectNames = this.state.projectNames;
     let editProject = this.state.editProject;
     let handleFieldChange = this.handleFieldChange;

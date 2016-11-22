@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.email = session[:auth]["info"]["email"]
     @user.oauth_uid = session[:auth]["uid"]
-    @user.provider = params["provider"]
+    @user.provider = session[:provider]
     if @user.save
       session[:auth].clear
       session[:user_id] = @user.id
