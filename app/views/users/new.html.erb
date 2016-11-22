@@ -1,8 +1,6 @@
 <div class="container">
-  <form id="new_user">
-    <%= form_for @user do |f| %>
-    <%= f.text_field :username, label: false, placeholder: "UserName", id: "user_name" %>
+  <%= form_for @user do |f| %>
+    <%= f.text_field :username, label: false, placeholder: "UserName", id: "new_user" %>
     <%= f.submit "Submit", class: "btn" %>
   <% end %>
-  </form>
 </div>
