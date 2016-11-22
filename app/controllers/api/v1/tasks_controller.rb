@@ -9,7 +9,7 @@ class Api::V1::TasksController < ApiController
 
   def show
     @project = Project.find(params[:id])
-    @tasks = @project.tasks
+    @tasks = @project.tasks.order(created_at: :asc)
     render json: {
       tasks: @tasks
     }, status: :ok

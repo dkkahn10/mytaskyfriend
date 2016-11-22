@@ -2,7 +2,7 @@ class Api::V1::ProjectsController < ApiController
   before_action :authenticate_user!, :current_user
 
   def index
-    @projects = Project.all
+    @projects = Project.all.order(created_at: :asc)
     render json: {
       projects: @projects
     }, status: :ok
