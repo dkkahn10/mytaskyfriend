@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.email = session[:auth]["info"]["email"]
     @user.oauth_uid = session[:auth]["uid"]
+    @user.provider = params["provider"]
     if @user.save
       session[:auth].clear
       session[:user_id] = @user.id
@@ -12,7 +13,6 @@ class UsersController < ApplicationController
       flash[:success] = "Registered successfully."
       redirect_to projects_path
     else
-      binding.pry
       flash[:alert] = "There was a problem registering."
       render :new
     end
