@@ -12,19 +12,21 @@
       border-bottom: 2px solid $teal;
     }
   }
-
-.new-session {
-  margin-top: 15%;
-  text-align: center;
-  .sign-in {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    i {
-      margin-right: 15px;
+  p {
+    text-align: center;
+  }
+  .new-session {
+    margin-top: 15%;
+    text-align: center;
+    .sign-in {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i {
+        margin-right: 15px;
+      }
     }
   }
-}
 #new-chatroom {
   .new-topic {
     label {
