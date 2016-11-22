@@ -25,3 +25,12 @@
     transform: scaleX(1);
   }
 }
+
+@mixin section {
+  .section {
+    margin: 0;
+    min-height: 50vh;
+    padding: 13% 5%;
+    background-color: $whitesmoke;
+  }
+}
