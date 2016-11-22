@@ -3,7 +3,7 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">chat</i>
-          <%= f.text_area :content, data: { textarea: "message" }, id: "icon_prefix2", class:"form-control new_message materialize-textarea"%>
+          <%= f.text_field :content, data: { textarea: "message" }, id: "icon_prefix2", class:"form-control"%>
           <label for="icon_prefix2">Your message</label>
           <%= f.hidden_field :chatroom_id, value: chatroom.id %>
       </div>
