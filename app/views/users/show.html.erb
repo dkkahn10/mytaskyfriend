@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row">
+    <img src="<%= @profile_photo %>" class="user-image" />
+  </div>
+  <div class="row">
     <h2>Hey <%= @user.username %>!</h2>
     <p>You were last here on <%= @user.last_signed_in_at %></p>
   </div>
