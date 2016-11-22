@@ -1,26 +1,25 @@
-<div id="edit_user" class="modal">
+<div id="edit_user_modal" class="modal">
   <div class="modal-content">
-    <h4>Edit Profile</h4>
-    <%= form_for @user, remote: true, authenticity_token: true, html: { method: :put }, id: 'edit_user', class: 'col s10 offset-s1' do |f| %>
+    <div class="row header teal lighten-2">
+      <h4 class="col s6 offset-s2"><i class="material-icons">account_circle</i> Edit Account</h4>
+    </div>
+    <%= form_for @user, remote: true, authenticity_token: true, html: { method: :put }, id: 'edit_user', class: 'col s8 offset-s2' do |f| %>
       <div class="row">
-        <span class="label col s2">Username</span>
-        <div class="input-field inline col s6">
+        <span class="username label col s2">Username </span>
+        <div class="input-field inline col s9">
           <%= f.text_field :username, id: 'username', class: 'validate' %>
         </div>
       </div>
       <div class="row">
-        <span class="label col s3">
-        <%= f.label :profile_photo %>
-        <%= f.file_field :profile_photo %>
-      </span>
-        <div class="file-path-wrapper col s5 offset-s1">
-          <input class="file-path validate" type="text">
+        <span class="label col s2">Profile Photo</span>
+        <div class="col s9">
+          <%= f.file_field :profile_photo %>
         </div>
       </div>
       <div class="row button">
-        <%= f.submit 'Update', class: 'modal-action modal-close wave-green btn-flat' %>
+        <%= f.submit 'Update', class: 'modal-action modal-close wave-green btn-flat col s2 offset-s7', id: 'userEdit_button' %>
+        <button class="modal-action modal-close wave-green btn-flat">Cancel</button>
       </div>
-
     <% end %>
   </div>
 </div>

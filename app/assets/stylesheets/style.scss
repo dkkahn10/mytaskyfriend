@@ -104,19 +104,17 @@ label {
 }
 
 #user_show {
-  // padding: 30px 15px;
-  // @include section;
   .section {
     background-color: #f5f5f5;
     min-height: 30vh;
     padding: 35px 25px;
     margin: 0;
-  }
-  .section:first-of-type {
-    background-color: $whitesmoke;
+    &:first-of-type {
+      background-color: $whitesmoke;
+    }
   }
   .user-image {
-    width: 88%;
+    width: 90%;
     border-radius: 50%;
   }
   h3 {
@@ -126,11 +124,53 @@ label {
     text-align: center;
     font-weight: 200;
   }
+  .links {
+    .modal-trigger {
+      position: relative;
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-variant: small-caps;
+      padding-bottom: 3px;
+      &:hover {
+        color: #00acc1;
+      }
+    }
+    @include underline-animation(#00acc1);
+
+  }
+
+
   .modal-content {
+    padding: 0;
+    background: $whitesmoke;
+    .header {
+      padding: 25px 0 15px;
+      color: $whitesmoke;
+      h4 {
+        font-weight: 300;
+      }
+      i {
+        padding-right: 10px;
+        font-size: 2rem;
+      }
+    }
     .edit_user {
+      padding: 20px;
+      padding-top: 0;
       span {
-        margin-top: 25px;
         font-size: .85rem;
+        text-align: right;
+        color: #00897b;
+      }
+      span.username {
+        margin-top: 25px;
+      }
+      input[type="file"] {
+        font-size: .85rem;
+        color: #b0bec5;
+      }
+      .button {
+        margin-bottom: 0;
       }
     }
   }
