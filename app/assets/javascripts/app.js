@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $('.collapsible').collapsible();
+    $('.modal').modal();
     $(".button-collapse").sideNav();
 
     $('.dropdown-button').dropdown({

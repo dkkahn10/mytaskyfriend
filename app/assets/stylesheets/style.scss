@@ -126,6 +126,15 @@ label {
     text-align: center;
     font-weight: 200;
   }
+  .modal-content {
+    .edit_user {
+      span {
+        margin-top: 25px;
+        font-size: .85rem;
+      }
+    }
+  }
+
   .collapsible {
     box-shadow: none;
     border: none;
@@ -136,10 +145,11 @@ label {
       color: #fff;
       padding: 3px 7px;
       font-weight: 200;
+      font-size: 1.15rem;
       span {
         float: right;
-        font-size: .85rem;
-        margin-right: 5px;
+        font-size: .9rem;
+        margin-right: 7px;
       }
     }
     .collapsible-body {

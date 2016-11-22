@@ -7,6 +7,39 @@
     <div class="col s6 offset-s1">
       <h3>Hey <%= @user.username %>!</h3>
       <p>You were last here on <%= @user.last_signed_in_at.strftime("%b %e, %Y @  %l:%M %p") %></p>
+
+      <!-- Modal Trigger -->
+      <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
+
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4>Edit Profile</h4>
+          <%= form_for @user, remote: true, html: { method: :put }, id: 'edit_user', class: 'col s10 offset-s1' do |f| %>
+            <div class="row">
+              <span class="label col s2">Username</span>
+              <div class="input-field inline col s6">
+                <%= f.text_field :username, id: 'username', class: 'validate' %>
+              </div>
+
+
+            </div>
+            <div class="row">
+              <span class="label col s3">
+              <%= f.label :profile_photo %>
+              <%= f.file_field :profile_photo %>
+            </span>
+              <div class="file-path-wrapper col s5 offset-s1">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+            <div class="row button">
+              <%= f.submit 'Update', class: 'modal-action modal-close wave-green btn-flat' %>
+            </div>
+
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -18,13 +51,13 @@
         <div class="collapsible-header" style='background-color: <%= project.color %>'><i class="material-icons">lightbulb_outline</i><%= project.title %><span><%= project.created_at.strftime("%m-%e-%y") %></span></div>
         <div class="collapsible-body">
           <p>
-          <h4>Your tasks</h4>
-          <% project.tasks.each do |task| %>
-            <% if task.user == @user %>
-              <%= task.body %><br />
+            <h4>Your tasks</h4>
+            <% project.tasks.each do |task| %>
+              <% if task.user == @user %>
+                <%= task.body %><br />
+              <% end %>
             <% end %>
-          <% end %>
-        </p>
+          </p>
         </div>
       </li>
     <% end %>

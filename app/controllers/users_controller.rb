@@ -36,10 +36,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    binding.pry
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = 'Successfully saved!'
+    else
+      flash[:errors] = 'Your changes were not successful.'
+    end
+  end
+
   protected
 
   def user_params
-    params.require(:user).permit(:username)
+    params.require(:user).permit(:username, :profile_photo)
   end
 
 end
