@@ -3,7 +3,6 @@ import TasksLogic from './TasksLogic';
 import Project from './Project';
 import ProjectEdit from './ProjectEdit';
 import ProjectsSection from './ProjectsSection';
-import Color from './Color';
 import ProjectsLogic from './ProjectsLogic';
 
 class App extends Component {
@@ -72,19 +71,17 @@ class App extends Component {
           color: this.state.color
         }
       },
-      success: (data) => {
-        var newArray = this.state.projectNames;
-        let projects = newArray.filter(project => {
-          return project.id !== this.state.editId })
-        projects.push(data.project);
+      success: (data => {
+        let currentArray = this.state.projectNames;
+        let objIndex = currentArray.findIndex((obj) => obj.id === this.state.editId)
+        let newProjectsArray = [...currentArray.slice(0, objIndex), data.project, ...currentArray.slice(objIndex + 1)]
         this.setState({
-          projectNames: projects,
+          projectNames: newProjectsArray,
           editId: "",
           color: ""
         })
-      }
+      }).bind(this)
     })
-
   }
 
   handleCancel() {
@@ -123,11 +120,6 @@ class App extends Component {
   }
 
   render() {
-    let colorSelect =
-      <Color
-        color={this.state.color}
-        handleChange={this.handleFieldChange}
-      />;
     let projectNames = this.state.projectNames;
     let editProject = this.state.editProject;
     let handleFieldChange = this.handleFieldChange;
@@ -154,7 +146,7 @@ class App extends Component {
         handleProjectClick={handleProjectClick}
         handleDeleteClick={handleDeleteClick}
         handleEditClick={handleEditClick}
-        colorSelect={colorSelect}
+        color={this.state.color}
       />
     );
   }
