@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.email = session[:auth]["info"]["email"]
     @user.oauth_uid = session[:auth]["uid"]
-    @user.profile_photo = session[:auth]["info"]["image"]
+    @user.facebook_photo = session[:auth]["info"]["image"]
     if @user.save
       session[:auth].clear
       session[:user_id] = @user.id
@@ -25,7 +25,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @profile_photo = @user.profile_photo
+    if @user.profile_photo.url.nil?
+      @user_photo = @user.facebook_photo
+    else
+      @user_photo = @user.profile_photo.url
+    end
     unless @user == current_user
       flash[:warning] = "You are not authorized to view this record."
       redirect_to projects_path

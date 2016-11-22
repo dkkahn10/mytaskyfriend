@@ -1,15 +1,17 @@
 <div class="container">
   <div class="row">
-    <img src="<%= @profile_photo %>" class="user-image" />
-  </div>
-  <div class="row">
-    <h2>Hey <%= @user.username %>!</h2>
-    <p>You were last here on <%= @user.last_signed_in_at %></p>
+    <div class="col s4">
+      <%= image_tag(@user_photo, class: "user-image") %>
+    </div>
+
+    <div class="col s8">
+      <h3>Hey <%= @user.username %>!</h3>
+      <p>You were last here on <%= @user.last_signed_in_at %></p>
+    </div>
   </div>
 
   <div class="row">
-    <h3>Your Projects</h3>
-
+    <h4>Your Projects</h4>
     <% @user.projects.each do |project| %>
       <p class="col s12">
         <span class="col s6"><%= project.title %></span>

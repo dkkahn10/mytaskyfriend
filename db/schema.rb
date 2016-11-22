@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121233604) do
+ActiveRecord::Schema.define(version: 20161122012025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20161121233604) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "profile_photo"
+    t.string   "facebook_photo"
     t.index ["oauth_uid"], name: "index_users_on_oauth_uid", unique: true, using: :btree
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
