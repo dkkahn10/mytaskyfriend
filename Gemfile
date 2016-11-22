@@ -12,6 +12,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'redis'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'capybara'
