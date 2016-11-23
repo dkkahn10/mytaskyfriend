@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :username, format: { with: /\A[\w-]+\z/, message: "May only contain letters, numbers, dashes, and underscores."}
   validates :email, :username, :oauth_uid, presence: true
   validates :oauth_uid, :username, uniqueness: true
+
+  mount_uploader :profile_photo, ProfilePhotoUploader
 end

@@ -1,0 +1,31 @@
+<div id="edit_user_modal" class="modal">
+  <div class="modal-content">
+    <div class="row header teal lighten-2">
+      <h4 class="col s6 offset-s3"><i class="material-icons">account_circle</i> Edit Account</h4>
+    </div>
+    <%= form_for @user, remote: true, authenticity_token: true, html: { method: :put }, id: 'edit_user', class: 'col s8 offset-s2' do |f| %>
+      <div class="row">
+        <span class="username label col s2">Username </span>
+        <div class="input-field inline col s9">
+          <%= f.text_field :username, id: 'username', class: 'validate' %>
+        </div>
+      </div>
+      <div class="row">
+        <span class="label col s2">Profile Photo</span>
+        <div class="col s9">
+          <em>Choose a square photo for best results</em><br />
+          <%= f.file_field :profile_photo %>
+        </div>
+      </div>
+      <div class="row">
+        <p class="col s8 offset-s1">
+          <%= f.check_box :current_photo, id: 'fb' %>
+          <label for="fb">Use Facebook profile photo</label>
+        </p>
+      </div>
+      <div class="row button">
+        <%= f.submit 'Update', class: 'modal-action modal-close wave-green btn-flat col s2 offset-s9', id: 'userEdit_button' %>
+      </div>
+    <% end %>
+  </div>
+</div>

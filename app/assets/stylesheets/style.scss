@@ -102,3 +102,158 @@ label {
 .collapsible {
   margin: 0 auto;
 }
+
+#user_show {
+  .section {
+    background-color: #f5f5f5;
+    min-height: 30vh;
+    padding: 35px 25px;
+    margin: 0;
+    &:first-of-type {
+      background-color: $whitesmoke;
+    }
+  }
+  .header {
+    .user-image {
+      width: 100%;
+      border-radius: 50%;
+    }
+    h3 {
+      font-weight: 300;
+    }
+    p {
+      color: #777;
+      font-size: .9rem;
+    }
+  }
+
+  h4.heading {
+    text-align: center;
+    font-weight: 200;
+  }
+  .links {
+    .modal-trigger {
+      position: relative;
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-variant: small-caps;
+      padding-bottom: 3px;
+      &:hover {
+        color: #00acc1;
+      }
+    }
+    @include underline-animation(#00acc1);
+  }
+  .modal-content {
+    padding: 0;
+    background: $whitesmoke;
+    .header {
+      padding: 25px 0 15px;
+      color: $whitesmoke;
+      h4 {
+        font-weight: 300;
+      }
+      i {
+        padding-right: 10px;
+        font-size: 2rem;
+      }
+    }
+    .edit_user {
+      padding: 20px;
+      padding-top: 0;
+      span {
+        font-size: .85rem;
+        text-align: right;
+        color: #00897b;
+        margin-top: 5px;
+      }
+      span.username {
+        margin-top: 25px;
+      }
+      input[type="file"] {
+        font-size: .85rem;
+        color: #b0bec5;
+      }
+      em {
+        font-size: .85rem;
+        color: #b0bec5;
+      }
+      label {
+        font-size: .9rem;
+        color: #00897b;
+        margin-left: 10px;
+      }
+      .button {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .collapsible {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    .collapsible-header {
+      border-radius: 10px;
+      border: none;
+      color: #fff;
+      padding: 3px 7px;
+      font-weight: 200;
+      font-size: 1.15rem;
+      span {
+        float: right;
+        font-size: .9rem;
+        margin-right: 7px;
+      }
+    }
+    .collapsible-body {
+      padding: 0 15px;
+      h4 {
+        font-size: 1.4rem;
+      }
+      p {
+        padding: 1rem;
+        line-height: 1.5em;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #user_show {
+    .modal-content {
+      h4 {
+        font-size: 1.6rem;
+        display: flex;
+      }
+      .edit_user {
+        padding: 10px;
+        .button {
+          margin-left: -35px;
+        }
+        span.username {
+          margin-right: 15px;
+        }
+      }
+    }
+    .header {
+      .image {
+        width: 50%;
+        margin-left: 25%;
+      }
+      .descr {
+        width: 80%;
+        text-align: center;
+      }
+    }
+    h4.heading {
+      width: 80%;
+    }
+    .collapsible {
+      width: 80%;
+      margin-top: 15px;
+    }
+
+  }
+
+}

@@ -1,8 +1,9 @@
 $(document).ready(function(){
     $('.collapsible').collapsible();
+    $('.modal').modal();
     $(".button-collapse").sideNav();
 
-    $('.dropdown-button').dropdown({
+  $('.dropdown-button').dropdown({
       inDuration: 370,
       constrain_width: false,
       hover: true,
@@ -11,4 +12,9 @@ $(document).ready(function(){
       alignment: 'left'
     }
   );
+
+  $('#userEdit_button').click(function() {
+    window.location.reload();
+  });
+
 });

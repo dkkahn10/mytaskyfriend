@@ -1,17 +1,42 @@
-<div class="container">
-  <div class="row">
-    <h2>Hey <%= @user.username %>!</h2>
-    <p>You were last here on <%= @user.last_signed_in_at %></p>
+<div id="user_show">
+  <div class="row section header">
+    <div class="image col s3 offset-s1">
+      <%= image_tag(@user_photo, class: "user-image") %>
+    </div>
+
+    <div class="descr col s6 offset-s1">
+      <h3><%= @user.username %></h3>
+      <p>You were last here on <%= @user.last_signed_in_at.strftime("%b %e, %Y @  %l:%M %p") %></p>
+
+      <p class="links">
+      <a class="modal-trigger" href="#edit_user_modal">Edit Account</a>
+      </p>
+      <%= render 'users/edit_modal' %>
+    </div>
   </div>
 
-  <div class="row">
-    <h3>Your Projects</h3>
-
+  <div class="row section">
+    <h4 class="heading col s3 offset-s1">Your Projects</h4>
+    <ul class="collapsible col s6 offset-s1" data-collapsible="expandable">
     <% @user.projects.each do |project| %>
-      <p class="col s12">
-        <span class="col s6"><%= project.title %></span>
-        <span class="col s6">Created at: <%= project.created_at %></span>
-      </p>
+      <li>
+        <div class="collapsible-header" style='background-color: <%= project.color %>'><i class="material-icons">lightbulb_outline</i><%= project.title %><span><%= project.created_at.strftime("%m-%e-%y") %></span></div>
+        <div class="collapsible-body">
+          <p>
+            <h4>Your tasks</h4>
+            <% project.tasks.each do |task| %>
+              <% if task.user == @user %>
+                <%= task.body %><br />
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+      </li>
     <% end %>
+    </ul>
+  </div>
+
+  <div class="row section">
+
   </div>
 </div>
