@@ -218,3 +218,42 @@ label {
     }
   }
 }
+
+@media screen and (max-width: 500px) {
+  #user_show {
+    .modal-content {
+      h4 {
+        font-size: 1.6rem;
+        display: flex;
+      }
+      .edit_user {
+        padding: 10px;
+        .button {
+          margin-left: -35px;
+        }
+        span.username {
+          margin-right: 15px;
+        }
+      }
+    }
+    .header {
+      .image {
+        width: 50%;
+        margin-left: 25%;
+      }
+      .descr {
+        width: 80%;
+        text-align: center;
+      }
+    }
+    h4.heading {
+      width: 80%;
+    }
+    .collapsible {
+      width: 80%;
+      margin-top: 15px;
+    }
+
+  }
+
+}

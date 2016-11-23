@@ -4,7 +4,7 @@
       <%= image_tag(@user_photo, class: "user-image") %>
     </div>
 
-    <div class="col s6 offset-s1">
+    <div class="descr col s6 offset-s1">
       <h3><%= @user.username %></h3>
       <p>You were last here on <%= @user.last_signed_in_at.strftime("%b %e, %Y @  %l:%M %p") %></p>
 
