@@ -1,6 +1,14 @@
 <div class="container">
-  <%= form_for @user do |f| %>
-    <%= f.text_field :username, label: false, placeholder: "UserName", id: "new_user" %>
-    <%= f.submit "Submit", class: "btn" %>
+  <%= form_for @user, class: "col s12", id: "new_user" do |f| %>
+    <div class="row">
+      <div class="input-field col s9 offset-s1">
+        <i class="material-icons prefix">account_circle</i>
+        <%= f.text_field :username, label: false, id: "icon_prefix" %>
+        <label for="icon_prefix">Username</label>
+      </div>
+    </div>
+    <div class="row">
+    <%= f.submit "Submit", class: "btn col s2 offset-s7" %>
+    </div>
   <% end %>
 </div>

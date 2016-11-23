@@ -68,16 +68,15 @@ class TaskMethods extends Component {
           body: this.state.editTask
         }
       },
-      success: (data) => {
-        var newArray = this.state.allTasks;
-        let tasks = newArray.filter(task => {
-          return task.id !== this.state.taskId })
-        tasks.push(data.task);
+      success: (data => {
+        let currentArray = this.state.allTasks;
+        let objIndex = currentArray.findIndex((obj) => obj.id === this.state.taskId)
+        let newTasksArray = [...currentArray.slice(0, objIndex), data.task, ...currentArray.slice(objIndex + 1)]
         this.setState({
-          allTasks: tasks,
+          allTasks: newTasksArray,
           taskId: ""
         })
-      }
+      }).bind(this)
     })
   }
 
