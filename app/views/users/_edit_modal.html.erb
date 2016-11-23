@@ -17,6 +17,12 @@
           <%= f.file_field :profile_photo %>
         </div>
       </div>
+      <div class="row">
+        <p class="col s6 offset-s1">
+          <%= f.check_box :current_photo, id: 'test' %>
+          <label for="test">Use Facebook profile photo</label>
+        </p>
+      </div>
       <div class="row button">
         <%= f.submit 'Update', class: 'modal-action modal-close wave-green btn-flat col s2 offset-s7', id: 'userEdit_button' %>
         <button class="modal-action modal-close wave-green btn-flat">Cancel</button>
