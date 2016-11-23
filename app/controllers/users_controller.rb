@@ -26,12 +26,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user.current_photo.nil?
-      @user.profile_photo.url.nil? ? @user_photo = @user.facebook_photo : @user_photo = @user.profile_photo.url
-      # if @user.profile_photo.url.nil?
-      #   @user_photo = @user.facebook_photo
-      # else
-      #   @user_photo = @user.profile_photo.url
-      # end
+      if @user.profile_photo.url.nil?
+        @user_photo = @user.facebook_photo
+      else
+        @user_photo = @user.profile_photo.url
+      end
     else
       @user_photo = @user.current_photo
     end
