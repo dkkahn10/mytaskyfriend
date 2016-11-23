@@ -13,7 +13,6 @@ class UsersController < ApplicationController
       flash[:success] = "Registered successfully."
       redirect_to projects_path
     else
-      binding.pry
       flash[:alert] = "There was a problem registering."
       render :new
     end
@@ -49,9 +48,9 @@ class UsersController < ApplicationController
       else
         @user.update_attributes(current_photo: @user.profile_photo.url)
       end
-      flash[:success] = 'Successfully saved!'
+      flash[:notice] = 'Successfully saved!'
     else
-      flash[:errors] = 'Your changes were not successful.'
+      flash[:alert] = 'Your changes were not successful.'
     end
   end
 
