@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-  has_many :projects
-  has_many :tasks
+  has_many :userprojects
+  has_many :projects, through: :userprojects
+  has_many :usertasks
+  has_many :tasks, through: :usertasks
   has_many :messages
   has_many :chatrooms, through: :messages
 
@@ -9,4 +11,5 @@ class User < ApplicationRecord
   validates :oauth_uid, :username, uniqueness: true
 
   mount_uploader :profile_photo, ProfilePhotoUploader
+
 end

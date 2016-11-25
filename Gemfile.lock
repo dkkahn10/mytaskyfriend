@@ -41,6 +41,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (7.1.4)
+    bcrypt (3.1.11)
     builder (3.2.2)
     capybara (2.10.1)
       addressable
@@ -357,6 +358,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   capybara
   carrierwave
   database_cleaner

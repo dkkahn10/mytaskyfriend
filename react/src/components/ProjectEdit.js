@@ -6,6 +6,7 @@ const ProjectEdit = props => {
     <div>
       {props.colorSelect}
       <input type="text" value={props.editProject} name="editProject" onChange={props.handleFieldChange} />
+      <input type="text" value={props.addUser} name="addUser" onChange={props.handleFieldChange} />
       <div className="buttons project-edit">
       <button className="EditProject btn" onClick={props.handleEdit}>Save Edit</button>
       <button className="Cancel btn" onClick={props.handleCancel}>Cancel</button>

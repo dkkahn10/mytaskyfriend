@@ -37,7 +37,7 @@ class TaskMethods extends Component {
         task: {
           body: this.state.individualTask,
           project_id: this.props.projectId
-        }
+        },
       }
     })
     .done(data => {

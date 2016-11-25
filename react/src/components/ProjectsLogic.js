@@ -75,6 +75,7 @@ const ProjectsLogic = props => {
       handleNewProject={handleNewProject}
       allProjects={allProjects}
       projectTasks={projectTasks}
+      color={props.color}
     />
   );
 }

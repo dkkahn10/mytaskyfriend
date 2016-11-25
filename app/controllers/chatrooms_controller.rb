@@ -2,7 +2,7 @@ class ChatroomsController < ApplicationController
 
   def index
     @chatroom = Chatroom.new
-    @chatrooms = Chatroom.all
+    @chatrooms = current_user.chatrooms
   end
 
   def new

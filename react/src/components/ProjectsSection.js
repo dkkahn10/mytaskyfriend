@@ -1,11 +1,13 @@
 import React from 'react';
+import Color from './Color';
 
 const ProjectsSection = props => {
 
   return(
     <div>
     <div className="row">
-      <form className="new-project col s12">
+
+      <form className="new-project col s8">
         <div className="row valign-wrapper">
           <div className="input-field col s6">
             <i className="material-icons prefix">whatshot</i>
@@ -16,6 +18,15 @@ const ProjectsSection = props => {
           <button className="NewProject btn waves-effect waves-teal col s3" onClick={props.handleNewProject}>Add Project</button>
         </div>
       </form>
+
+        <div className="col s4">
+          <Color
+            color={props.color}
+            projectColor=''
+            handleChange={props.handleFieldChange}
+          />
+        </div>
+
     </div>
 
     <div className="row">

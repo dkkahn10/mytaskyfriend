@@ -14,6 +14,7 @@ gem 'dotenv-rails'
 gem 'redis'
 gem 'carrierwave'
 gem 'fog'
+gem 'devise'
 
 group :development, :test do
   gem 'capybara'
