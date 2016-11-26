@@ -6,6 +6,6 @@ class CreateUserprojects < ActiveRecord::Migration[5.0]
       t.belongs_to :role
       t.timestamps
     end
-    add_index :users, :projects, unique: true
+    add_index :userprojects, [:user_id, :project_id], unique: true
   end
 end

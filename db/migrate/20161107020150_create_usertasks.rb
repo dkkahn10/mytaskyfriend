@@ -6,6 +6,6 @@ class CreateUsertasks < ActiveRecord::Migration[5.0]
       t.belongs_to :role
       t.timestamps
     end
-    add_index :users, :tasks, unique: true
+    add_index :usertasks, [:user_id, :task_id], unique: true
   end
 end

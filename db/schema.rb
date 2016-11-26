@@ -63,21 +63,33 @@ ActiveRecord::Schema.define(version: 20161109173122) do
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_userprojects_on_project_id", using: :btree
     t.index ["role_id"], name: "index_userprojects_on_role_id", using: :btree
+    t.index ["user_id", "project_id"], name: "index_userprojects_on_user_id_and_project_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_userprojects_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.datetime "last_signed_in_at"
-    t.string   "username"
+    t.string   "username",                                  null: false
+    t.string   "email",                  default: "",       null: false
+    t.string   "role",                   default: "member", null: false
+    t.string   "encrypted_password",     default: "",       null: false
+    t.string   "provider"
     t.string   "oauth_uid"
-    t.integer  "sign_in_count",     default: 0
+    t.datetime "last_signed_in_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,        null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
     t.string   "profile_photo"
     t.string   "facebook_photo"
     t.string   "current_photo"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.index ["oauth_uid"], name: "index_users_on_oauth_uid", unique: true, using: :btree
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
@@ -89,6 +101,7 @@ ActiveRecord::Schema.define(version: 20161109173122) do
     t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_usertasks_on_role_id", using: :btree
     t.index ["task_id"], name: "index_usertasks_on_task_id", using: :btree
+    t.index ["user_id", "task_id"], name: "index_usertasks_on_user_id_and_task_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_usertasks_on_user_id", using: :btree
   end
 

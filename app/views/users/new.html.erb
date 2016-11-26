@@ -7,6 +7,10 @@
         <label for="icon_prefix">Username</label>
       </div>
     </div>
+    <%= f.hidden_field :email, value: session[:auth]["info"]["email"] %>
+    <%= f.hidden_field :oauth_uid, value: session[:auth]["uid"] %>
+    <%= f.hidden_field :facebook_photo, value: session[:auth]["info"]["image"] %>
+    <%= f.hidden_field :password, value: SecureRandom.hex %>
     <div class="row">
     <%= f.submit "Submit", class: "btn col s2 offset-s7" %>
     </div>
