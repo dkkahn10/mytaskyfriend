@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20161109173122) do
   create_table "tasks", force: :cascade do |t|
     t.integer  "project_id", null: false
     t.string   "body",       null: false
+    t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_tasks_on_project_id", using: :btree
