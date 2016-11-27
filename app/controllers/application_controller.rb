@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
       :remember_me,
       :last_signed_in_at,
       :oauth_uid,
+      :provider,
       :sign_in_count,
       :profile_photo,
       :facebook_photo,

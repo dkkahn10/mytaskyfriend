@@ -13,8 +13,20 @@
     <%= f.text_field :username, autofocus: true %>
   </div>
 
-  <%= f.hidden_field :oauth_uid, value: SecureRandom.uuid %>
-  <%= f.hidden_field :provider, value: "email" %>
+  <% if session["oauth_data"].nil? %>
+    <%= f.hidden_field :oauth_uid, value: SecureRandom.uuid %>
+    <%= f.hidden_field :provider, value: "email" %>
+    <%= f.hidden_field :last_signed_in_at, value: Time.now %>
+    <%= f.hidden_field :sign_in_count, value: 1 %>
+    <%= f.hidden_field :current_photo, value: Rails.public_path.join("/images/default_profile_image.jpg") %>
+  <% else %>
+    <%= f.hidden_field :oauth_uid, value: session["oauth_data"]["uid"] %>
+    <%= f.hidden_field :provider, value: session["oauth_data"]["provider"] %>
+    <%= f.hidden_field :facebook_photo, value: session["oauth_data"]["info"]["image"] %>
+    <%= f.hidden_field :last_signed_in_at, value: Time.now %>
+    <%= f.hidden_field :sign_in_count, value: 1 %>
+  <% end %>
+
 
   <div class="field">
     <%= f.label :password %>
