@@ -14,7 +14,6 @@
   </div>
 
   <% if session["oauth_data"].nil? %>
-    <%= f.hidden_field :oauth_uid, value: SecureRandom.uuid %>
     <%= f.hidden_field :provider, value: "email" %>
     <%= f.hidden_field :last_signed_in_at, value: Time.now %>
     <%= f.hidden_field :sign_in_count, value: 1 %>

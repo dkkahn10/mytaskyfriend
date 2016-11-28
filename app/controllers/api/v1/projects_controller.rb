@@ -18,7 +18,6 @@ class Api::V1::ProjectsController < ApiController
 
       render json: { project: @project }, status: :created
     else
-      binding.pry
       flash[:notice] = @project.errors.full_messages.join(',')
       render json: { errors: @project.errors }, status: :unprocessable_entity
     end
