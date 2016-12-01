@@ -1,7 +1,7 @@
 import React from 'react';
-import Task from './Task';
-import TaskEdit from './TaskEdit';
-import TasksSection from './TasksSection';
+import Task from '../components/Task';
+import TaskEdit from '../components/TaskEdit';
+import TasksSection from '../components/TasksSection';
 
 const TasksLogic = props => {
   let taskList = "";

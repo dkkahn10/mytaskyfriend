@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import TasksLogic from './TasksLogic';
-import Project from './Project';
-import ProjectEdit from './ProjectEdit';
-import ProjectsSection from './ProjectsSection';
+import Project from '../components/Project';
+import ProjectEdit from '../components/ProjectEdit';
+import ProjectsSection from '../components/ProjectsSection';
 import ProjectsLogic from './ProjectsLogic';
 
 class App extends Component {

@@ -1,9 +1,9 @@
 import React from 'react';
 import TaskMethods from './TaskMethods';
-import Project from './Project';
-import ProjectEdit from './ProjectEdit';
-import ProjectsSection from './ProjectsSection';
-import Color from './Color';
+import Project from '../components/Project';
+import ProjectEdit from '../components/ProjectEdit';
+import ProjectsSection from '../components/ProjectsSection';
+import Color from '../components/Color';
 
 const ProjectsLogic = props => {
   let allProjects = "";
