@@ -22,7 +22,7 @@ const ProjectsSection = props => {
         <div className="col s4">
           <Color
             color={props.color}
-            projectColor=''
+            projectColor='#00acc1'
             handleChange={props.handleFieldChange}
           />
         </div>
