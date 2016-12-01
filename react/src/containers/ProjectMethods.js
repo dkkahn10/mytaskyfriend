@@ -5,7 +5,7 @@ import ProjectEdit from '../components/ProjectEdit';
 import ProjectsSection from '../components/ProjectsSection';
 import ProjectsLogic from './ProjectsLogic';
 
-class App extends Component {
+class ProjectMethods extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -152,4 +152,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default ProjectMethods;
