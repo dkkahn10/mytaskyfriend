@@ -7,4 +7,11 @@ class Project < ActiveRecord::Base
   has_many :users, through: :userprojects
 
   validates :title, presence: true
+  validate :color_is_not_blank
+
+  def color_is_not_blank
+    if self.color == ""
+      self.color = "#00acc1"
+    end
+  end
 end

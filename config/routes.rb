@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :projects, only: [:index, :create, :destroy, :update]
       resources :tasks, only: [:index, :create, :destroy, :show, :update]
+      resources :users, only: [:index]
     end
   end
 

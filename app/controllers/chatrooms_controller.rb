@@ -20,6 +20,8 @@ class ChatroomsController < ApplicationController
   def create
     @chatroom = Chatroom.new(chatroom_params)
     if @chatroom.save
+      admin = Role.find_by(name: "admin")
+      Userchatroom.create(user: current_user, chatroom: @chatroom, role: admin)
       respond_to do |format|
         format.html { redirect_to @chatroom }
         format.js

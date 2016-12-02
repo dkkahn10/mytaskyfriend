@@ -60,6 +60,7 @@ class App extends Component {
   };
 
   handleEditProjectClick(project) {
+    debugger;
     this.setState({ editId: project.id, editProject: project.title, color: project.color });
   };
 

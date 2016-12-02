@@ -33,7 +33,7 @@ class Api::V1::ProjectsController < ApiController
     if @project.update_attributes(title: params[:project][:title], color: params[:project][:color])
       member = Role.find_by(name: "member")
       participant = User.find_by(username: params[:user][:username])
-      Userproject.create(user: participant, project: @project, role: member)
+      Userproject.create(user: participant, project: @project, role: member) unless participant.nil?
 
       render json: { project: @project }, status: :ok
     else

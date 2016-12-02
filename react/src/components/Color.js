@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const Color = props => {
-  
+
   let selectedColor = props.color;
   if (props.color === '') {
     selectedColor = props.projectColor;

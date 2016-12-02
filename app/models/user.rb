@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :tasks, through: :usertasks
   has_many :messages
   has_many :chatrooms, through: :messages
+  has_many :userchatrooms
+  has_many :chatrooms, through: :userchatrooms
 
   validates :username, format: { with: /\A[\w-]+\z/, message: "May only contain letters, numbers, dashes, and underscores."}
   validates :email, :username, presence: true

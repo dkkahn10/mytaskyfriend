@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109173122) do
+ActiveRecord::Schema.define(version: 20161201014902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(version: 20161109173122) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_tasks_on_project_id", using: :btree
+  end
+
+  create_table "userchatrooms", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "chatroom_id", null: false
+    t.integer  "role_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["chatroom_id"], name: "index_userchatrooms_on_chatroom_id", using: :btree
+    t.index ["role_id"], name: "index_userchatrooms_on_role_id", using: :btree
+    t.index ["user_id"], name: "index_userchatrooms_on_user_id", using: :btree
   end
 
   create_table "userprojects", force: :cascade do |t|
