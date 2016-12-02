@@ -15,7 +15,6 @@ class Autocomplete extends Component {
   }
 
   componentDidMount() {
-    debugger;
     $.ajax({
       url: "api/v1/users",
       method: "GET"
@@ -33,7 +32,14 @@ class Autocomplete extends Component {
         <div className="row">
           <div className="input-field col s12">
             <i className="material-icons prefix">textsms</i>
-            <input type="text" id="autocomplete-input" className="autocomplete" name="addUser" onChange={this.props.handleFieldChange} />
+            <input
+              type="text"
+              id="autocomplete-input"
+              className="autocomplete"
+              name="addUser"
+              value={this.props.addUser}
+              onChange={this.props.handleFieldChange}
+            />
             <label htmlFor="autocomplete-input">Autocomplete</label>
           </div>
         </div>

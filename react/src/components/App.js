@@ -154,6 +154,7 @@ class App extends Component {
         handleDeleteClick={handleDeleteClick}
         handleEditClick={handleEditClick}
         color={this.state.color}
+        addUser={this.state.addUser}
       />
     );
   }
