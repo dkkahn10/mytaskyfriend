@@ -6,6 +6,18 @@ class Autocomplete extends Component {
     this.state = {
 
     };
+    this.formatUser = this.formatUser.bind(this);
+  }
+
+  formatUser() {
+    // create artificial "event" for the App component's handleFieldChange to use
+    let e = {
+      target: {
+        name: "addUser",
+        value: $('input.autocomplete').val()
+      }
+    }
+    this.props.handleFieldChange(e);
   }
 
   initJquery(options) {
@@ -22,7 +34,6 @@ class Autocomplete extends Component {
     .done(data => {
       this.initJquery(data.users);
     });
-
   }
 
   render() {
@@ -38,7 +49,7 @@ class Autocomplete extends Component {
               className="autocomplete"
               name="addUser"
               value={this.props.addUser}
-              onChange={this.props.handleFieldChange}
+              onChange={this.formatUser}
             />
             <label htmlFor="autocomplete-input">Autocomplete</label>
           </div>
