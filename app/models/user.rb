@@ -15,9 +15,7 @@ class User < ApplicationRecord
   has_many :chatrooms, through: :userchatrooms
 
   validates :username, format: { with: /\A[\w-]+\z/, message: "May only contain letters, numbers, dashes, and underscores."}
-  validates :email, :username, presence: true
-  # validates :email, :username, :oauth_uid, presence: true
-  validates :oauth_uid, :username, uniqueness: true
+  validates :email, :username, presence: true, uniqueness: true
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
