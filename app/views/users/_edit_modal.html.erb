@@ -17,11 +17,15 @@
           <%= f.file_field :profile_photo %>
         </div>
       </div>
-      <% if @user.provider == 'facebook' %>
+      <% if @user.provider == 'facebook' || @user.provider == 'github' %>
         <div class="row">
           <p class="col s8 offset-s1">
-            <%= f.check_box :current_photo, id: 'fb' %>
-            <label for="fb">Use Facebook profile photo</label>
+            <%= f.check_box :current_photo, id: 'oauth' %>
+            <% if @user.provider == 'facebook' %>
+              <label for="oauth">Use Facebook profile photo</label>
+            <% elsif @user.provider == 'github' %>
+              <label for="oauth">Use Github profile photo</label>
+            <% end %>
           </p>
         </div>
       <% end %>
