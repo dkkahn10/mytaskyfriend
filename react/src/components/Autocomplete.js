@@ -24,6 +24,18 @@ class Autocomplete extends Component {
     $('input.autocomplete').autocomplete({
       data: options
     });
+
+    // handle user clicking on autocomplete dropdown
+    // replace typed text in addUser state with full text from clicked dropdown
+    $('.autocomplete-content').click(event => {
+      let e = {
+        target: {
+          name: "addUser",
+          value: event.target.innerText
+        }
+      }
+      this.props.handleFieldChange(e);
+    });
   }
 
   componentDidMount() {
@@ -51,7 +63,7 @@ class Autocomplete extends Component {
               value={this.props.addUser}
               onChange={this.formatUser}
             />
-            <label htmlFor="autocomplete-input">Autocomplete</label>
+          <label htmlFor="autocomplete-input">Add User to Project</label>
           </div>
         </div>
       </div>
