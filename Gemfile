@@ -10,10 +10,13 @@ gem 'jquery-rails'
 gem 'listen'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
 gem 'dotenv-rails'
 gem 'redis'
 gem 'carrierwave'
 gem 'fog'
+gem 'devise'
 
 group :development, :test do
   gem 'capybara'

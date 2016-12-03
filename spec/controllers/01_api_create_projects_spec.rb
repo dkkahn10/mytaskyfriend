@@ -13,7 +13,6 @@ feature "create projects through API" do
         # login_with_facebook(username)
         click_on "Submit"
         post :create, params: {project: {title: project_title}}
-        binding.pry
         expect(response.status).to eq(204)
 
         res_body = JSON.parse(response.body)

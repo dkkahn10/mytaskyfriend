@@ -17,12 +17,14 @@
           <%= f.file_field :profile_photo %>
         </div>
       </div>
-      <div class="row">
-        <p class="col s8 offset-s1">
-          <%= f.check_box :current_photo, id: 'fb' %>
-          <label for="fb">Use Facebook profile photo</label>
-        </p>
-      </div>
+      <% if @user.provider == 'facebook' %>
+        <div class="row">
+          <p class="col s8 offset-s1">
+            <%= f.check_box :current_photo, id: 'fb' %>
+            <label for="fb">Use Facebook profile photo</label>
+          </p>
+        </div>
+      <% end %>
       <div class="row button">
         <%= f.submit 'Update', class: 'modal-action modal-close wave-green btn-flat col s2 offset-s9', id: 'userEdit_button' %>
       </div>

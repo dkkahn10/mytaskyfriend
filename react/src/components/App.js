@@ -14,7 +14,8 @@ class App extends Component {
       projectId: "",
       editProject: "",
       editId: "",
-      color: ''
+      color: '',
+      addUser: ''
     };
     this.handleProjectClick = this.handleProjectClick.bind(this);
     this.handleFieldChange = this.handleFieldChange.bind(this);
@@ -38,7 +39,8 @@ class App extends Component {
       method: "POST",
       data: {
         project: {
-          title: this.state.newProjectName
+          title: this.state.newProjectName,
+          color: this.state.color
         }
       }
     })
@@ -47,7 +49,8 @@ class App extends Component {
       newArray.push(data.project);
       this.setState ({
         projectNames: newArray,
-        newProjectName: ""
+        newProjectName: "",
+        color: ""
       })
     });
   }
@@ -57,7 +60,7 @@ class App extends Component {
   };
 
   handleEditProjectClick(project) {
-    this.setState({ editId: project.id, editProject: project.title });
+    this.setState({ editId: project.id, editProject: project.title, color: project.color });
   };
 
   handleEdit() {
@@ -69,6 +72,9 @@ class App extends Component {
           project_id: this.state.editId,
           title: this.state.editProject,
           color: this.state.color
+        },
+        user: {
+          username: this.state.addUser
         }
       },
       success: (data => {
@@ -78,7 +84,8 @@ class App extends Component {
         this.setState({
           projectNames: newProjectsArray,
           editId: "",
-          color: ""
+          color: "",
+          addUser: ""
         })
       }).bind(this)
     })
@@ -147,6 +154,7 @@ class App extends Component {
         handleDeleteClick={handleDeleteClick}
         handleEditClick={handleEditClick}
         color={this.state.color}
+        addUser={this.state.addUser}
       />
     );
   }

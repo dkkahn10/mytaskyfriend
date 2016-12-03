@@ -1,0 +1,16 @@
+<div class="container new-session">
+  <h4 class="blue-grey-text">Sign in with Email</h4>
+  <div class="sign-in">
+    <%= link_to('Sign In With Email', new_user_session_path)  %>
+  </div>
+  <h4 class="blue-grey-text">Sign in with Facebook</h4>
+  <div class="sign-in">
+    <i class="fa fa-facebook small"></i>
+    <%= link_to "Sign In", user_facebook_omniauth_authorize_path, class: "btn" %>
+  </div>
+  <h4 class="blue-grey-text">Sign in with Github</h4>
+  <div class="sign-in">
+    <i class="fa fa-github small"></i>
+    <%= link_to "Sign In", user_github_omniauth_authorize_path, class: "btn" %>
+  </div>
+</div>

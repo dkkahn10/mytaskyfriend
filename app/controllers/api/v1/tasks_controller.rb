@@ -17,8 +17,10 @@ class Api::V1::TasksController < ApiController
 
   def create
     @task = Task.new(task_params)
-    @task.user = current_user
+
     if @task.save
+      admin = Role.find_by(name: "admin")
+      Usertask.create(user: current_user, task: @task, role: admin)
       render json: { task: @task }, status: :created
     else
       flash[:notice] = @task.errors.full_messages.join(',')

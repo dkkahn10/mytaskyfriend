@@ -48,6 +48,7 @@ const ProjectsLogic = props => {
             handleCancel={handleCancel}
             id={editId}
             colorSelect={colorSelect}
+            addUser={props.addUser}
           />
       } else {
         projectView =
@@ -75,6 +76,7 @@ const ProjectsLogic = props => {
       handleNewProject={handleNewProject}
       allProjects={allProjects}
       projectTasks={projectTasks}
+      color={props.color}
     />
   );
 }

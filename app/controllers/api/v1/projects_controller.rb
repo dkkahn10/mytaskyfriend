@@ -2,7 +2,8 @@ class Api::V1::ProjectsController < ApiController
   before_action :authenticate_user!, :current_user
 
   def index
-    @projects = Project.all.order(created_at: :asc)
+    @projects = current_user.projects.order(created_at: :asc)
+
     render json: {
       projects: @projects
     }, status: :ok
@@ -10,9 +11,11 @@ class Api::V1::ProjectsController < ApiController
 
   def create
     @project = Project.new(project_params)
-    @project.user = current_user
 
     if @project.save
+      admin = Role.find_by(name: "admin")
+      Userproject.create(user: current_user, project: @project, role: admin)
+
       render json: { project: @project }, status: :created
     else
       flash[:notice] = @project.errors.full_messages.join(',')
@@ -28,6 +31,10 @@ class Api::V1::ProjectsController < ApiController
   def update
     @project = Project.find(params[:project][:project_id])
     if @project.update_attributes(title: params[:project][:title], color: params[:project][:color])
+      member = Role.find_by(name: "member")
+      participant = User.find_by(username: params[:user][:username])
+      Userproject.create(user: participant, project: @project, role: member) unless participant.nil?
+
       render json: { project: @project }, status: :ok
     else
       flash[:notice] = @project.errors.full_messages.join(',')
