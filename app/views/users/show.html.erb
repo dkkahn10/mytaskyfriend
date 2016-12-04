@@ -1,7 +1,11 @@
 <div id="user_show">
   <div class="row section header">
     <div class="image col s3 offset-s1">
-      <%= image_tag(@user_photo, class: "user-image") %>
+      <% if @user_photo.nil? %>
+        <%= image_tag(Rails.public_path.join("/images/default_profile_image.jpg"), class: "user-image") %>
+      <% else %>
+        <%= image_tag(@user_photo, class: "user-image") %>
+      <% end %>
     </div>
 
     <div class="descr col s6 offset-s1">
