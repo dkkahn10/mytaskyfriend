@@ -1,0 +1,45 @@
+<div id="edit_chatroom_modal" class="modal">
+  <div class="modal-content">
+    <div class="row header teal lighten-2">
+      <h4 class="col s8 offset-s2"><i class="material-icons">settings</i> Chatroom Settings</h4>
+    </div>
+    <%= form_for @chatroom, remote: true, authenticity_token: true, html: { method: :put }, id: 'edit_chatroom', class: 'col s8 offset-s2' do |f| %>
+      <div class="row">
+        <span class="topic label col s2">Topic </span>
+        <div class="input-field inline col s9">
+          <%= f.text_field :topic, id: 'topic', class: 'validate' %>
+        </div>
+      </div>
+      <div class="row">
+        <span class="label col s2">Privacy</span>
+        <div class="col s9">
+
+          <%= f.radio_button(:public, true) %>
+          <%= f.label(:public_true, "Public") %><br />
+
+          <%= f.radio_button(:public, false) %>
+          <%= f.label(:public_false, "Private") %>
+
+        </div>
+      </div>
+      <% if !@chatroom.public %>
+        <div class="row">
+          <span class="label invite col s2">Invite Users</span>
+          <div class="input-field col s6">
+            <select name="username" id="username" class="icons" multiple multiple="multiple">
+              <option value="" disabled selected>Choose users</option>
+              <% @users = User.all %>
+              <% @users.each do |user| %>
+                <option value="<%=user.username%>" data-icon="<%= user.current_photo %>" class="right circle"><%= user.username %></option>
+              <% end %>
+            </select>
+
+          </div>
+        </div>
+      <% end %>
+      <div class="row button">
+        <%= f.submit 'Update', class: 'modal-action modal-close wave-green btn-flat col s2 offset-s9', id: 'userEdit_button' %>
+      </div>
+    <% end %>
+  </div>
+</div>

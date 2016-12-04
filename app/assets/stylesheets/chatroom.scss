@@ -70,6 +70,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .options {
+      display: flex;
+    }
+    .edit-modal,
     .dropdown-button {
       display: flex;
       flex-direction: column;
@@ -98,6 +102,47 @@
           color: #283593;
           font-weight: 300;
           font-size: 13px;
+        }
+      }
+    }
+    .modal-content {
+      padding: 0;
+      .header {
+        padding: 25px 0 15px;
+        color: $whitesmoke;
+        h4 {
+          font-weight: 300;
+          text-align: center;
+        }
+        i {
+          padding-right: 10px;
+          font-size: 2rem;
+        }
+      }
+      .edit_chatroom {
+        padding: 20px;
+        padding-top: 0;
+        span {
+          font-size: .85rem;
+          text-align: right;
+          color: #00897b;
+          margin-top: 15px;
+        }
+        span.topic,
+        span.invite {
+          margin-top: 25px;
+        }
+        .dropdown-content span {
+          font-size: 1rem;
+          text-align: left;
+        }
+        // label {
+        //   font-size: .9rem;
+        //   color: #00897b;
+        //   margin-left: 10px;
+        // }
+        .button {
+          margin-bottom: 0;
         }
       }
     }

@@ -1,6 +1,13 @@
 <div id="chatroom_show">
   <div class="header">
     <h2><%= @chatroom.topic %></h2>
+
+    <div class="options">
+    <div class="chatroom-edit">
+      <a class="edit-modal" href="#edit_chatroom_modal"><i class="material-icons">settings</i>Settings</a>
+      <%= render 'chatrooms/chatroom_edit' %>
+    </div>
+
     <div class="chatroom-dropdown">
       <a class='dropdown-button' href='#' data-activates='list-chatrooms'><i class="material-icons">list</i>Chatrooms</a>
       <ul id='list-chatrooms' class='dropdown-content'>
@@ -11,6 +18,7 @@
         <% end %>
       </ul>
     </div>
+  </div>
   </div>
 
   <div class="row">

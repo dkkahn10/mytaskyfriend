@@ -3,7 +3,16 @@ class ChatroomsController < ApplicationController
 
   def index
     @chatroom = Chatroom.new
+
     @chatrooms = current_user.chatrooms
+    # @user_chatrooms = Userchatroom.where(user: current_user)
+    #
+    # @user_chatrooms.each do |chatroom|
+    #   room = Chatroom.find(chatroom)
+    #   binding.pry
+    #   @chatrooms << room
+    # end
+    # binding.pry
   end
 
   def new
@@ -34,11 +43,17 @@ class ChatroomsController < ApplicationController
       end
     end
   end
-
+  
   def update
-    chatroom = Chatroom.find_by(slug: params[:slug])
-    chatroom.update(chatroom_params)
-    redirect_to chatroom
+    # binding.pry
+
+    @chatroom = Chatroom.find_by(slug: params[:slug])
+    @chatroom.update(chatroom_params)
+    if @chatroom.save
+      participant = User.find_by(username: params[:chatroom][:username])
+      Userchatroom.create(user: participant, chatroom: @chatroom, role: member) unless participant.nil?
+    end
+    redirect_to chatrooms_path
   end
 
   def show
@@ -50,6 +65,6 @@ class ChatroomsController < ApplicationController
   private
 
     def chatroom_params
-      params.require(:chatroom).permit(:topic)
+      params.require(:chatroom).permit(:topic, :public)
     end
 end
