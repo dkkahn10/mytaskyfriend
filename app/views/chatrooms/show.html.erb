@@ -3,6 +3,10 @@
     <h2><%= @chatroom.topic %></h2>
 
     <div class="options">
+      <div class="chatroom-members">
+        <a class="user-modal" href="#chatroom_members_modal"><i class="material-icons">group</i>Users</a>
+        <%= render 'chatrooms/chatroom_members' %>
+      </div>
     <div class="chatroom-edit">
       <a class="edit-modal" href="#edit_chatroom_modal"><i class="material-icons">settings</i>Settings</a>
       <%= render 'chatrooms/chatroom_edit' %>

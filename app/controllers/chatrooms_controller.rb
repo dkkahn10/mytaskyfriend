@@ -61,13 +61,15 @@ class ChatroomsController < ApplicationController
         @public_rooms.push(chatroom)
       end
     end
-
     @chatroom = Chatroom.find_by(slug: params[:slug])
     @message = Message.new
     @users = User.all
     @verified = false
-    userchatrooms = Userchatroom.where(chatroom: @chatroom)
-    userchatrooms.each do |room|
+    @userchatrooms = Userchatroom.where(chatroom: @chatroom)
+    @userchatrooms.each do |room|
+      if room.role.name == 'admin'
+        @admin = room.user
+      end
       if room.role.name == 'admin' && room.user == current_user
         @verified = true
       end

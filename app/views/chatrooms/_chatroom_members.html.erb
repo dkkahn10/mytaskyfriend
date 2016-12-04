@@ -1,0 +1,24 @@
+<div id="chatroom_members_modal" class="modal">
+  <div class="modal-content">
+    <div class="row header teal lighten-2">
+      <h4 class="col s8 offset-s2"><i class="material-icons">group</i> <%= @chatroom.topic %> Members</h4>
+    </div>
+    <div class="row">
+      <ul class="list-users col s6 offset-s3">
+        <% @userchatrooms.each do |room| %>
+          <% if room.user == current_user %>
+            <li><span class="teal-text">You</span> (<%= current_user.username %>)</li>
+          <% else %>
+            <% if room.user != @admin %>
+              <li><%= room.user.username %></li>
+            <% else %>
+              <li><span class="deep-orange-text"><%= @admin.username %></span> (admin)</li>
+            <% end %>
+          <% end %>
+        <% end %>
+
+      </ul>
+    </div>
+
+  </div>
+</div>

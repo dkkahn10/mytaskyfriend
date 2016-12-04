@@ -75,6 +75,7 @@
     .options {
       display: flex;
     }
+    .user-modal,
     .edit-modal,
     .dropdown-button {
       display: flex;
@@ -108,6 +109,15 @@
         i {
           padding-right: 10px;
           font-size: 2rem;
+        }
+      }
+      .list-users {
+        li {
+          color: #777;
+          font-size: 1.3rem;
+          line-height: 2.3rem;
+          font-weight: 200;
+          text-align: center;
         }
       }
       .edit_chatroom {
