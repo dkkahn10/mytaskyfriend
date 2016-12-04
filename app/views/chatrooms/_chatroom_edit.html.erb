@@ -10,16 +10,18 @@
           <%= f.text_field :topic, id: 'topic', class: 'validate' %>
         </div>
       </div>
-      <div class="row privacy">
-        <span class="label col s2">Privacy</span>
-        <div class="col s9">
-          <%= f.radio_button(:public, true) %>
-          <%= f.label(:public_true, "Public") %><br />
-          <%= f.radio_button(:public, false) %>
-          <%= f.label(:public_false, "Private") %>
+      <% if @verified %>
+        <div class="row privacy">
+          <span class="label col s2">Privacy</span>
+          <div class="col s9">
+            <%= f.radio_button(:public, true) %>
+            <%= f.label(:public_true, "Public") %><br />
+            <%= f.radio_button(:public, false) %>
+            <%= f.label(:public_false, "Private") %>
+          </div>
         </div>
-      </div>
-      <% if !@chatroom.public && @verified %>
+      <% end %>
+      <% if !@chatroom.public %>
         <div class="row" id="invite_users">
           <span class="label invite col s2">Invite Users</span>
           <div class="input-field col s6">

@@ -16,6 +16,11 @@
             <li><%= link_to chatroom.topic, chatroom_path(chatroom) %></li>
           <% end %>
         <% end %>
+        <% @public_rooms.each do |room| %>
+          <% unless room == @chatroom || current_user.chatrooms.include?(room) %>
+            <li><%= link_to room.topic, chatroom_path(room) %></li>
+          <% end %>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -36,5 +41,5 @@
     <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
   </div>
 
-  
+
 </div>

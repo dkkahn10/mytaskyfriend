@@ -53,10 +53,17 @@ class ChatroomsController < ApplicationController
   end
 
   def show
-    @chatrooms = Chatroom.all
+    @chatrooms = current_user.chatrooms
+    @public_rooms = []
+    all_chatrooms = Chatroom.all
+    all_chatrooms.each do |chatroom|
+      if chatroom.public
+        @public_rooms.push(chatroom)
+      end
+    end
+
     @chatroom = Chatroom.find_by(slug: params[:slug])
     @message = Message.new
-
     @users = User.all
     @verified = false
     userchatrooms = Userchatroom.where(chatroom: @chatroom)
