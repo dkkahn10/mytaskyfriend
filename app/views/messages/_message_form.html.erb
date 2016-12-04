@@ -7,9 +7,13 @@
           <label for="icon_prefix2">Your message</label>
           <%= f.hidden_field :chatroom_id, value: chatroom.id %>
       </div>
-      <div class="button">
+      <div class="button col s2">
         <%= f.submit "send", class: "submit-button waves-effect waves-light", data: {send: "message"}%>
       </div>
     </div>
+    <div class="row">
+      <%= link_to "Back", chatrooms_path, class: "bottom-link" %>
+    </div>
   <%end%>
+
 </div>

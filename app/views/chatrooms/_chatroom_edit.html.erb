@@ -13,13 +13,10 @@
       <div class="row">
         <span class="label col s2">Privacy</span>
         <div class="col s9">
-
           <%= f.radio_button(:public, true) %>
           <%= f.label(:public_true, "Public") %><br />
-
           <%= f.radio_button(:public, false) %>
           <%= f.label(:public_false, "Private") %>
-
         </div>
       </div>
       <% if !@chatroom.public %>
@@ -38,7 +35,7 @@
         </div>
       <% end %>
       <div class="row button">
-        <%= f.submit 'Update', class: 'modal-action modal-close wave-green btn-flat col s2 offset-s9', id: 'userEdit_button' %>
+        <%= f.submit 'Save', class: 'modal-action modal-close wave-green btn-flat col s2 offset-s9', id: 'chatroomEdit_button' %>
       </div>
     <% end %>
   </div>
