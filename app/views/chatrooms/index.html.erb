@@ -16,5 +16,10 @@
     <% else %>
       <p>Be the first one to make a chatroom!</p>
     <% end %>
+    <% if @public_rooms.any? %>
+      <% @public_rooms.each do |room| %>
+        <%= link_to room.topic, chatroom_path(room), class: "collection-item" %>
+      <% end %>
+    <% end %>
   </div>
 </div>

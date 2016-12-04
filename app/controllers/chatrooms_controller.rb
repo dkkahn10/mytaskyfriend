@@ -3,16 +3,14 @@ class ChatroomsController < ApplicationController
 
   def index
     @chatroom = Chatroom.new
-
     @chatrooms = current_user.chatrooms
-    # @user_chatrooms = Userchatroom.where(user: current_user)
-    #
-    # @user_chatrooms.each do |chatroom|
-    #   room = Chatroom.find(chatroom)
-    #   binding.pry
-    #   @chatrooms << room
-    # end
-    # binding.pry
+    @public_rooms = []
+    all_chatrooms = Chatroom.all
+    all_chatrooms.each do |chatroom|
+      if chatroom.public
+        @public_rooms.push(chatroom)
+      end
+    end
   end
 
   def new
@@ -43,15 +41,13 @@ class ChatroomsController < ApplicationController
       end
     end
   end
-  
-  def update
-    # binding.pry
 
+  def update
     @chatroom = Chatroom.find_by(slug: params[:slug])
     @chatroom.update(chatroom_params)
     if @chatroom.save
-      participant = User.find_by(username: params[:chatroom][:username])
-      Userchatroom.create(user: participant, chatroom: @chatroom, role: member) unless participant.nil?
+      participant = User.find_by(username: params[:username])
+      Userchatroom.create(user: participant, chatroom: @chatroom, role: Role.find_by(name: 'member')) unless participant.nil?
     end
     redirect_to chatrooms_path
   end
@@ -60,10 +56,18 @@ class ChatroomsController < ApplicationController
     @chatrooms = Chatroom.all
     @chatroom = Chatroom.find_by(slug: params[:slug])
     @message = Message.new
+
+    @users = User.all
+    @verified = false
+    userchatrooms = Userchatroom.where(chatroom: @chatroom)
+    userchatrooms.each do |room|
+      if room.role.name == 'admin' && room.user == current_user
+        @verified = true
+      end
+    end
   end
 
   private
-
     def chatroom_params
       params.require(:chatroom).permit(:topic, :public)
     end
