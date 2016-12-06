@@ -25,12 +25,8 @@
         <div class="row" id="invite_users">
           <span class="label invite col s2">Invite Users</span>
           <div class="input-field col s6">
-            <select name="username" id="username" class="icons" multiple multiple="multiple">
-              <option value="" disabled selected>Choose users</option>
-              <% @users.each do |user| %>
-                <option value="<%=user.username%>" data-icon="<%= user.current_photo %>" class="right circle"><%= user.username %></option>
-              <% end %>
-            </select>
+            <% users_arr = @users.map { |user| [user.username, user.username] unless user == current_user } %>
+            <%= select_tag "user[username][]", options_for_select(users_arr), multiple: true %>
           </div>
         </div>
       <% end %>

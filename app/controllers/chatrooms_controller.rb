@@ -46,8 +46,11 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find_by(slug: params[:slug])
     @chatroom.update(chatroom_params)
     if @chatroom.save
-      participant = User.find_by(username: params[:username])
-      Userchatroom.create(user: participant, chatroom: @chatroom, role: Role.find_by(name: 'member')) unless participant.nil?
+      add_users = params[:user][:username]
+      add_users.each do |user|
+        participant = User.find_by(username: user)
+        Userchatroom.create(user: participant, chatroom: @chatroom, role: Role.find_by(name: 'member')) unless participant.nil?
+      end
     end
     redirect_to chatrooms_path
   end
