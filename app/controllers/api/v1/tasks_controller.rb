@@ -22,6 +22,9 @@ class Api::V1::TasksController < ApiController
       admin = Role.find_by(name: "admin")
       Usertask.create(user: current_user, task: @task, role: admin)
       render json: { task: @task }, status: :created
+      branch_name = task_params["body"].gsub(" ", "_")
+      system "git branch #{task_params["body"]}"
+      system "git checkout #{task_params["body"]}"
     else
       flash[:notice] = @task.errors.full_messages.join(',')
       render json: { errors: @task.errors }, status: :unprocessable_entity
@@ -31,6 +34,7 @@ class Api::V1::TasksController < ApiController
   def destroy
     @task = Task.find(params[:task][:task_id])
     @task.destroy
+    system "git branch -d #{@task.body}"
   end
 
   def update
